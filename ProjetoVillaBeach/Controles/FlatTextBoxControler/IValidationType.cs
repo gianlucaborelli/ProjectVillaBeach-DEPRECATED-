@@ -10,9 +10,10 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
     {
         UndefinedText,
         CPF,
+        CNPJ,
+        PIS,
         Date,
-        EMail,
-        Unchanged
+        EMail        
     }
 
     interface IValidationType

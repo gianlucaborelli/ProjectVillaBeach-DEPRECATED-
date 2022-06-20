@@ -77,7 +77,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             get
             {
-
                 return _type;
             }
             set
@@ -111,7 +110,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-
+                
             }
         }
 
