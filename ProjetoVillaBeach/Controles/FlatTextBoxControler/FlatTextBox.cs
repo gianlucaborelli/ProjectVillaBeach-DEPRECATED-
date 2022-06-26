@@ -90,7 +90,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         #endregion
 
         IValidationServices _services = null;
-
         public FlatTextBox()
         {
             InitializeComponent();
