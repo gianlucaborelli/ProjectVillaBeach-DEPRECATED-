@@ -13,6 +13,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
     public partial class FlatTextBox : UserControl, IValidationType
     {
         #region Custom Property 
+
         [Category("Appearance")]
         [Description("The text displayed by the control.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -88,9 +89,13 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         #endregion
 
+        IValidationServices _services = null;
+
         public FlatTextBox()
         {
             InitializeComponent();
+
+            _services = ValidationFactory.getValidator(_type);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -107,7 +112,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         }
 
         private void txtNome_Leave(object sender, EventArgs e)
-        {
+        {            
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 
