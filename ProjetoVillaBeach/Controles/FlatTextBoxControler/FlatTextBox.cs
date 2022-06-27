@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
-    public partial class FlatTextBox : UserControl, IValidationType
+    public partial class FlatTextBox : UserControl, IValidationType, INotifyPropertyChanged
     {
         #region Custom Property 
 
@@ -19,15 +19,16 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
-        public override string Text
+        public override string? Text
         {
             get
             {
-                return txtNome.Text;
+                return txtBox.Text;
             }
             set
             {
-                txtNome.Text = value;
+                txtBox.Text = value;
+                OnPropertyChanged();
             }
         }
 
@@ -40,12 +41,11 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             get
             {
-
-                return txtNome.PlaceholderText;
+                return txtBox.PlaceholderText;
             }
             set
             {
-                txtNome.PlaceholderText = value;
+                txtBox.PlaceholderText = value;
             }
         }
 
@@ -87,15 +87,79 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         }
         private EnumValidationType _type;
 
+        [Category("Validation")]
+        [Description("Displays the component's validation status.")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        [DefaultValue(typeof(EnumValidationType), "UndefinedText")]
+        public EnumValidationStatus ValidationStatus
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+            }
+        }
+        private EnumValidationStatus _status;
+
+        [Category("Validation")]
+        [Description("Specifies that a data field value is required.")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public bool Required
+        {
+            get
+            {
+                return _required;
+            }
+            set
+            {
+                _required = value;
+            }
+        }
+        private bool _required;
+
         #endregion
 
-        IValidationServices _services = null;
+        #region INotifyPropertyChanged Implementation
+
+        public event PropertyChangedEventHandler PropertyChanged;        
+        
+        protected void OnPropertyChanged(string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        private void PropertyChanged_Method(object sender, PropertyChangedEventArgs e)
+        {
+            switch (_services.IsValid)
+            {
+                case EnumValidationStatus.Valid:
+                    pnlValido.BackColor = Color.DarkGreen;
+                    break;
+                case EnumValidationStatus.Invalid:
+                    pnlValido.BackColor = Color.DarkRed;
+                    break;
+                default:
+                    pnlValido.BackColor = Color.DarkBlue;
+                    break;
+            }
+        }
+        #endregion
+                
         public FlatTextBox()
         {
             InitializeComponent();
 
-            _services = ValidationFactory.getValidator(_type);
+            this.PropertyChanged += PropertyChanged_Method;
+
+            _services = ValidationFactory.GetValidator(_type);
         }
+        private IValidationServices _services = null;
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -107,36 +171,27 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
                 null);
 
             method.Invoke(this, new object[] { e, ClientRectangle, _backColor });
-            txtNome.BackColor = _backColor;
+            txtBox.BackColor = _backColor;
         }
 
-        private void txtNome_Leave(object sender, EventArgs e)
+        private void Leave_Event(object sender, EventArgs e)
         {            
-            if (string.IsNullOrWhiteSpace(txtNome.Text))
-            {
-                
-            }
+            
         }
 
-        private void txtNome_Enter(object sender, EventArgs e)
+        private void Enter_Event(object sender, EventArgs e)
         {
-            if (txtNome.Text == "Nome")
-            {
-                txtNome.Text = string.Empty;
-                txtNome.ForeColor = Color.Black;
-            }
+            
         }
 
-        private void txtNome_Validating(object sender, CancelEventArgs e)
+        private void Validating_Event(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text))
-            {
-                pnlValido.BackColor = Color.Red;
-            }
-            else
-            {
-                pnlValido.BackColor = Color.DarkGreen;
-            }
+            
+        }
+
+        private void KeyPress_Event(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

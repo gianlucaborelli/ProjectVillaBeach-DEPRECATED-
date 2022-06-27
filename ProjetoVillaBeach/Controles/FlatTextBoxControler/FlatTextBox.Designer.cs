@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtBox = new System.Windows.Forms.TextBox();
             this.pnlValido = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // txtNome
+            // txtBox
             // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNome.BackColor = System.Drawing.SystemColors.Control;
-            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNome.ForeColor = System.Drawing.Color.Gray;
-            this.txtNome.Location = new System.Drawing.Point(3, 4);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(458, 16);
-            this.txtNome.TabIndex = 0;
-            this.txtNome.Text = "Nome";
-            this.txtNome.Enter += new System.EventHandler(this.txtNome_Enter);
-            this.txtNome.Leave += new System.EventHandler(this.txtNome_Leave);
-            this.txtNome.Validating += new System.ComponentModel.CancelEventHandler(this.txtNome_Validating);
+            this.txtBox.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBox.ForeColor = System.Drawing.Color.Gray;
+            this.txtBox.Location = new System.Drawing.Point(3, 4);
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(458, 16);
+            this.txtBox.TabIndex = 0;
+            this.txtBox.Enter += new System.EventHandler(this.Enter_Event);
+            this.txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Event);
+            this.txtBox.Leave += new System.EventHandler(this.Leave_Event);
+            this.txtBox.Validating += new System.ComponentModel.CancelEventHandler(this.Validating_Event);
             // 
             // pnlValido
             // 
@@ -62,7 +62,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.pnlValido);
-            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtBox);
             this.Name = "FlatTextBox";
             this.Size = new System.Drawing.Size(464, 33);
             this.ResumeLayout(false);
@@ -72,7 +72,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtBox;
         private System.Windows.Forms.Panel pnlValido;
     }
 }

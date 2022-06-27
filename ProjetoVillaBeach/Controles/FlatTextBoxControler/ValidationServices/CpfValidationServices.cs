@@ -11,7 +11,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         /// <summary>
         /// Validates if the number entered is a CPF
-        /// </summary>
+        /// </summary>        
         public static bool IsCpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };

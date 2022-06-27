@@ -15,9 +15,16 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         Date,
         EMail        
     }
+    public enum EnumValidationStatus
+    {
+        NotChanged,
+        Valid,
+        Invalid
+    }
 
     interface IValidationType
     {
         public EnumValidationType ValidationType { get; set; }
+        public EnumValidationStatus ValidationStatus { get; set; }
     }
 }

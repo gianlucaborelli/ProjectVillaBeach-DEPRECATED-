@@ -172,7 +172,7 @@ namespace ProjetoVillaBeach.Classes
 
         public bool InformaCpf(ulong? cpf)
         {
-            if (TextCpf.IsCpf(cpf.ToString()))
+            /*if (TextCpf.IsCpf(cpf.ToString()))
             {
                 if (cpf != this.NumeroCpf)
                 {
@@ -201,7 +201,7 @@ namespace ProjetoVillaBeach.Classes
             else
             {
                 NotificacaoPopUp.MostrarNotificacao("Número de C.P.F. Invalido", NotificacaoPopUp.AlertType.Error);
-            }
+            }*/
             return false;
         }
         public bool InformaRg(ulong rg)

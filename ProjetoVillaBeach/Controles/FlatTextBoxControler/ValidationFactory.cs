@@ -8,7 +8,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
     internal static class ValidationFactory
     {
-        public static IValidationServices getValidator(EnumValidationType type)
+        public static IValidationServices GetValidator(EnumValidationType type)
         {
             IValidationServices validator = null;
 
