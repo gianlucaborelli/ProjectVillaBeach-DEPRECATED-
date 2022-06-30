@@ -172,36 +172,7 @@ namespace ProjetoVillaBeach.Classes
 
         public bool InformaCpf(ulong? cpf)
         {
-            /*if (TextCpf.IsCpf(cpf.ToString()))
-            {
-                if (cpf != this.NumeroCpf)
-                {
-                    using (var ctx = new Contexto())
-                    {
-                        var pessoa = ctx.Pessoas
-                                        .Where(p => p.NumeroCpf == cpf)
-                                        .ToList();
-
-                        if (pessoa.Count == 0)
-                        {
-                            this.NumeroCpf = cpf;
-
-                            if (ObjectState != EntityObjectState.Added)
-                                ObjectState = EntityObjectState.Modified;
-
-                            return true;
-                        }
-                        else
-                        {
-                            NotificacaoPopUp.MostrarNotificacao("Número de C.P.F. ja existe", NotificacaoPopUp.AlertType.Error);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                NotificacaoPopUp.MostrarNotificacao("Número de C.P.F. Invalido", NotificacaoPopUp.AlertType.Error);
-            }*/
+            
             return false;
         }
         public bool InformaRg(ulong rg)

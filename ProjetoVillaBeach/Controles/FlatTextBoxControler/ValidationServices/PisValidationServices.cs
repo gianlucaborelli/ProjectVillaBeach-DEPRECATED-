@@ -1,41 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
     internal class PisValidationServices: IValidationServices
     {
-        /// <summary>
-        /// Validates if the number entered is a PIS
-        /// </summary>
-        public static bool IsPis(string pis)
+        public int TextMaxLength
         {
-            int[] multiplicador = new int[10] { 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int soma;
-            int resto;
+            get { return _textMinLength; }
+        }
+        public int _textMinLength = 14;        
 
-            if (pis.Trim().Length != 11)
-                return false;
+        public string CreateStringMasked(string value)
+        {
+            throw new NotImplementedException();
+        }
 
-            pis = pis.Trim();
-            pis = pis.Replace("-", "").Replace(".", "").PadLeft(11, '0');
+        public void KeyPress(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
-            soma = 0;
-
-            for (int i = 0; i < 10; i++)
-                soma += int.Parse(pis[i].ToString()) * multiplicador[i];
-
-            resto = soma % 11;
-
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            return pis.EndsWith(resto.ToString());
+        public bool TryToValidate(string value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

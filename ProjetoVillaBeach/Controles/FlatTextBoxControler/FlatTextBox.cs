@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -73,7 +74,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
-        [DefaultValue(typeof(EnumValidationType), "UndefinedText")]
         public EnumValidationType ValidationType
         {
             get
@@ -92,7 +92,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
-        [DefaultValue(typeof(EnumValidationType), "UndefinedText")]
         public EnumValidationStatus ValidationStatus
         {
             get
@@ -102,6 +101,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             set
             {
                 _status = value;
+                OnPropertyChanged("ValidationStatus");
             }
         }
         private EnumValidationStatus _status;
@@ -130,13 +130,14 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         public event PropertyChangedEventHandler PropertyChanged;        
         
-        protected void OnPropertyChanged(string name = null)
+        private void OnPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private void PropertyChanged_Method(object sender, PropertyChangedEventArgs e)
         {
-            switch (_services.IsValid)
+            switch (_status)
             {
                 case EnumValidationStatus.Valid:
                     pnlValido.BackColor = Color.DarkGreen;
@@ -154,12 +155,15 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         public FlatTextBox()
         {
             InitializeComponent();
-
-            this.PropertyChanged += PropertyChanged_Method;
-
-            _services = ValidationFactory.GetValidator(_type);
         }
         private IValidationServices _services = null;
+
+        private void OnLoad_Event(object sender, EventArgs e)
+        {
+            _services = ValidationFactory.GetValidator(_type);
+            this.PropertyChanged += PropertyChanged_Method;
+            txtBox.MaxLength = _services.TextMaxLength;
+        }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -174,9 +178,37 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             txtBox.BackColor = _backColor;
         }
 
+        private void ValidateTextBox()
+        {
+            if (!string.IsNullOrEmpty(txtBox.Text))
+            {
+                if (_services.TryToValidate(txtBox.Text))
+                {
+                    this.ValidationStatus = EnumValidationStatus.Valid;
+                }
+                else
+                {
+                    this.ValidationStatus = EnumValidationStatus.Invalid;
+                }
+            }
+            else
+            {
+                this.ValidationStatus = EnumValidationStatus.NotChanged;
+            }
+
+            txtBox.Text = _services.CreateStringMasked(txtBox.Text);
+        }
+
         private void Leave_Event(object sender, EventArgs e)
-        {            
+        {
+            ValidateTextBox();
+        }
+
+        private void txtBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValidateTextBox();
             
+            txtBox.SelectionStart = txtBox.Text.Length;
         }
 
         private void Enter_Event(object sender, EventArgs e)
@@ -184,14 +216,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             
         }
 
-        private void Validating_Event(object sender, CancelEventArgs e)
-        {
-            
-        }
-
         private void KeyPress_Event(object sender, KeyPressEventArgs e)
         {
-
+            _services.KeyPress(sender, e);
         }
     }
 }

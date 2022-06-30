@@ -45,8 +45,8 @@
             this.txtBox.TabIndex = 0;
             this.txtBox.Enter += new System.EventHandler(this.Enter_Event);
             this.txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Event);
+            this.txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyUp);
             this.txtBox.Leave += new System.EventHandler(this.Leave_Event);
-            this.txtBox.Validating += new System.ComponentModel.CancelEventHandler(this.Validating_Event);
             // 
             // pnlValido
             // 
@@ -65,6 +65,7 @@
             this.Controls.Add(this.txtBox);
             this.Name = "FlatTextBox";
             this.Size = new System.Drawing.Size(464, 33);
+            this.Load += new System.EventHandler(this.OnLoad_Event);
             this.ResumeLayout(false);
             this.PerformLayout();
 

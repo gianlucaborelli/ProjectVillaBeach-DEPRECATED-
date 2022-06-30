@@ -34,6 +34,7 @@
             this.textCpf1 = new ProjetoVillaBeach.Controles.TextCpf();
             this.textEmail1 = new ProjetoVillaBeach.Controles.TextEmail();
             this.textNome1 = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTextBox1 = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,8 +117,22 @@
             this.textNome1.Margin = new System.Windows.Forms.Padding(4);
             this.textNome1.Name = "textNome1";
             this.textNome1.PlaceholderText = "Nome";
+            this.textNome1.Required = false;
             this.textNome1.Size = new System.Drawing.Size(365, 35);
             this.textNome1.TabIndex = 8;
+            this.textNome1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChanged;
+            // 
+            // flatTextBox1
+            // 
+            this.flatTextBox1.Location = new System.Drawing.Point(510, 41);
+            this.flatTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flatTextBox1.Name = "flatTextBox1";
+            this.flatTextBox1.PlaceholderText = "";
+            this.flatTextBox1.Required = false;
+            this.flatTextBox1.Size = new System.Drawing.Size(464, 33);
+            this.flatTextBox1.TabIndex = 9;
+            this.flatTextBox1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChanged;
+            this.flatTextBox1.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
             // 
             // FormPesquisaDePessoas
             // 
@@ -125,6 +140,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1055, 774);
+            this.Controls.Add(this.flatTextBox1);
             this.Controls.Add(this.textNome1);
             this.Controls.Add(this.textEmail1);
             this.Controls.Add(this.textCpf1);
@@ -149,5 +165,6 @@
         private Controles.TextCpf textCpf1;
         private Controles.TextEmail textEmail1;
         private Controles.FlatTextBoxControler.FlatTextBox textNome1;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTextBox1;
     }
 }
