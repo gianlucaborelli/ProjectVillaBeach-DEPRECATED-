@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoVillaBeach.Classes.Documents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,17 +19,56 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         public string CreateStringMasked(string value)
         {
-            throw new NotImplementedException();
+            value = value.Trim();
+            value = value.Replace(".", "").Replace("-", "").Replace("/", "");
+
+
+            if (value.Length >= 3 && value.Length < 6)
+            {
+                value = value.Insert(2, ".");
+            }
+            else if (value.Length >= 6 && value.Length < 8)
+            {
+                value = value.Insert(2, ".");
+                value = value.Insert(6, ".");
+            }
+            else if (value.Length >= 9 && value.Length < 12)
+            {
+                value = value.Insert(2, ".");
+                value = value.Insert(6, ".");
+                value = value.Insert(10, "/");
+            }
+            else if (value.Length >= 13)
+            {
+                value = value.Insert(2, ".");
+                value = value.Insert(6, ".");
+                value = value.Insert(10, "/");
+                value = value.Insert(15, "-");
+            }
+
+            return value;
         }
 
         public void KeyPress(object sender, KeyPressEventArgs e)
         {
-            throw new NotImplementedException();
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
 
-        public bool TryToValidate(string value)
+        public EnumValidationStatus TryToValidate(string value)
         {
-            throw new NotImplementedException();
+            if (Cnpj.IsCNPJ(value))
+            {
+                return EnumValidationStatus.Valid;
+            }
+            else if (!Cnpj.IsCNPJ(value))
+            {
+                return EnumValidationStatus.Invalid;
+            }
+
+            return EnumValidationStatus.NotChangedOrEmpty;
         }
     }
 }

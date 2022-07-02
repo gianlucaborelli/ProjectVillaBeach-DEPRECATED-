@@ -27,9 +27,18 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
 
-        public bool TryToValidate(string value)
+        public EnumValidationStatus TryToValidate(string value)
         {
-            return Cpf.IsCpf(value);
+            if (Cpf.IsCpf(value))
+            {
+                return EnumValidationStatus.Valid;
+            }
+            else if (!Cpf.IsCpf(value))
+            {
+                return EnumValidationStatus.Invalid;
+            }
+
+            return EnumValidationStatus.NotChangedOrEmpty;
         }
 
         public string CreateStringMasked(string value)

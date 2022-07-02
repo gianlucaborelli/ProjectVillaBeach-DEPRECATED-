@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoVillaBeach.Classes.Documents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,17 +19,26 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         public string CreateStringMasked(string value)
         {
-            throw new NotImplementedException();
+            return value;
         }
 
         public void KeyPress(object sender, KeyPressEventArgs e)
         {
-            throw new NotImplementedException();
+            //No Implementation Needed
         }
 
-        public bool TryToValidate(string value)
+        public EnumValidationStatus TryToValidate(string value)
         {
-            throw new NotImplementedException();
+            if (EmailType.IsValid(value))
+            {
+                return EnumValidationStatus.Valid;
+            }
+            else if (!EmailType.IsValid(value))
+            {
+                return EnumValidationStatus.Invalid;
+            }
+
+            return EnumValidationStatus.NotChangedOrEmpty;
         }
     }
 }

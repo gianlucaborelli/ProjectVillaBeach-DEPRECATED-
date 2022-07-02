@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoVillaBeach.Classes.Documents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -15,41 +16,47 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             get { return _textMinLength; }
         }
-        public int _textMinLength = 14;
-
-        /// <summary>
-        /// Validates if the number entered is a Date
-        /// </summary>
-        public static bool IsDate(string date)
-        {
-            DateTime valor;
-
-            date = date.Trim();
-            date = date.Replace(".", "").Replace("-", "").Replace("/", "");
-
-            var converted = DateTime
-                .TryParseExact(date,
-                                "dd/MM/yyyy",
-                                CultureInfo.InvariantCulture,
-                                DateTimeStyles.None,
-                                out valor);
-
-            return converted;
-        }
-
+        public int _textMinLength = 10;
+        
         public string CreateStringMasked(string value)
         {
-            throw new NotImplementedException();
+            value = value.Trim();
+            value = value.Replace(".", "").Replace("-", "").Replace("/", "");
+
+
+            if (value.Length >= 3 && value.Length < 5)
+            {
+                value = value.Insert(2, "/");
+            }
+            else if (value.Length >= 5)
+            {
+                value = value.Insert(2, "/");
+                value = value.Insert(5, "/");
+            }
+            
+            return value;
         }
 
         public void KeyPress(object sender, KeyPressEventArgs e)
         {
-            throw new NotImplementedException();
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
 
-        public bool TryToValidate(string value)
+        public EnumValidationStatus TryToValidate(string value)
         {
-            throw new NotImplementedException();
+            if (Date.IsDate(value))
+            {
+                return EnumValidationStatus.Valid;
+            }
+            else if (!Date.IsDate(value))
+            {
+                return EnumValidationStatus.Invalid;
+            }
+
+            return EnumValidationStatus.NotChangedOrEmpty;
         }
     }
 }

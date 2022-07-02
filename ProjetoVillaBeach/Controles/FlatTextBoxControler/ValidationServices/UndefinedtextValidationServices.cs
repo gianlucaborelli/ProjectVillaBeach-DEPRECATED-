@@ -14,21 +14,26 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             get { return _textMinLength; }
         }
-        public int _textMinLength = 14;
+        public int _textMinLength = 250;
 
         public string CreateStringMasked(string value)
         {
-            throw new NotImplementedException();
+            return value;
         }
 
         public void KeyPress(object sender, KeyPressEventArgs e)
         {
-            throw new NotImplementedException();
+            //No Implementation Needed
         }
 
-        public bool TryToValidate(string value)
+        public EnumValidationStatus TryToValidate(string value)
         {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(value))
+            {
+                return EnumValidationStatus.Valid;
+            }
+
+            return EnumValidationStatus.NotChangedOrEmpty;
         }
     }
 }
