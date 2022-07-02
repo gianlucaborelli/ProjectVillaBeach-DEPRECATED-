@@ -33,7 +33,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 return EnumValidationStatus.Valid;
             }
-            else if (!Cpf.IsCpf(value))
+            else if (!Cpf.IsCpf(value) && !string.IsNullOrEmpty(value))
             {
                 return EnumValidationStatus.Invalid;
             }
@@ -66,5 +66,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             return value;
         }
 
+        public override string ToString()
+        {
+            return "C.P.F.";
+        }
     }
 }

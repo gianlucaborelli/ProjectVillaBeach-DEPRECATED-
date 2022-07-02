@@ -43,8 +43,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             //value = value.Replace(/ ^(\d{ 3})\.(\d{ 5})(\d)/, "$1.$2.$3");            //Coloca ponto entre o quinto e o sexto dígitos
             //value = value.Replace(/ (\d{ 3})\.(\d{ 5})\.(\d{ 2})(\d)/, "$1.$2.$3.$4"); //Coloca ponto entre o décimo e o décimo primeiro dígitos
             return value;
-
-
         }
 
         public void KeyPress(object sender, KeyPressEventArgs e)
@@ -61,12 +59,17 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 return EnumValidationStatus.Valid;
             }
-            else if (!Pis.IsPis(value))
+            else if (!Pis.IsPis(value) && !string.IsNullOrEmpty(value))
             {
                 return EnumValidationStatus.Invalid;
             }
 
             return EnumValidationStatus.NotChangedOrEmpty;
+        }
+
+        public override string ToString()
+        {
+            return "P.I.S.";
         }
     }
 }

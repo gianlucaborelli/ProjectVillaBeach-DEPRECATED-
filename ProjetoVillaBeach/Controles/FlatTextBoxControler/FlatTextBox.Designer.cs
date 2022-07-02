@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtBox = new System.Windows.Forms.TextBox();
             this.pnlValido = new System.Windows.Forms.Panel();
+            this.errorProviderIsRequered = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIsRequered)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBox
@@ -43,10 +46,10 @@
             this.txtBox.Name = "txtBox";
             this.txtBox.Size = new System.Drawing.Size(458, 16);
             this.txtBox.TabIndex = 0;
-            this.txtBox.Enter += new System.EventHandler(this.Enter_Event);
             this.txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Event);
             this.txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyUp);
             this.txtBox.Leave += new System.EventHandler(this.Leave_Event);
+            this.txtBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValidatingTxtBox_Event);
             // 
             // pnlValido
             // 
@@ -55,6 +58,12 @@
             this.pnlValido.Name = "pnlValido";
             this.pnlValido.Size = new System.Drawing.Size(464, 2);
             this.pnlValido.TabIndex = 1;
+            // 
+            // errorProviderIsRequered
+            // 
+            this.errorProviderIsRequered.BlinkRate = 1000;
+            this.errorProviderIsRequered.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderIsRequered.ContainerControl = this;
             // 
             // FlatTextBox
             // 
@@ -66,6 +75,7 @@
             this.Name = "FlatTextBox";
             this.Size = new System.Drawing.Size(464, 33);
             this.Load += new System.EventHandler(this.OnLoad_Event);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIsRequered)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -75,5 +85,6 @@
 
         private System.Windows.Forms.TextBox txtBox;
         private System.Windows.Forms.Panel pnlValido;
+        private System.Windows.Forms.ErrorProvider errorProviderIsRequered;
     }
 }

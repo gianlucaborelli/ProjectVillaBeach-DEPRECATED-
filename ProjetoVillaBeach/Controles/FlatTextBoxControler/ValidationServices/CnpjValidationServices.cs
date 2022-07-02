@@ -63,12 +63,17 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 return EnumValidationStatus.Valid;
             }
-            else if (!Cnpj.IsCNPJ(value))
+            else if (!Cnpj.IsCNPJ(value) && !string.IsNullOrEmpty(value))
             {
                 return EnumValidationStatus.Invalid;
             }
 
             return EnumValidationStatus.NotChangedOrEmpty;
+        }
+
+        public override string ToString()
+        {
+            return "C.N.P.J.";
         }
     }
 }

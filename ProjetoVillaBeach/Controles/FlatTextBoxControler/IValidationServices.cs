@@ -18,11 +18,11 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         /// Adds overload to the KeyPress event to handle pressed keys according to the selected document pattern.
         /// </summary>          
         void KeyPress(object sender, KeyPressEventArgs e);
-        
+
         /// <summary>
         /// Attempts to validate the string according to the selected document pattern.
         /// </summary> 
-        bool TryToValidate(string value);
+        EnumValidationStatus TryToValidate(string value);
 
         /// <summary>
         /// Returns a masked string according to the selected document's pattern.

@@ -33,12 +33,17 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 return EnumValidationStatus.Valid;
             }
-            else if (!EmailType.IsValid(value))
+            else if (!EmailType.IsValid(value) && !string.IsNullOrEmpty(value))
             {
                 return EnumValidationStatus.Invalid;
             }
 
             return EnumValidationStatus.NotChangedOrEmpty;
+        }
+
+        public override string ToString()
+        {
+            return "E-mail";
         }
     }
 }

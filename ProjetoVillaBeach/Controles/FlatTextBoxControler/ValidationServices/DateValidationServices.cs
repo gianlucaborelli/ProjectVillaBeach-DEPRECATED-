@@ -1,23 +1,19 @@
 ﻿using ProjetoVillaBeach.Classes.Documents;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
-    internal class DateValidationServices: IValidationServices
+    internal class DateValidationServices : IValidationServices
     {
         public int TextMaxLength
         {
             get { return _textMinLength; }
         }
         public int _textMinLength = 10;
-        
+
         public string CreateStringMasked(string value)
         {
             value = value.Trim();
@@ -33,7 +29,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
                 value = value.Insert(2, "/");
                 value = value.Insert(5, "/");
             }
-            
+
             return value;
         }
 
@@ -51,12 +47,17 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 return EnumValidationStatus.Valid;
             }
-            else if (!Date.IsDate(value))
+            else if (!Date.IsDate(value) && !string.IsNullOrEmpty(value))
             {
                 return EnumValidationStatus.Invalid;
             }
 
             return EnumValidationStatus.NotChangedOrEmpty;
+        }
+
+        public override string ToString()
+        {
+            return "Data";
         }
     }
 }

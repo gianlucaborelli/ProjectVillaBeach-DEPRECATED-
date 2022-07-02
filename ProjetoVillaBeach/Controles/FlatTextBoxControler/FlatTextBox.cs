@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
     {
         #region Custom Property 
 
+        #region Text Property
         [Category("Appearance")]
         [Description("The text displayed by the control.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -32,7 +34,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
                 OnPropertyChanged();
             }
         }
+        #endregion
 
+        #region PlaceholderText Property
         [Category("Appearance")]
         [Description("The text that is displayed when the control has no text and does not have the focus.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -49,7 +53,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
                 txtBox.PlaceholderText = value;
             }
         }
+        #endregion
 
+        #region BackColor Property
         [Category("Appearance")]
         [Description("A Color that represents the background color of the control.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -68,7 +74,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
         private Color _backColor;
+        #endregion
 
+        #region ValidationType Property
         [Category("Validation")]
         [Description("A Validator Type that represents how the control will be validated.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -86,7 +94,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
         private EnumValidationType _type;
+        #endregion
 
+        #region ValidationStatus 
         [Category("Validation")]
         [Description("Displays the component's validation status.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -105,7 +115,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
         private EnumValidationStatus _status;
+        #endregion
 
+        #region Requered Property
         [Category("Validation")]
         [Description("Specifies that a data field value is required.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -124,12 +136,31 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         }
         private bool _required;
 
+        public bool RequiredMet = true;
+
+        #endregion
+
+        #region RequirementsAreSatisfied Property
+        public bool RequirementsAreSatisfied
+        {
+            get
+            {
+                return _requirementsAreSatisfied;
+            }
+            set
+            {
+                _requirementsAreSatisfied = value;
+            }
+        }
+        private bool _requirementsAreSatisfied;
+        #endregion
+
         #endregion
 
         #region INotifyPropertyChanged Implementation
 
-        public event PropertyChangedEventHandler PropertyChanged;        
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -151,7 +182,54 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
         #endregion
-                
+
+        #region IsRequered Implementation
+
+        public bool RequirementsSatisfied(string value, out string errorMessage)
+        {
+            if (value.Length == 0 || _required == true)
+            {
+                errorMessage = _services.ToString() + " é de preenchimento obrigatório.";
+                RequiredMet = false;
+                return false;
+            }
+
+            errorMessage = "";
+            RequiredMet = false;
+
+            return true;
+        }
+
+        private void ValidatingTxtBox_Event(object sender, CancelEventArgs e)
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is PictureBox)
+                {
+                    c.Dispose();
+                }
+            }
+
+            string errorMsg;
+            if (!RequirementsSatisfied(txtBox.Text, out errorMsg))
+            {
+                PictureBox pbErros = new PictureBox();
+
+                ToolTip tt = new ToolTip();
+                tt.SetToolTip(pbErros, errorMsg);
+                tt.ShowAlways = true;
+
+                pbErros.Image = Image.FromFile(@"D:\Projetos\ProjetoVillaBeach\ProjetoVillaBeach\Pictures\ErrorPic.png");
+                pbErros.Size = pbErros.Image.Size;
+                pbErros.Location = new Point(this.Width - pbErros.Image.Width, 6);
+                pbErros.BackColor = Color.Transparent;
+
+                this.Controls.Add(pbErros);
+                pbErros.BringToFront();
+            }
+        }
+        #endregion
+
         public FlatTextBox()
         {
             InitializeComponent();
@@ -161,8 +239,13 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         private void OnLoad_Event(object sender, EventArgs e)
         {
             _services = ValidationFactory.GetValidator(_type);
-            this.PropertyChanged += PropertyChanged_Method;
+            PropertyChanged += PropertyChanged_Method;
             txtBox.MaxLength = _services.TextMaxLength;
+
+            if (_required == true)
+            {
+                RequiredMet = false;
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -180,23 +263,15 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         private void ValidateTextBox()
         {
-            if (!string.IsNullOrEmpty(txtBox.Text))
-            {
-                if (_services.TryToValidate(txtBox.Text))
-                {
-                    this.ValidationStatus = EnumValidationStatus.Valid;
-                }
-                else
-                {
-                    this.ValidationStatus = EnumValidationStatus.Invalid;
-                }
-            }
-            else
-            {
-                this.ValidationStatus = EnumValidationStatus.NotChanged;
-            }
+            ValidationStatus = _services.TryToValidate(txtBox.Text);
 
             txtBox.Text = _services.CreateStringMasked(txtBox.Text);
+        }
+
+        private bool CompleteSatisfactionRequirements()
+        {
+
+            return false;
         }
 
         private void Leave_Event(object sender, EventArgs e)
@@ -207,18 +282,15 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         private void txtBox_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateTextBox();
-            
-            txtBox.SelectionStart = txtBox.Text.Length;
-        }
 
-        private void Enter_Event(object sender, EventArgs e)
-        {
-            
+            txtBox.SelectionStart = txtBox.Text.Length;
         }
 
         private void KeyPress_Event(object sender, KeyPressEventArgs e)
         {
             _services.KeyPress(sender, e);
         }
+
+
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
+    /// <summary>
+    /// Validation Type Set.
+    /// </summary>
     public enum EnumValidationType
     {
         UndefinedText,
@@ -15,10 +18,23 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         Date,
         EMail        
     }
+
+    /// <summary>
+    /// Validation Status Type Set.
+    /// </summary>
     public enum EnumValidationStatus
     {
-        NotChanged,
+        /// <summary>
+        /// Not valid or empty.
+        /// </summary>
+        NotChangedOrEmpty,
+        /// <summary>
+        /// Value is valid.
+        /// </summary>
         Valid,
+        /// <summary>
+        /// Value is not valid.
+        /// </summary>
         Invalid
     }
 
