@@ -13,6 +13,7 @@ namespace ProjetoVillaBeach.Classes
 {
     public class Pessoa : IEntityObjectState
     {
+        #region Property
         [Key]
         public int IdPessoa { get; set; }
 
@@ -67,6 +68,8 @@ namespace ProjetoVillaBeach.Classes
             }
         }
         private EntityObjectState _objectState = EntityObjectState.Unchanged;
+
+        #endregion
 
         public Pessoa()
         {
@@ -141,6 +144,18 @@ namespace ProjetoVillaBeach.Classes
             return contexto.Pessoas.ToList();
         }
 
+        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf)
+        {
+            using (var contexto = new Contexto())
+            {
+                IQueryable<Pessoa> query = contexto.Pessoas;
+                if (nome != null) query = query.Where(x => x.Nome == nome);
+                //if (cpf != null) query = query.Where(x => x.NumeroCpf == cpf);
+
+                return query.ToList();
+            }
+        }
+
         public void Excluir()
         {
             var contexto = new Contexto();
@@ -158,23 +173,21 @@ namespace ProjetoVillaBeach.Classes
             }
         }
 
-        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf)
-        {
-            using (var contexto = new Contexto())
-            {
-                IQueryable<Pessoa> query = contexto.Pessoas;
-                if (nome != null) query = query.Where(x => x.Nome == nome);
-                if (cpf != null) query = query.Where(x => x.NumeroCpf == cpf);
-                
-                return query.ToList();
-            }
-        }
-
         public bool InformaCpf(ulong? cpf)
         {
-            
+            if (this.NumeroCpf != cpf)
+            {
+                this.NumeroCpf = cpf;
+
+                if (ObjectState != EntityObjectState.Added)
+                    ObjectState = EntityObjectState.Modified;
+
+                return true;
+            }
+
             return false;
         }
+
         public bool InformaRg(ulong rg)
         {
             if (this.NumeroRg != rg)
@@ -189,6 +202,7 @@ namespace ProjetoVillaBeach.Classes
 
             return false;
         }
+
         public bool InformaNome(string nome)
         {
             if (this.Nome != nome)
@@ -203,6 +217,7 @@ namespace ProjetoVillaBeach.Classes
 
             return false;
         }
+
         public bool InformaFiciliacao1(string filiacao1)
         {
             if (this.Filiacao1 != filiacao1)
@@ -217,6 +232,7 @@ namespace ProjetoVillaBeach.Classes
 
             return false;
         }
+
         public bool InformaFiciliacao2(string filiacao2)
         {
             if (this.Filiacao2 != filiacao2)
@@ -231,6 +247,7 @@ namespace ProjetoVillaBeach.Classes
 
             return false;
         }
+
         public bool InformaDataDeNascimento(DateTime? dataDeNascimento)
         {
             if (dataDeNascimento != DataDeNascimento && dataDeNascimento != null)
@@ -258,6 +275,7 @@ namespace ProjetoVillaBeach.Classes
 
             return false;
         }
+
         public bool InformaDataDeCadastro(DateTime? dataDeCadastro)
         {
             if (dataDeCadastro != DataDeNascimento && dataDeCadastro != null)

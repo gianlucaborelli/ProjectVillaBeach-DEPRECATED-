@@ -33,11 +33,11 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void CarregaPessoa()
         {
-            textNome1.Text = pessoa.Nome;
+            flatTxtNome.Text = pessoa.Nome;
 
-            textCpf1.Text = pessoa.NumeroCpf.ToString();
+            flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
 
-            textData1.Text = pessoa.DataDeNascimento.ToString();
+            flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
 
             if (flpEndereco.Controls.Count > 0)
                 flpEndereco.Controls.Clear();
@@ -83,20 +83,20 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void textNome1_Leave(object sender, EventArgs e)
         {
-            pessoa.InformaNome(textNome1.Text);
-            textNome1.Text = pessoa.Nome;
+            pessoa.InformaNome(flatTxtNome.Text);
+            flatTxtNome.Text = pessoa.Nome;
         }
 
         private void textCpf1_Leave(object sender, EventArgs e)
         {
-            pessoa.InformaCpf(textCpf1.NumeroCpf);
-            textCpf1.Text = pessoa.NumeroCpf.ToString();
+            pessoa.InformaCpf(ulong.Parse(flatTxtCpf.Text));
+            flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
         }
 
         private void textData1_Leave(object sender, EventArgs e)
         {
-            pessoa.InformaDataDeNascimento(textData1.DataSelecionada);
-            textData1.Text = pessoa.DataDeNascimento.ToString();
+            pessoa.InformaDataDeNascimento(DateTime.Parse(flatTxtDn.Text));
+            flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
         }
 
         private void CadastroPessoa_SizeChanged(object sender, EventArgs e)
@@ -134,7 +134,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         private void Calendario_DateSelected(object? sender, DateRangeEventArgs e)
         {
             MonthCalendar calendario = (MonthCalendar)sender;
-            textData1.Text = calendario.SelectionStart.ToString("dd/MM/yyyy");
+            flatTxtDn.Text = calendario.SelectionStart.ToString("dd/MM/yyyy");
             calendario.Dispose();
 
         }

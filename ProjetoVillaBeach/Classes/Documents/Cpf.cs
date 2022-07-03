@@ -102,5 +102,13 @@ namespace ProjetoVillaBeach.Classes.Documents
 
             return false;
         }
+
+        public static string NotMasked(string cpf)
+        {
+            cpf = cpf.Trim();
+            cpf = cpf.Replace(".", "").Replace("-", "");
+
+            return cpf;
+        }
     }
 }

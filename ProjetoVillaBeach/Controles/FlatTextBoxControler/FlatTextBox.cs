@@ -268,6 +268,18 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             txtBox.Text = _services.CreateStringMasked(txtBox.Text);
         }
 
+        public ulong ToUlongParse ()
+        {   
+            string stg = txtBox.Text;
+
+            stg = stg.Trim();
+            stg = stg.Replace(".", "").Replace("-", "").Replace("/", "");
+
+            ulong.TryParse(stg, out ulong value);
+
+            return value;
+        }
+
         private bool CompleteSatisfactionRequirements()
         {
 
