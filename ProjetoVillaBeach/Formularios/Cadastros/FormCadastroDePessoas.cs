@@ -78,7 +78,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
             pessoa.Enderecos.Add(endereco);
 
-            PopulaEndereco(endereco);
+            PopulaEndereco(endereco);                        
         }
 
         private void textNome1_Leave(object sender, EventArgs e)

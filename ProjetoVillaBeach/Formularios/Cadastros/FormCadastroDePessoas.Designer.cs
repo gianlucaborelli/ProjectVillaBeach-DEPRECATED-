@@ -33,26 +33,34 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbDadosPessoais = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.flatTxtNome = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.pbCalendar = new System.Windows.Forms.PictureBox();
-            this.tbContatos = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flatTxtDn = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtNome = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.flatTxtCpf = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtRg = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.flatTxtFiliacao1 = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtFiliacao2 = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.flpContatos = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddEndereco = new System.Windows.Forms.Button();
             this.flpEndereco = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddContatos = new System.Windows.Forms.Button();
+            this.tbContatos = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.flatTxtCpf = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
-            this.flatTxtDn = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbDadosPessoais.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendar)).BeginInit();
-            this.tbContatos.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,60 +115,47 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 12;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtNome, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pbCalendar, 11, 0);
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtCpf, 6, 0);
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtDn, 9, 0);
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 8;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 553);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // flatTxtNome
+            // tableLayoutPanel3
             // 
-            this.flatTxtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatTxtNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tableLayoutPanel2.SetColumnSpan(this.flatTxtNome, 5);
-            this.flatTxtNome.Location = new System.Drawing.Point(4, 4);
-            this.flatTxtNome.Margin = new System.Windows.Forms.Padding(4);
-            this.flatTxtNome.Name = "flatTxtNome";
-            this.flatTxtNome.PlaceholderText = "Nome";
-            this.flatTxtNome.Required = true;
-            this.flatTxtNome.RequirementsAreSatisfied = false;
-            this.flatTxtNome.Size = new System.Drawing.Size(612, 34);
-            this.flatTxtNome.TabIndex = 0;
-            this.flatTxtNome.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtNome.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtNome.Leave += new System.EventHandler(this.textNome1_Leave);
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.Controls.Add(this.pbCalendar, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flatTxtDn, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flatTxtNome, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(396, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(388, 132);
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // pbCalendar
             // 
             this.pbCalendar.Image = global::ProjetoVillaBeach.Properties.Resources.Calendar_48px;
-            this.pbCalendar.Location = new System.Drawing.Point(1149, 3);
+            this.pbCalendar.Location = new System.Drawing.Point(351, 69);
             this.pbCalendar.Name = "pbCalendar";
             this.pbCalendar.Size = new System.Drawing.Size(30, 35);
             this.pbCalendar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -168,55 +163,160 @@
             this.pbCalendar.TabStop = false;
             this.pbCalendar.Click += new System.EventHandler(this.Calendar_Click);
             // 
-            // tbContatos
+            // flatTxtDn
             // 
-            this.tbContatos.AutoScroll = true;
-            this.tbContatos.Controls.Add(this.tableLayoutPanel1);
-            this.tbContatos.Location = new System.Drawing.Point(4, 30);
-            this.tbContatos.Name = "tbContatos";
-            this.tbContatos.Padding = new System.Windows.Forms.Padding(3);
-            this.tbContatos.Size = new System.Drawing.Size(1188, 559);
-            this.tbContatos.TabIndex = 1;
-            this.tbContatos.Text = "Contatos";
-            this.tbContatos.UseVisualStyleBackColor = true;
+            this.flatTxtDn.BackColor = System.Drawing.Color.Gainsboro;
+            this.flatTxtDn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtDn.Location = new System.Drawing.Point(4, 70);
+            this.flatTxtDn.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtDn.Name = "flatTxtDn";
+            this.flatTxtDn.PlaceholderText = "Data de Nascimento";
+            this.flatTxtDn.Required = false;
+            this.flatTxtDn.RequirementsAreSatisfied = false;
+            this.flatTxtDn.Size = new System.Drawing.Size(340, 34);
+            this.flatTxtDn.TabIndex = 5;
+            this.flatTxtDn.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtDn.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
             // 
-            // tableLayoutPanel1
+            // flatTxtNome
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.flpContatos, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnAddEndereco, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flpEndereco, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnAddContatos, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1176, 547);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.flatTxtNome.BackColor = System.Drawing.Color.Gainsboro;
+            this.tableLayoutPanel3.SetColumnSpan(this.flatTxtNome, 2);
+            this.flatTxtNome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtNome.Location = new System.Drawing.Point(4, 4);
+            this.flatTxtNome.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtNome.Name = "flatTxtNome";
+            this.flatTxtNome.PlaceholderText = "Nome";
+            this.flatTxtNome.Required = true;
+            this.flatTxtNome.RequirementsAreSatisfied = false;
+            this.flatTxtNome.Size = new System.Drawing.Size(380, 34);
+            this.flatTxtNome.TabIndex = 0;
+            this.flatTxtNome.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtNome.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            this.flatTxtNome.Leave += new System.EventHandler(this.textNome1_Leave);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.flatTxtCpf, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.flatTxtRg, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(790, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 132);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // flatTxtCpf
+            // 
+            this.flatTxtCpf.BackColor = System.Drawing.Color.Gainsboro;
+            this.flatTxtCpf.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtCpf.Location = new System.Drawing.Point(4, 4);
+            this.flatTxtCpf.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtCpf.Name = "flatTxtCpf";
+            this.flatTxtCpf.PlaceholderText = "C.P.F.";
+            this.flatTxtCpf.Required = false;
+            this.flatTxtCpf.RequirementsAreSatisfied = false;
+            this.flatTxtCpf.Size = new System.Drawing.Size(381, 34);
+            this.flatTxtCpf.TabIndex = 4;
+            this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
+            // 
+            // flatTxtRg
+            // 
+            this.flatTxtRg.BackColor = System.Drawing.Color.Gainsboro;
+            this.flatTxtRg.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtRg.Location = new System.Drawing.Point(4, 70);
+            this.flatTxtRg.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtRg.Name = "flatTxtRg";
+            this.flatTxtRg.PlaceholderText = "R.G.";
+            this.flatTxtRg.Required = false;
+            this.flatTxtRg.RequirementsAreSatisfied = false;
+            this.flatTxtRg.Size = new System.Drawing.Size(381, 33);
+            this.flatTxtRg.TabIndex = 5;
+            this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.flatTxtFiliacao1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.flatTxtFiliacao2, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(396, 141);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(388, 132);
+            this.tableLayoutPanel5.TabIndex = 2;
+            // 
+            // flatTxtFiliacao1
+            // 
+            this.flatTxtFiliacao1.BackColor = System.Drawing.Color.Gainsboro;
+            this.flatTxtFiliacao1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtFiliacao1.Location = new System.Drawing.Point(4, 4);
+            this.flatTxtFiliacao1.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtFiliacao1.Name = "flatTxtFiliacao1";
+            this.flatTxtFiliacao1.PlaceholderText = "Filiação 1";
+            this.flatTxtFiliacao1.Required = false;
+            this.flatTxtFiliacao1.RequirementsAreSatisfied = false;
+            this.flatTxtFiliacao1.Size = new System.Drawing.Size(380, 34);
+            this.flatTxtFiliacao1.TabIndex = 0;
+            this.flatTxtFiliacao1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtFiliacao1.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            // 
+            // flatTxtFiliacao2
+            // 
+            this.flatTxtFiliacao2.BackColor = System.Drawing.Color.Gainsboro;
+            this.flatTxtFiliacao2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flatTxtFiliacao2.Location = new System.Drawing.Point(4, 70);
+            this.flatTxtFiliacao2.Margin = new System.Windows.Forms.Padding(4);
+            this.flatTxtFiliacao2.Name = "flatTxtFiliacao2";
+            this.flatTxtFiliacao2.PlaceholderText = "Filiação 2";
+            this.flatTxtFiliacao2.Required = false;
+            this.flatTxtFiliacao2.RequirementsAreSatisfied = false;
+            this.flatTxtFiliacao2.Size = new System.Drawing.Size(380, 34);
+            this.flatTxtFiliacao2.TabIndex = 1;
+            this.flatTxtFiliacao2.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtFiliacao2.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel6, 3);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.flpContatos, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btnAddEndereco, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.flpEndereco, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.btnAddContatos, 1, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 279);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel2.SetRowSpan(this.tableLayoutPanel6, 2);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1176, 271);
+            this.tableLayoutPanel6.TabIndex = 3;
             // 
             // flpContatos
             // 
-            this.flpContatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.flpContatos.AutoScroll = true;
             this.flpContatos.AutoSize = true;
+            this.flpContatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpContatos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpContatos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flpContatos.Location = new System.Drawing.Point(601, 73);
+            this.flpContatos.Location = new System.Drawing.Point(591, 43);
             this.flpContatos.Name = "flpContatos";
-            this.tableLayoutPanel1.SetRowSpan(this.flpContatos, 2);
-            this.flpContatos.Size = new System.Drawing.Size(572, 471);
+            this.flpContatos.Size = new System.Drawing.Size(582, 225);
             this.flpContatos.TabIndex = 6;
             this.flpContatos.WrapContents = false;
             // 
@@ -227,7 +327,7 @@
             this.btnAddEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddEndereco.Location = new System.Drawing.Point(3, 3);
             this.btnAddEndereco.Name = "btnAddEndereco";
-            this.btnAddEndereco.Size = new System.Drawing.Size(204, 44);
+            this.btnAddEndereco.Size = new System.Drawing.Size(204, 34);
             this.btnAddEndereco.TabIndex = 6;
             this.btnAddEndereco.Text = "Adicionar Endereço";
             this.btnAddEndereco.UseVisualStyleBackColor = false;
@@ -235,17 +335,14 @@
             // 
             // flpEndereco
             // 
-            this.flpEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.flpEndereco.AutoScroll = true;
             this.flpEndereco.AutoSize = true;
+            this.flpEndereco.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpEndereco.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpEndereco.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flpEndereco.Location = new System.Drawing.Point(3, 73);
+            this.flpEndereco.Location = new System.Drawing.Point(3, 43);
             this.flpEndereco.Name = "flpEndereco";
-            this.tableLayoutPanel1.SetRowSpan(this.flpEndereco, 2);
-            this.flpEndereco.Size = new System.Drawing.Size(572, 471);
+            this.flpEndereco.Size = new System.Drawing.Size(582, 225);
             this.flpEndereco.TabIndex = 5;
             this.flpEndereco.WrapContents = false;
             // 
@@ -254,12 +351,23 @@
             this.btnAddContatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
             this.btnAddContatos.FlatAppearance.BorderSize = 0;
             this.btnAddContatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddContatos.Location = new System.Drawing.Point(601, 3);
+            this.btnAddContatos.Location = new System.Drawing.Point(591, 3);
             this.btnAddContatos.Name = "btnAddContatos";
-            this.btnAddContatos.Size = new System.Drawing.Size(204, 44);
+            this.btnAddContatos.Size = new System.Drawing.Size(204, 34);
             this.btnAddContatos.TabIndex = 7;
             this.btnAddContatos.Text = "Adicionar Contato";
             this.btnAddContatos.UseVisualStyleBackColor = false;
+            // 
+            // tbContatos
+            // 
+            this.tbContatos.AutoScroll = true;
+            this.tbContatos.Location = new System.Drawing.Point(4, 30);
+            this.tbContatos.Name = "tbContatos";
+            this.tbContatos.Padding = new System.Windows.Forms.Padding(3);
+            this.tbContatos.Size = new System.Drawing.Size(1188, 559);
+            this.tbContatos.TabIndex = 1;
+            this.tbContatos.Text = "Contatos";
+            this.tbContatos.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -297,34 +405,6 @@
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.Voltar_Click);
             // 
-            // flatTxtCpf
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.flatTxtCpf, 2);
-            this.flatTxtCpf.Location = new System.Drawing.Point(639, 4);
-            this.flatTxtCpf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.flatTxtCpf.Name = "flatTxtCpf";
-            this.flatTxtCpf.PlaceholderText = "C.P.F.";
-            this.flatTxtCpf.Required = false;
-            this.flatTxtCpf.RequirementsAreSatisfied = false;
-            this.flatTxtCpf.Size = new System.Drawing.Size(240, 33);
-            this.flatTxtCpf.TabIndex = 4;
-            this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
-            // 
-            // flatTxtDn
-            // 
-            this.tableLayoutPanel2.SetColumnSpan(this.flatTxtDn, 2);
-            this.flatTxtDn.Location = new System.Drawing.Point(902, 4);
-            this.flatTxtDn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.flatTxtDn.Name = "flatTxtDn";
-            this.flatTxtDn.PlaceholderText = "Data de Nascimento";
-            this.flatTxtDn.Required = false;
-            this.flatTxtDn.RequirementsAreSatisfied = false;
-            this.flatTxtDn.Size = new System.Drawing.Size(240, 33);
-            this.flatTxtDn.TabIndex = 5;
-            this.flatTxtDn.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtDn.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            // 
             // FormCadastroDePessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -344,10 +424,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tbDadosPessoais.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendar)).EndInit();
-            this.tbContatos.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -367,7 +449,6 @@
         
         private System.Windows.Forms.Button btnAddEndereco;
         private System.Windows.Forms.FlowLayoutPanel flpEndereco;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flpContatos;
         private System.Windows.Forms.Button btnAddContatos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -375,5 +456,12 @@
         private System.Windows.Forms.Label label1;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtCpf;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtDn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtRg;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtFiliacao1;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtFiliacao2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
     }
 }

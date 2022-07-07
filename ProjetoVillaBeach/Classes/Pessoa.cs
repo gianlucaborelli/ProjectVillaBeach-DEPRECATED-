@@ -144,13 +144,12 @@ namespace ProjetoVillaBeach.Classes
             return contexto.Pessoas.ToList();
         }
 
-        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf)
+        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, ulong? rg)
         {
             using (var contexto = new Contexto())
             {
                 IQueryable<Pessoa> query = contexto.Pessoas;
-                if (nome != null) query = query.Where(x => x.Nome == nome);
-                //if (cpf != null) query = query.Where(x => x.NumeroCpf == cpf);
+                query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg );                
 
                 return query.ToList();
             }

@@ -16,7 +16,7 @@ namespace ProjetoVillaBeach.Classes.Documents
             DateTime valor;
 
             date = date.Trim();
-            date = date.Replace(".", "").Replace("-", "").Replace("/", "");
+            //date = date.Replace(".", "").Replace("-", "").Replace("/", "");
 
             var converted = DateTime
                 .TryParseExact(date,

@@ -14,7 +14,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
 {
     public partial class FormPesquisaDePessoas : Form
     {
-        Pessoa pessoa = new();
+        //Pessoa pessoa = new();
 
         public FormPesquisaDePessoas()
         {
@@ -52,14 +52,9 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             }
         }
 
-        private void textCpf1_Validated(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse());
+            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.ToUlongParse());
 
             if (pessoas.Count > 0)
             {

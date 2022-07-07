@@ -33,6 +33,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.flatTxtNome = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.flatTxtCpf = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtEmail = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtRg = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +92,7 @@
             // flatTxtNome
             // 
             this.flatTxtNome.BackColor = System.Drawing.Color.Silver;
-            this.flatTxtNome.Location = new System.Drawing.Point(34, 39);
+            this.flatTxtNome.Location = new System.Drawing.Point(34, 29);
             this.flatTxtNome.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtNome.Name = "flatTxtNome";
             this.flatTxtNome.PlaceholderText = "Nome";
@@ -104,7 +106,7 @@
             // flatTxtCpf
             // 
             this.flatTxtCpf.BackColor = System.Drawing.Color.Silver;
-            this.flatTxtCpf.Location = new System.Drawing.Point(34, 98);
+            this.flatTxtCpf.Location = new System.Drawing.Point(34, 86);
             this.flatTxtCpf.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtCpf.Name = "flatTxtCpf";
             this.flatTxtCpf.PlaceholderText = "C.P.F.";
@@ -115,12 +117,42 @@
             this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
             // 
+            // flatTxtEmail
+            // 
+            this.flatTxtEmail.BackColor = System.Drawing.Color.Silver;
+            this.flatTxtEmail.Location = new System.Drawing.Point(34, 141);
+            this.flatTxtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flatTxtEmail.Name = "flatTxtEmail";
+            this.flatTxtEmail.PlaceholderText = "E-Mail";
+            this.flatTxtEmail.Required = false;
+            this.flatTxtEmail.RequirementsAreSatisfied = false;
+            this.flatTxtEmail.Size = new System.Drawing.Size(365, 33);
+            this.flatTxtEmail.TabIndex = 10;
+            this.flatTxtEmail.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtEmail.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.EMail;
+            // 
+            // flatTxtRg
+            // 
+            this.flatTxtRg.BackColor = System.Drawing.Color.Silver;
+            this.flatTxtRg.Location = new System.Drawing.Point(437, 29);
+            this.flatTxtRg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flatTxtRg.Name = "flatTxtRg";
+            this.flatTxtRg.PlaceholderText = "R.G.";
+            this.flatTxtRg.Required = false;
+            this.flatTxtRg.RequirementsAreSatisfied = false;
+            this.flatTxtRg.Size = new System.Drawing.Size(354, 33);
+            this.flatTxtRg.TabIndex = 11;
+            this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            // 
             // FormPesquisaDePessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1055, 774);
+            this.Controls.Add(this.flatTxtRg);
+            this.Controls.Add(this.flatTxtEmail);
             this.Controls.Add(this.flatTxtCpf);
             this.Controls.Add(this.flatTxtNome);
             this.Controls.Add(this.dataGridView1);
@@ -143,5 +175,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtNome;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtCpf;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtEmail;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtRg;
     }
 }
