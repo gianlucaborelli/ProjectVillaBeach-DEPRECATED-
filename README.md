@@ -35,10 +35,10 @@ Therefore, I created a component called  [FlatTextBox](https://github.com/gianlu
 
 - Validation of data entered in the TextBox, according to the type of validation selected during system construction (such as C.P.F., C.N.P.J. and others).
 
-[Imagem validação] 
+![Imagem validação](https://github.com/gianlucaborelli/ProjectVillaBeach/blob/main/Pictures/FlatTextBox.jpg)
 
 - Validation if the component is mandatory.
 
-[Imagem validação] 
+![Imagem validação](https://github.com/gianlucaborelli/ProjectVillaBeach/blob/main/Pictures/FlatTextBox%20Requered%20Field.jpg) 
 
 In addition to other minor internal behaviors.
