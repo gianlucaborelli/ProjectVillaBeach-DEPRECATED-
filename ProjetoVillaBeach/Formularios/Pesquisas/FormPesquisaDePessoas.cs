@@ -13,9 +13,7 @@ using ProjetoVillaBeach;
 namespace ProjetoVillaBeach.Formularios.Pesquisas
 {
     public partial class FormPesquisaDePessoas : Form
-    {
-        //Pessoa pessoa = new();
-
+    {   
         public FormPesquisaDePessoas()
         {
             InitializeComponent();
@@ -23,38 +21,18 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
 
         private void btnCadastrarNovo_Click(object sender, EventArgs e)
         {
-            Cadastros.FormCadastroRapidoDePessoa frm = new();
-
-            frm.FormClosing += FormCadastroRapido_Closing;
+            Cadastros.FormCadastroDePessoas frm = new();
 
             frm.TopLevel = false;
             Parent.Controls.Add(frm);
             frm.Dock = DockStyle.Fill;
             frm.BringToFront();
-            frm.Show();            
-        }
-
-        private void FormCadastroRapido_Closing(object? sender, EventArgs e)
-        {
-            Cadastros.FormCadastroRapidoDePessoa frm = (Cadastros.FormCadastroRapidoDePessoa)sender;
-
-            if (frm.Continua)
-            {
-                Cadastros.FormCadastroDePessoas frm2 = new(frm.Pessoa);
-
-                frm.Dispose();
-
-                frm2.TopLevel = false;
-                Parent.Controls.Add(frm2);
-                frm2.Dock = DockStyle.Fill;
-                frm2.BringToFront();
-                frm2.Show();
-            }
+            frm.Show();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.ToUlongParse());
+            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text);
 
             if (pessoas.Count > 0)
             {
@@ -64,24 +42,56 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             {
                 dataGridView1.DataSource = Pessoa.SelecionaTodos();
             }
-            
+        }
+
+        private void AbrirCadastro()
+        {            
+            foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
+            {
+                Pessoa? pessoa;
+                pessoa = row.DataBoundItem as Pessoa;
+                
+                if (pessoa != null)
+                {
+                    Cadastros.FormCadastroDePessoas frm = new(pessoa);
+
+                    frm.TopLevel = false;
+                    Parent.Controls.Add(frm);
+                    frm.Dock = DockStyle.Fill;
+                    frm.BringToFront();
+                    frm.Show();
+                }
+            }            
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Pessoa? pessoa = new();
+            AbrirCadastro();
+        }
+
+        private void btnAbrirCadastro_Click(object sender, EventArgs e)
+        {
+            AbrirCadastro();
+        }
+
+        private void BtnExcluirCadastro_Click(object sender, EventArgs e)
+        {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                pessoa = row.DataBoundItem as Pessoa;                
+                Pessoa? pessoa;
+                pessoa = row.DataBoundItem as Pessoa;
+
+                if (pessoa != null)
+                {
+                   var returned = MessageBox.Show("Deseja realmente excluir esse cadastro?\n" +
+                        "\nAo prosseguir não será possivel reverter.", 
+                        "Confirmar ação", 
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                    if (returned == DialogResult.OK)
+                        pessoa.Excluir();
+                }
             }
-
-            Cadastros.FormCadastroDePessoas frm = new(pessoa);
-
-            frm.TopLevel = false;
-            Parent.Controls.Add(frm);
-            frm.Dock = DockStyle.Fill;
-            frm.BringToFront();
-            frm.Show();
         }
     }
 }

@@ -7,32 +7,123 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using ProjetoVillaBeach.Controles;
+using ProjetoVillaBeach.Classes.Documents;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Pessoa : IEntityObjectState
+    public class Pessoa : IEntityObjectState, INotifyPropertyChanged
     {
         #region Property
+
         [Key]
         public int IdPessoa { get; set; }
 
         [Required]
-        public ulong? NumeroCpf { get; private set; }
+        public ulong? NumeroCpf 
+        { 
+            get 
+            { 
+                return _numeroCpf; 
+            } 
+            set 
+            {
+                if (Cpf.IsCpf(value.ToString()) && Cpf.IsUnique(value.ToString()))
+                {
+                    _numeroCpf = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    throw new ArgumentException("C.P.F. invalido ou ja cadastrado");
+                }
+            }
+        }
+        private ulong? _numeroCpf;
 
-        public ulong? NumeroRg { get; private set; }
+        public string? NumeroRg
+        {
+            get
+            {
+                return _numeroRg;
+            }
+            set
+            {
+                _numeroRg = value;
+                OnPropertyChanged();
+            }
+        }
+        private string? _numeroRg;
 
         [Required]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
-        public string? Nome { get; private set; }
+        public string? Nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                _nome = value;
+                OnPropertyChanged();
+            }
+        }
+        private string? _nome;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
-        public string? Filiacao1 { get; private set; }
+        public string? Filiacao1
+        {
+            get
+            {
+                return _filiacao1;
+            }
+            set
+            {
+                _filiacao1 = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _filiacao1;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
-        public string? Filiacao2 { get; private set; }
+        public string? Filiacao2
+        {
+            get
+            {
+                return _filiacao2;
+            }
+            set
+            {
+                _filiacao2 = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _filiacao2;
 
-        public DateTime? DataDeNascimento { get; private set; }
+        public DateTime? DataDeNascimento
+        {
+            get
+            {
+                return _dataDeNascimento;
+            }
+            set
+            {
+                if (value <= DateTime.Now)
+                {
+                    _dataDeNascimento = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    throw new ArgumentException("A data de Nascimento deve ser menor que a data Atual");
+                }
+                
+            }
+        }
+        private DateTime? _dataDeNascimento;
 
         public DateTime DataDeCadastro { get; private set; }
 
@@ -71,14 +162,33 @@ namespace ProjetoVillaBeach.Classes
 
         #endregion
 
+        #region INotifyPropertyChanged Implementation
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void PropertyChanged_Method(object sender, PropertyChangedEventArgs e)
+        {
+            if (ObjectState != EntityObjectState.Added)
+                ObjectState = EntityObjectState.Modified;
+        }
+        #endregion
+
         public Pessoa()
         {
-
+            this.PropertyChanged += PropertyChanged_Method;
         }
 
         public bool Salvar()
         {
             bool status = false;
+
+            if (DataDeCadastro == DateTime.Parse("01/01/0001"))
+                DataDeCadastro = DateTime.Now;
 
             try
             {
@@ -122,6 +232,8 @@ namespace ProjetoVillaBeach.Classes
                     contexto.SaveChanges();
                     NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
                     status = true;
+
+                    this.ObjectState = EntityObjectState.Unchanged;
                 }
             }
             catch (Exception ex)
@@ -144,12 +256,12 @@ namespace ProjetoVillaBeach.Classes
             return contexto.Pessoas.ToList();
         }
 
-        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, ulong? rg)
+        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, string? rg)
         {
             using (var contexto = new Contexto())
             {
                 IQueryable<Pessoa> query = contexto.Pessoas;
-                query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg );                
+                query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg);
 
                 return query.ToList();
             }
@@ -172,135 +284,5 @@ namespace ProjetoVillaBeach.Classes
             }
         }
 
-        public bool InformaCpf(ulong? cpf)
-        {
-            if (this.NumeroCpf != cpf)
-            {
-                this.NumeroCpf = cpf;
-
-                if (ObjectState != EntityObjectState.Added)
-                    ObjectState = EntityObjectState.Modified;
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool InformaRg(ulong rg)
-        {
-            if (this.NumeroRg != rg)
-            {
-                this.NumeroRg = rg;
-
-                if (ObjectState != EntityObjectState.Added)
-                    ObjectState = EntityObjectState.Modified;
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool InformaNome(string nome)
-        {
-            if (this.Nome != nome)
-            {
-                this.Nome = nome;
-
-                if (ObjectState != EntityObjectState.Added)
-                    ObjectState = EntityObjectState.Modified;
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool InformaFiciliacao1(string filiacao1)
-        {
-            if (this.Filiacao1 != filiacao1)
-            {
-                this.Filiacao1 = filiacao1;
-
-                if (ObjectState != EntityObjectState.Added)
-                    ObjectState = EntityObjectState.Modified;
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool InformaFiciliacao2(string filiacao2)
-        {
-            if (this.Filiacao2 != filiacao2)
-            {
-                this.Filiacao2 = filiacao2;
-
-                if (ObjectState != EntityObjectState.Added)
-                    ObjectState = EntityObjectState.Modified;
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool InformaDataDeNascimento(DateTime? dataDeNascimento)
-        {
-            if (dataDeNascimento != DataDeNascimento && dataDeNascimento != null)
-            {
-                if (dataDeNascimento < DateTime.Now)
-                {
-                    this.DataDeNascimento = dataDeNascimento;
-
-                    if (ObjectState != EntityObjectState.Added)
-                        ObjectState = EntityObjectState.Modified;
-
-                    return true;
-                }
-                else
-                {
-                    NotificacaoPopUp.MostrarNotificacao("A data de Nascimento tem que ser menor que a data Atual",
-                                                        NotificacaoPopUp.AlertType.Warning);
-                }
-            }
-            else
-            {
-                NotificacaoPopUp.MostrarNotificacao("Data Inválida",
-                                                    NotificacaoPopUp.AlertType.Warning);
-            }
-
-            return false;
-        }
-
-        public bool InformaDataDeCadastro(DateTime? dataDeCadastro)
-        {
-            if (dataDeCadastro != DataDeNascimento && dataDeCadastro != null)
-            {
-                if (dataDeCadastro <= DateTime.Now)
-                {
-                    this.DataDeNascimento = dataDeCadastro;
-
-                    if (ObjectState != EntityObjectState.Added)
-                        ObjectState = EntityObjectState.Modified;
-
-                    return true;
-                }
-                else
-                {
-                    NotificacaoPopUp.MostrarNotificacao("A data de Cadastro tem que ser menor ou igual a data Atual",
-                                                        NotificacaoPopUp.AlertType.Warning);
-                }
-            }
-            else
-            {
-                NotificacaoPopUp.MostrarNotificacao("Data Inválida",
-                                                    NotificacaoPopUp.AlertType.Warning);
-            }
-
-            return false;
-        }
     }
 }

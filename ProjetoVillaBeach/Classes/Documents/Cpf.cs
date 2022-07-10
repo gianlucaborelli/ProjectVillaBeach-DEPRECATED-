@@ -21,6 +21,9 @@ namespace ProjetoVillaBeach.Classes.Documents
             int soma;
             int resto;
 
+            if (string.IsNullOrEmpty(cpf))
+                return false;
+
             cpf = cpf.Trim();
             cpf = cpf.Replace(".", "").Replace("-", "");
 
