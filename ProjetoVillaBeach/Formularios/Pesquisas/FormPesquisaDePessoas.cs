@@ -13,9 +13,7 @@ using ProjetoVillaBeach;
 namespace ProjetoVillaBeach.Formularios.Pesquisas
 {
     public partial class FormPesquisaDePessoas : Form
-    {
-        //Pessoa pessoa = new();
-
+    {   
         public FormPesquisaDePessoas()
         {
             InitializeComponent();
@@ -23,33 +21,13 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
 
         private void btnCadastrarNovo_Click(object sender, EventArgs e)
         {
-            Cadastros.FormCadastroRapidoDePessoa frm = new();
-
-            frm.FormClosing += FormCadastroRapido_Closing;
+            Cadastros.FormCadastroDePessoas frm = new();
 
             frm.TopLevel = false;
             Parent.Controls.Add(frm);
             frm.Dock = DockStyle.Fill;
             frm.BringToFront();
-            frm.Show();            
-        }
-
-        private void FormCadastroRapido_Closing(object? sender, EventArgs e)
-        {
-            Cadastros.FormCadastroRapidoDePessoa frm = (Cadastros.FormCadastroRapidoDePessoa)sender;
-
-            if (frm.Continua)
-            {
-                Cadastros.FormCadastroDePessoas frm2 = new(frm.Pessoa);
-
-                frm.Dispose();
-
-                frm2.TopLevel = false;
-                Parent.Controls.Add(frm2);
-                frm2.Dock = DockStyle.Fill;
-                frm2.BringToFront();
-                frm2.Show();
-            }
+            frm.Show();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -64,7 +42,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             {
                 dataGridView1.DataSource = Pessoa.SelecionaTodos();
             }
-            
+
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -72,7 +50,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             Pessoa? pessoa = new();
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                pessoa = row.DataBoundItem as Pessoa;                
+                pessoa = row.DataBoundItem as Pessoa;
             }
 
             Cadastros.FormCadastroDePessoas frm = new(pessoa);
