@@ -182,24 +182,27 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
-                "\nApós confirmar a exclusão, não será possivel reverter!",
-                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-            if (returned == DialogResult.OK)
+            if(pessoa.ObjectState != EntityObjectState.Added)
             {
-                pessoa.ObjectState = EntityObjectState.Deleted;
+                var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
+                                "\nApós confirmar a exclusão, não será possivel reverter!",
+                                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                try
+                if (returned == DialogResult.OK)
                 {
-                    pessoa.Excluir();
-                    this.Dispose();
+                    pessoa.ObjectState = EntityObjectState.Deleted;
+
+                    try
+                    {
+                        pessoa.Excluir();
+                        this.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }      
+            }            
         }
     }
 }

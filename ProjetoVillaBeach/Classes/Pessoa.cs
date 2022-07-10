@@ -232,6 +232,8 @@ namespace ProjetoVillaBeach.Classes
                     contexto.SaveChanges();
                     NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
                     status = true;
+
+                    this.ObjectState = EntityObjectState.Unchanged;
                 }
             }
             catch (Exception ex)
