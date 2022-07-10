@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoVillaBeach.Migrations
 {
-    public partial class teste : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,8 @@ namespace ProjetoVillaBeach.Migrations
                     IdPessoa = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     NumeroCpf = table.Column<ulong>(type: "bigint unsigned", nullable: false),
-                    NumeroRg = table.Column<ulong>(type: "bigint unsigned", nullable: true),
+                    NumeroRg = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Nome = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Filiacao1 = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)

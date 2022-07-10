@@ -9,15 +9,15 @@ using ProjetoVillaBeach.Classes;
 namespace ProjetoVillaBeach.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220423205447_teste")]
-    partial class teste
+    [Migration("20220710011435_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.15");
+                .HasAnnotation("ProductVersion", "5.0.17");
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
                 {
@@ -198,8 +198,8 @@ namespace ProjetoVillaBeach.Migrations
                         .IsRequired()
                         .HasColumnType("bigint unsigned");
 
-                    b.Property<ulong?>("NumeroRg")
-                        .HasColumnType("bigint unsigned");
+                    b.Property<string>("NumeroRg")
+                        .HasColumnType("longtext");
 
                     b.HasKey("IdPessoa");
 
