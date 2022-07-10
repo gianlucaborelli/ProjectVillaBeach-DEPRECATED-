@@ -179,5 +179,27 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             pessoa.NumeroRg = flatTxtRg.Text;
         }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
+                "\nApós confirmar a exclusão, não será possivel reverter!",
+                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (returned == DialogResult.OK)
+            {
+                pessoa.ObjectState = EntityObjectState.Deleted;
+
+                try
+                {
+                    pessoa.Excluir();
+                    this.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }      
+        }
     }
 }
