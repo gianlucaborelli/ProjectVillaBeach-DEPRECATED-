@@ -194,7 +194,7 @@
             this.flatTxtNome.TabIndex = 0;
             this.flatTxtNome.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtNome.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtNome.Leave += new System.EventHandler(this.textNome1_Leave);
+            this.flatTxtNome.Leave += new System.EventHandler(this.NomeFlatTextBox_Leave);
             // 
             // tableLayoutPanel4
             // 
@@ -226,6 +226,7 @@
             this.flatTxtCpf.TabIndex = 4;
             this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
+            this.flatTxtCpf.Validated += new System.EventHandler(this.CpfFlatTextBox_Validated);
             // 
             // flatTxtRg
             // 
@@ -241,6 +242,7 @@
             this.flatTxtRg.TabIndex = 5;
             this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            this.flatTxtRg.Validated += new System.EventHandler(this.RgFlatTextBox_Valited);
             // 
             // tableLayoutPanel5
             // 

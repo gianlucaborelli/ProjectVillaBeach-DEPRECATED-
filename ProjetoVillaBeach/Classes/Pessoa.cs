@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using ProjetoVillaBeach.Controles;
+using ProjetoVillaBeach.Classes.Documents;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -25,27 +26,36 @@ namespace ProjetoVillaBeach.Classes
         { 
             get 
             { 
-                return NumeroCpf; 
+                return _numeroCpf; 
             } 
             set 
-            { 
-                NumeroCpf = value;
-                OnPropertyChanged();
+            {
+                if (Cpf.IsCpf(value.ToString()) && Cpf.IsUnique(value.ToString()))
+                {
+                    _numeroCpf = value;
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    throw new ArgumentException("C.P.F. invalido ou ja cadastrado");
+                }
             }
         }
+        private ulong? _numeroCpf;
 
         public string? NumeroRg
         {
             get
             {
-                return NumeroRg;
+                return _numeroRg;
             }
             set
             {
-                NumeroRg = value;
+                _numeroRg = value;
                 OnPropertyChanged();
             }
         }
+        private string? _numeroRg;
 
         [Required]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
@@ -53,54 +63,57 @@ namespace ProjetoVillaBeach.Classes
         {
             get
             {
-                return Nome;
+                return _nome;
             }
             set
             {
-                Nome = value;
+                _nome = value;
                 OnPropertyChanged();
             }
         }
+        private string? _nome;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Filiacao1
         {
             get
             {
-                return Filiacao1;
+                return _filiacao1;
             }
             set
             {
-                Filiacao1 = value;
+                _filiacao1 = value;
                 OnPropertyChanged();
             }
         }
+        private string _filiacao1;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Filiacao2
         {
             get
             {
-                return Filiacao2;
+                return _filiacao2;
             }
             set
             {
-                Filiacao2 = value;
+                _filiacao2 = value;
                 OnPropertyChanged();
             }
         }
+        private string _filiacao2;
 
         public DateTime? DataDeNascimento
         {
             get
             {
-                return DataDeNascimento;
+                return _dataDeNascimento;
             }
             set
             {
                 if (value <= DateTime.Now)
                 {
-                    DataDeNascimento = value;
+                    _dataDeNascimento = value;
                     OnPropertyChanged();
                 }
                 else
@@ -110,6 +123,7 @@ namespace ProjetoVillaBeach.Classes
                 
             }
         }
+        private DateTime? _dataDeNascimento;
 
         public DateTime DataDeCadastro { get; private set; }
 
@@ -172,6 +186,9 @@ namespace ProjetoVillaBeach.Classes
         public bool Salvar()
         {
             bool status = false;
+
+            if (DataDeCadastro == DateTime.Parse("01/01/0001"))
+                DataDeCadastro = DateTime.Now;
 
             try
             {

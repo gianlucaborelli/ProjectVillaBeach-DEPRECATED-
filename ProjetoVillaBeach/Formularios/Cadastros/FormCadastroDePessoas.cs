@@ -21,6 +21,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         public FormCadastroDePessoas()
         {
             InitializeComponent();
+            pessoa.ObjectState = EntityObjectState.Added;
         }
 
         public FormCadastroDePessoas(Pessoa id)
@@ -35,10 +36,11 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         private void CarregaPessoa()
         {
             flatTxtNome.Text = pessoa.Nome;
-
             flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
-
             flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
+            flatTxtRg.Text = pessoa.NumeroRg;
+            flatTxtFiliacao1.Text = pessoa.Filiacao1;
+            flatTxtFiliacao2.Text = pessoa.Filiacao2;
 
             if (flpEndereco.Controls.Count > 0)
                 flpEndereco.Controls.Clear();
@@ -48,25 +50,6 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                 endereco.ObjectState = EntityObjectState.Unchanged;
                 PopulaEndereco(endereco);
             }
-        }
-
-        private void PopulaEndereco(Endereco end)
-        {
-            ControleEndereco control = new(end);
-
-            flpEndereco.Controls.Add(control);
-            control.AjustaTamanho(flpEndereco.Width);
-        }
-
-        private void Voltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            pessoa.Salvar();
-            CarregaPessoa();
         }
 
         private void BtnAddEndereco_Click(object sender, EventArgs e)
@@ -79,26 +62,35 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
             pessoa.Enderecos.Add(endereco);
 
-            PopulaEndereco(endereco);                        
+            PopulaEndereco(endereco);
         }
 
-        private void textNome1_Leave(object sender, EventArgs e)
+        private void PopulaEndereco(Endereco end)
         {
-            pessoa.Nome = flatTxtNome.Text;
-        }
+            ControleEndereco control = new(end);
 
-        private void textCpf1_Leave(object sender, EventArgs e)
-        {
-            pessoa.NumeroCpf = flatTxtCpf.ToUlongParse();
+            flpEndereco.Controls.Add(control);
+            control.AjustaTamanho(flpEndereco.Width - 25);
         }
 
         private void CadastroPessoa_SizeChanged(object sender, EventArgs e)
         {
-            foreach(ControleEndereco controle in flpEndereco.Controls)
+            foreach (ControleEndereco controle in flpEndereco.Controls)
             {
-                controle.AjustaTamanho(flpEndereco.Width - 6);
+                controle.AjustaTamanho(flpEndereco.Width - 25);
             }
         }
+
+        private void Voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            pessoa.Salvar();
+            CarregaPessoa();
+        } 
 
         private void Calendar_Click(object sender, EventArgs e)
         {
@@ -131,6 +123,11 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             calendario.Dispose();
         }
 
+        private void NomeFlatTextBox_Leave(object sender, EventArgs e)
+        {
+            pessoa.Nome = flatTxtNome.Text;
+        }
+
         private void Filiacao1FlatTextBox_Valited(object sender, EventArgs e)
         {
             pessoa.Filiacao1 = flatTxtFiliacao1.Text;
@@ -159,7 +156,28 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void Filiacao2FlatTextBox_Valited(object sender, EventArgs e)
         {
-            pessoa.Filiacao2 = flatTxtFiliacao2.Text
+            pessoa.Filiacao2 = flatTxtFiliacao2.Text;
+        }
+
+        private void CpfFlatTextBox_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                pessoa.NumeroCpf = flatTxtCpf.ToUlongParse();
+            }
+            catch (ArgumentException ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RgFlatTextBox_Valited(object sender, EventArgs e)
+        {
+            pessoa.NumeroRg = flatTxtRg.Text;
         }
     }
 }
