@@ -20,7 +20,7 @@ namespace ProjetoVillaBeach.Classes
         [Required]
         public ulong? NumeroCpf { get; private set; }
 
-        public ulong? NumeroRg { get; private set; }
+        public string? NumeroRg { get; private set; }
 
         [Required]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
@@ -144,7 +144,7 @@ namespace ProjetoVillaBeach.Classes
             return contexto.Pessoas.ToList();
         }
 
-        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, ulong? rg)
+        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, string? rg)
         {
             using (var contexto = new Contexto())
             {
@@ -187,7 +187,7 @@ namespace ProjetoVillaBeach.Classes
             return false;
         }
 
-        public bool InformaRg(ulong rg)
+        public bool InformaRg(string rg)
         {
             if (this.NumeroRg != rg)
             {

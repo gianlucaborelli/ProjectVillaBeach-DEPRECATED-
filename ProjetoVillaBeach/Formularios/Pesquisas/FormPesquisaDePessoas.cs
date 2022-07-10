@@ -32,7 +32,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.ToUlongParse());
+            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text);
 
             if (pessoas.Count > 0)
             {
