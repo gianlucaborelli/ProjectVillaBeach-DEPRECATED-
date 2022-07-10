@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,20 +84,12 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void textNome1_Leave(object sender, EventArgs e)
         {
-            pessoa.InformaNome(flatTxtNome.Text);
-            flatTxtNome.Text = pessoa.Nome;
+            pessoa.Nome = flatTxtNome.Text;
         }
 
         private void textCpf1_Leave(object sender, EventArgs e)
         {
-            pessoa.InformaCpf(ulong.Parse(flatTxtCpf.Text));
-            flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
-        }
-
-        private void textData1_Leave(object sender, EventArgs e)
-        {
-            pessoa.InformaDataDeNascimento(DateTime.Parse(flatTxtDn.Text));
-            flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
+            pessoa.NumeroCpf = flatTxtCpf.ToUlongParse();
         }
 
         private void CadastroPessoa_SizeChanged(object sender, EventArgs e)
@@ -136,7 +129,37 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             MonthCalendar calendario = (MonthCalendar)sender;
             flatTxtDn.Text = calendario.SelectionStart.ToString("dd/MM/yyyy");
             calendario.Dispose();
+        }
 
+        private void Filiacao1FlatTextBox_Valited(object sender, EventArgs e)
+        {
+            pessoa.Filiacao1 = flatTxtFiliacao1.Text;
+        }
+
+        private void DataDeNascimentoFlatTextBox_Valited(object sender, EventArgs e)
+        {
+            try
+            {
+                if(!DateTime.TryParseExact(flatTxtDn.Text, "dd/MM/yyyy", 
+                                        CultureInfo.InvariantCulture, 
+                                        DateTimeStyles.None, 
+                                        out DateTime date))
+                {
+                    NotificacaoPopUp.MostrarNotificacao("Formato da data escolhida é invalida", NotificacaoPopUp.AlertType.Warning);
+                    flatTxtDn.Text = string.Empty;
+                }
+                pessoa.DataDeNascimento = date;
+            }
+            catch(ArgumentException ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+                flatTxtDn.Text = string.Empty;
+            }            
+        }
+
+        private void Filiacao2FlatTextBox_Valited(object sender, EventArgs e)
+        {
+            pessoa.Filiacao2 = flatTxtFiliacao2.Text
         }
     }
 }
