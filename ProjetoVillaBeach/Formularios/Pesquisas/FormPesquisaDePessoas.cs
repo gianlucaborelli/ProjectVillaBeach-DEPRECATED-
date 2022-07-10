@@ -42,24 +42,56 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             {
                 dataGridView1.DataSource = Pessoa.SelecionaTodos();
             }
+        }
 
+        private void AbrirCadastro()
+        {            
+            foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
+            {
+                Pessoa? pessoa;
+                pessoa = row.DataBoundItem as Pessoa;
+                
+                if (pessoa != null)
+                {
+                    Cadastros.FormCadastroDePessoas frm = new(pessoa);
+
+                    frm.TopLevel = false;
+                    Parent.Controls.Add(frm);
+                    frm.Dock = DockStyle.Fill;
+                    frm.BringToFront();
+                    frm.Show();
+                }
+            }            
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Pessoa? pessoa = new();
+            AbrirCadastro();
+        }
+
+        private void btnAbrirCadastro_Click(object sender, EventArgs e)
+        {
+            AbrirCadastro();
+        }
+
+        private void BtnExcluirCadastro_Click(object sender, EventArgs e)
+        {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
+                Pessoa? pessoa;
                 pessoa = row.DataBoundItem as Pessoa;
+
+                if (pessoa != null)
+                {
+                   var returned = MessageBox.Show("Deseja realmente excluir esse cadastro?\n" +
+                        "\nAo prosseguir não será possivel reverter.", 
+                        "Confirmar ação", 
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                    if (returned == DialogResult.OK)
+                        pessoa.Excluir();
+                }
             }
-
-            Cadastros.FormCadastroDePessoas frm = new(pessoa);
-
-            frm.TopLevel = false;
-            Parent.Controls.Add(frm);
-            frm.Dock = DockStyle.Fill;
-            frm.BringToFront();
-            frm.Show();
         }
     }
 }

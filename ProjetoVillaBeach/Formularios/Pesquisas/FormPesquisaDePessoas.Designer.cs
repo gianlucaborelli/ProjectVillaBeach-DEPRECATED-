@@ -35,6 +35,8 @@
             this.flatTxtCpf = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.flatTxtEmail = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.flatTxtRg = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.btnExcluirCadastro = new System.Windows.Forms.Button();
+            this.btnAbrirCadastro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             this.btnCadastrarNovo.FlatAppearance.BorderSize = 0;
             this.btnCadastrarNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrarNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
-            this.btnCadastrarNovo.Location = new System.Drawing.Point(824, 695);
+            this.btnCadastrarNovo.Location = new System.Drawing.Point(422, 695);
             this.btnCadastrarNovo.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrarNovo.Name = "btnCadastrarNovo";
             this.btnCadastrarNovo.Size = new System.Drawing.Size(200, 50);
@@ -121,7 +123,7 @@
             // 
             this.flatTxtEmail.BackColor = System.Drawing.Color.Silver;
             this.flatTxtEmail.Location = new System.Drawing.Point(34, 141);
-            this.flatTxtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flatTxtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtEmail.Name = "flatTxtEmail";
             this.flatTxtEmail.PlaceholderText = "E-Mail";
             this.flatTxtEmail.Required = false;
@@ -135,7 +137,7 @@
             // 
             this.flatTxtRg.BackColor = System.Drawing.Color.Silver;
             this.flatTxtRg.Location = new System.Drawing.Point(437, 29);
-            this.flatTxtRg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flatTxtRg.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtRg.Name = "flatTxtRg";
             this.flatTxtRg.PlaceholderText = "R.G.";
             this.flatTxtRg.Required = false;
@@ -145,12 +147,46 @@
             this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             // 
+            // btnExcluirCadastro
+            // 
+            this.btnExcluirCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnExcluirCadastro.FlatAppearance.BorderSize = 0;
+            this.btnExcluirCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
+            this.btnExcluirCadastro.Location = new System.Drawing.Point(34, 695);
+            this.btnExcluirCadastro.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcluirCadastro.Name = "btnExcluirCadastro";
+            this.btnExcluirCadastro.Size = new System.Drawing.Size(200, 50);
+            this.btnExcluirCadastro.TabIndex = 12;
+            this.btnExcluirCadastro.Text = "Excluir Cadastro";
+            this.btnExcluirCadastro.UseVisualStyleBackColor = false;
+            this.btnExcluirCadastro.Click += new System.EventHandler(this.BtnExcluirCadastro_Click);
+            // 
+            // btnAbrirCadastro
+            // 
+            this.btnAbrirCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbrirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnAbrirCadastro.FlatAppearance.BorderSize = 0;
+            this.btnAbrirCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbrirCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
+            this.btnAbrirCadastro.Location = new System.Drawing.Point(824, 695);
+            this.btnAbrirCadastro.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbrirCadastro.Name = "btnAbrirCadastro";
+            this.btnAbrirCadastro.Size = new System.Drawing.Size(200, 50);
+            this.btnAbrirCadastro.TabIndex = 13;
+            this.btnAbrirCadastro.Text = "Abrir Cadastro";
+            this.btnAbrirCadastro.UseVisualStyleBackColor = false;
+            this.btnAbrirCadastro.Click += new System.EventHandler(this.btnAbrirCadastro_Click);
+            // 
             // FormPesquisaDePessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
             this.ClientSize = new System.Drawing.Size(1055, 774);
+            this.Controls.Add(this.btnAbrirCadastro);
+            this.Controls.Add(this.btnExcluirCadastro);
             this.Controls.Add(this.flatTxtRg);
             this.Controls.Add(this.flatTxtEmail);
             this.Controls.Add(this.flatTxtCpf);
@@ -177,5 +213,7 @@
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtCpf;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtEmail;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtRg;
+        private System.Windows.Forms.Button btnExcluirCadastro;
+        private System.Windows.Forms.Button btnAbrirCadastro;
     }
 }
