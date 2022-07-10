@@ -58,7 +58,8 @@
             // 
             // btnCadastrarNovo
             // 
-            this.btnCadastrarNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCadastrarNovo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCadastrarNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
             this.btnCadastrarNovo.FlatAppearance.BorderSize = 0;
             this.btnCadastrarNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -149,7 +150,7 @@
             // 
             // btnExcluirCadastro
             // 
-            this.btnExcluirCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExcluirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
             this.btnExcluirCadastro.FlatAppearance.BorderSize = 0;
             this.btnExcluirCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
