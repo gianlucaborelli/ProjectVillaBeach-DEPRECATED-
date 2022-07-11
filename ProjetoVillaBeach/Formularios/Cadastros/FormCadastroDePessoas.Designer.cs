@@ -82,14 +82,17 @@
             this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(63)))), ((int)(((byte)(73)))));
             this.btnExcluir.FlatAppearance.BorderSize = 0;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExcluir.Location = new System.Drawing.Point(19, 19);
             this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Padding = new System.Windows.Forms.Padding(10, 0, 35, 0);
             this.btnExcluir.Size = new System.Drawing.Size(202, 75);
             this.btnExcluir.TabIndex = 2;
             this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
@@ -99,14 +102,17 @@
             this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
             this.btnSalvar.FlatAppearance.BorderSize = 0;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvar.Location = new System.Drawing.Point(1001, 19);
             this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Padding = new System.Windows.Forms.Padding(10, 0, 35, 0);
             this.btnSalvar.Size = new System.Drawing.Size(202, 75);
             this.btnSalvar.TabIndex = 1;
             this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -196,7 +202,7 @@
             this.flatTxtDn.Required = false;
             this.flatTxtDn.RequirementsAreSatisfied = false;
             this.flatTxtDn.Size = new System.Drawing.Size(340, 34);
-            this.flatTxtDn.TabIndex = 5;
+            this.flatTxtDn.TabIndex = 3;
             this.flatTxtDn.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtDn.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
             this.flatTxtDn.Validated += new System.EventHandler(this.DataDeNascimentoFlatTextBox_Valited);
@@ -213,7 +219,7 @@
             this.flatTxtNome.Required = true;
             this.flatTxtNome.RequirementsAreSatisfied = false;
             this.flatTxtNome.Size = new System.Drawing.Size(380, 34);
-            this.flatTxtNome.TabIndex = 0;
+            this.flatTxtNome.TabIndex = 1;
             this.flatTxtNome.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtNome.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             this.flatTxtNome.Leave += new System.EventHandler(this.NomeFlatTextBox_Leave);
@@ -242,10 +248,10 @@
             this.flatTxtCpf.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtCpf.Name = "flatTxtCpf";
             this.flatTxtCpf.PlaceholderText = "C.P.F.";
-            this.flatTxtCpf.Required = false;
+            this.flatTxtCpf.Required = true;
             this.flatTxtCpf.RequirementsAreSatisfied = false;
             this.flatTxtCpf.Size = new System.Drawing.Size(381, 34);
-            this.flatTxtCpf.TabIndex = 4;
+            this.flatTxtCpf.TabIndex = 2;
             this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
             this.flatTxtCpf.Validated += new System.EventHandler(this.CpfFlatTextBox_Validated);
@@ -261,7 +267,7 @@
             this.flatTxtRg.Required = false;
             this.flatTxtRg.RequirementsAreSatisfied = false;
             this.flatTxtRg.Size = new System.Drawing.Size(381, 33);
-            this.flatTxtRg.TabIndex = 5;
+            this.flatTxtRg.TabIndex = 4;
             this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             this.flatTxtRg.Validated += new System.EventHandler(this.RgFlatTextBox_Valited);
@@ -292,7 +298,7 @@
             this.flatTxtFiliacao1.Required = false;
             this.flatTxtFiliacao1.RequirementsAreSatisfied = false;
             this.flatTxtFiliacao1.Size = new System.Drawing.Size(380, 34);
-            this.flatTxtFiliacao1.TabIndex = 0;
+            this.flatTxtFiliacao1.TabIndex = 5;
             this.flatTxtFiliacao1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao1.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             this.flatTxtFiliacao1.Validated += new System.EventHandler(this.Filiacao1FlatTextBox_Valited);
@@ -308,7 +314,7 @@
             this.flatTxtFiliacao2.Required = false;
             this.flatTxtFiliacao2.RequirementsAreSatisfied = false;
             this.flatTxtFiliacao2.Size = new System.Drawing.Size(380, 34);
-            this.flatTxtFiliacao2.TabIndex = 1;
+            this.flatTxtFiliacao2.TabIndex = 6;
             this.flatTxtFiliacao2.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao2.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             this.flatTxtFiliacao2.Validated += new System.EventHandler(this.Filiacao2FlatTextBox_Valited);
