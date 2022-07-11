@@ -28,23 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.txtBox = new System.Windows.Forms.TextBox();
             this.pnlValido = new System.Windows.Forms.Panel();
-            this.errorProviderIsRequered = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIsRequered)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBox
             // 
-            this.txtBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBox.BackColor = System.Drawing.SystemColors.Control;
             this.txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBox.ForeColor = System.Drawing.Color.Gray;
-            this.txtBox.Location = new System.Drawing.Point(3, 4);
+            this.txtBox.Location = new System.Drawing.Point(5, 3);
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(458, 16);
+            this.txtBox.Size = new System.Drawing.Size(456, 16);
             this.txtBox.TabIndex = 0;
             this.txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Event);
             this.txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyUp);
@@ -54,28 +50,21 @@
             // pnlValido
             // 
             this.pnlValido.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlValido.Location = new System.Drawing.Point(0, 31);
+            this.pnlValido.Location = new System.Drawing.Point(5, 31);
             this.pnlValido.Name = "pnlValido";
-            this.pnlValido.Size = new System.Drawing.Size(464, 2);
+            this.pnlValido.Size = new System.Drawing.Size(456, 2);
             this.pnlValido.TabIndex = 1;
-            // 
-            // errorProviderIsRequered
-            // 
-            this.errorProviderIsRequered.BlinkRate = 1000;
-            this.errorProviderIsRequered.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderIsRequered.ContainerControl = this;
             // 
             // FlatTextBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.pnlValido);
             this.Controls.Add(this.txtBox);
             this.Name = "FlatTextBox";
+            this.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.Size = new System.Drawing.Size(464, 33);
             this.Load += new System.EventHandler(this.OnLoad_Event);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIsRequered)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,6 +74,5 @@
 
         private System.Windows.Forms.TextBox txtBox;
         private System.Windows.Forms.Panel pnlValido;
-        private System.Windows.Forms.ErrorProvider errorProviderIsRequered;
     }
 }
