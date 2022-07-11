@@ -157,6 +157,16 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         #endregion
 
+        #region Override Method
+
+        public void Clear()
+        {
+            txtBox.Clear();
+        } 
+
+
+        #endregion
+
         #region INotifyPropertyChanged Implementation
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -187,7 +197,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         public bool RequirementsSatisfied(string value, out string errorMessage)
         {
-            if (value.Length == 0 || _required == true)
+            if (value.Length == 0 && _required == true)
             {
                 errorMessage = _services.ToString() + " é de preenchimento obrigatório.";
                 RequiredMet = false;
