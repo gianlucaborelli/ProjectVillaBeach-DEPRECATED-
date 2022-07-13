@@ -198,6 +198,7 @@
             this.flatTxtDn.Location = new System.Drawing.Point(4, 70);
             this.flatTxtDn.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtDn.Name = "flatTxtDn";
+            this.flatTxtDn.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtDn.PlaceholderText = "Data de Nascimento";
             this.flatTxtDn.Required = false;
             this.flatTxtDn.RequirementsAreSatisfied = false;
@@ -215,6 +216,7 @@
             this.flatTxtNome.Location = new System.Drawing.Point(4, 4);
             this.flatTxtNome.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtNome.Name = "flatTxtNome";
+            this.flatTxtNome.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtNome.PlaceholderText = "Nome";
             this.flatTxtNome.Required = true;
             this.flatTxtNome.RequirementsAreSatisfied = false;
@@ -238,7 +240,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 132);
-            this.tableLayoutPanel4.TabIndex = 1;
+            this.tableLayoutPanel4.TabIndex = 2;
             // 
             // flatTxtCpf
             // 
@@ -247,6 +249,7 @@
             this.flatTxtCpf.Location = new System.Drawing.Point(4, 4);
             this.flatTxtCpf.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtCpf.Name = "flatTxtCpf";
+            this.flatTxtCpf.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtCpf.PlaceholderText = "C.P.F.";
             this.flatTxtCpf.Required = true;
             this.flatTxtCpf.RequirementsAreSatisfied = false;
@@ -263,6 +266,7 @@
             this.flatTxtRg.Location = new System.Drawing.Point(4, 70);
             this.flatTxtRg.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtRg.Name = "flatTxtRg";
+            this.flatTxtRg.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtRg.PlaceholderText = "R.G.";
             this.flatTxtRg.Required = false;
             this.flatTxtRg.RequirementsAreSatisfied = false;
@@ -285,7 +289,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(388, 132);
-            this.tableLayoutPanel5.TabIndex = 2;
+            this.tableLayoutPanel5.TabIndex = 1;
             // 
             // flatTxtFiliacao1
             // 
@@ -294,6 +298,7 @@
             this.flatTxtFiliacao1.Location = new System.Drawing.Point(4, 4);
             this.flatTxtFiliacao1.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtFiliacao1.Name = "flatTxtFiliacao1";
+            this.flatTxtFiliacao1.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtFiliacao1.PlaceholderText = "Filiação 1";
             this.flatTxtFiliacao1.Required = false;
             this.flatTxtFiliacao1.RequirementsAreSatisfied = false;
@@ -310,6 +315,7 @@
             this.flatTxtFiliacao2.Location = new System.Drawing.Point(4, 70);
             this.flatTxtFiliacao2.Margin = new System.Windows.Forms.Padding(4);
             this.flatTxtFiliacao2.Name = "flatTxtFiliacao2";
+            this.flatTxtFiliacao2.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtFiliacao2.PlaceholderText = "Filiação 2";
             this.flatTxtFiliacao2.Required = false;
             this.flatTxtFiliacao2.RequirementsAreSatisfied = false;
@@ -452,6 +458,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastroDePessoas";
             this.Text = "CadastroPessoa";
+            this.Load += new System.EventHandler(this.Form_OnLoad);
             this.SizeChanged += new System.EventHandler(this.CadastroPessoa_SizeChanged);
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

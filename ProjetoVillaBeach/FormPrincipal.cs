@@ -62,6 +62,8 @@ namespace ProjetoVillaBeach
             //Adicionar aqui todos SubMenu Criados
             SubMenuCadastro.Visible = false;
             SubMenuCadastro.Enabled= false;
+            SubMenuMatricula.Enabled= false;
+            SubMenuMatricula.Visible = false;
         }
 
         //Metodo mostra Menu
@@ -97,6 +99,11 @@ namespace ProjetoVillaBeach
 
             //Conexao.EncriptaConexao();
             //Conexao.DecriptaConexao();
+        }
+
+        private void BtnMatricula_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(SubMenuMatricula);
         }
     }
 }

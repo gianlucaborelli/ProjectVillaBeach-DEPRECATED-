@@ -29,18 +29,19 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             InitializeComponent();
 
             pessoa = id;
-            
+
             CarregaPessoa();
         }
 
         private void CarregaPessoa()
         {
-            flatTxtNome.Text = pessoa.Nome;
-            flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
-            flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
-            flatTxtRg.Text = pessoa.NumeroRg;
-            flatTxtFiliacao1.Text = pessoa.Filiacao1;
-            flatTxtFiliacao2.Text = pessoa.Filiacao2;
+            flatTxtNome.DataBindings.Add("Text", pessoa, "Nome");
+            flatTxtCpf.DataBindings.Add("Text", pessoa, "NumeroCpf");
+            flatTxtDn.DataBindings.Add("Text", pessoa, "DataDeNascimento");
+            flatTxtRg.DataBindings.Add("Text", pessoa, "NumeroRg");
+            flatTxtFiliacao1.DataBindings.Add("Text", pessoa, "Filiacao1");
+            flatTxtFiliacao2.DataBindings.Add("Text", pessoa, "Filiacao2");
+            
 
             if (flpEndereco.Controls.Count > 0)
                 flpEndereco.Controls.Clear();
@@ -88,9 +89,38 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            pessoa.Salvar();
-            CarregaPessoa();
-        } 
+            pessoa.Salvar();            
+        }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            if (pessoa.ObjectState != EntityObjectState.Added)
+            {
+                var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
+                                "\nApós confirmar a exclusão, não será possivel reverter!",
+                                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (returned == DialogResult.OK)
+                {
+                    pessoa.ObjectState = EntityObjectState.Deleted;
+
+                    try
+                    {
+                        pessoa.Excluir();
+                        this.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Form_OnLoad(object sender, EventArgs e)
+        {
+
+        }
 
         private void Calendar_Click(object sender, EventArgs e)
         {
@@ -137,21 +167,21 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             try
             {
-                if(!DateTime.TryParseExact(flatTxtDn.Text, "dd/MM/yyyy", 
-                                        CultureInfo.InvariantCulture, 
-                                        DateTimeStyles.None, 
+                if (!DateTime.TryParseExact(flatTxtDn.Text, "dd/MM/yyyy",
+                                        CultureInfo.InvariantCulture,
+                                        DateTimeStyles.None,
                                         out DateTime date))
                 {
                     NotificacaoPopUp.MostrarNotificacao("Formato da data escolhida é invalida", NotificacaoPopUp.AlertType.Warning);
-                    flatTxtDn.Text = string.Empty;
+                    flatTxtDn.Clear();
                 }
                 pessoa.DataDeNascimento = date;
             }
-            catch(ArgumentException ex)
+            catch (ArgumentException ex)
             {
                 NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
-                flatTxtDn.Text = string.Empty;
-            }            
+                flatTxtDn.Clear();
+            }
         }
 
         private void Filiacao2FlatTextBox_Valited(object sender, EventArgs e)
@@ -178,31 +208,6 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         private void RgFlatTextBox_Valited(object sender, EventArgs e)
         {
             pessoa.NumeroRg = flatTxtRg.Text;
-        }
-
-        private void BtnExcluir_Click(object sender, EventArgs e)
-        {
-            if(pessoa.ObjectState != EntityObjectState.Added)
-            {
-                var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
-                                "\nApós confirmar a exclusão, não será possivel reverter!",
-                                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                if (returned == DialogResult.OK)
-                {
-                    pessoa.ObjectState = EntityObjectState.Deleted;
-
-                    try
-                    {
-                        pessoa.Excluir();
-                        this.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }            
-        }
+        }        
     }
 }
