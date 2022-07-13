@@ -147,6 +147,7 @@
             this.btnCurso.TabIndex = 1;
             this.btnCurso.Text = "Curso";
             this.btnCurso.UseVisualStyleBackColor = false;
+            this.btnCurso.Click += new System.EventHandler(this.BtnCurso_Click);
             // 
             // btnCadastroDePessoas
             // 
