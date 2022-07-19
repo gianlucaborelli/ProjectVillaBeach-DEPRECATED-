@@ -26,7 +26,7 @@ namespace ProjetoVillaBeach.Classes
         public DateTime? DataFinal { get; set; }
 
         public virtual List<ValoresModalidade> ValoresModalidades { get; set; }
-        public virtual List<Matricula> Matriculas { get; set; }
+        public virtual List<Matricula> Matriculas { get; set; }//Modalidade não tem Matricula
 
         [NotMapped]
         public EntityObjectState ObjectState

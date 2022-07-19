@@ -45,10 +45,7 @@ namespace ProjetoVillaBeach
         }
 
         private void AbrirFormulario(Form FormFilho)
-        {
-            /*if (this.pnlConteudo.Controls.Count > 0)
-                this.pnlConteudo.Controls.RemoveAt(0);*/
-            
+        {   
             foreach(Control ctrol in this.pnlConteudo.Controls)
             {
                 if (ctrol is Form)
@@ -56,6 +53,9 @@ namespace ProjetoVillaBeach
                     ctrol.Dispose();
                 }
             }
+
+            if (this.pnlConteudo.Controls.Count > 0)
+                this.pnlConteudo.Controls.RemoveAt(0);
 
             Form ff = FormFilho;
             ff.TopLevel = false;
