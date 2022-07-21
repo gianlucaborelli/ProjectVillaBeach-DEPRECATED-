@@ -12,9 +12,9 @@ namespace ProjetoVillaBeach.Classes
     {
         [Key]
         public int IdValoresModalidades { get; set; }
-        public double Valor { get; private set; }
-        public DateTime DataInicio { get; private set; }
-        public DateTime? DataFim { get; private set; }
+        public double Valor { get; set; }
+        public DateTime DataInicio { get; set; }
+        public DateTime? DataFim { get; set; }
 
         public int IdModalidade { get; set; }
         public virtual Modalidade Modalidade { get; set; }

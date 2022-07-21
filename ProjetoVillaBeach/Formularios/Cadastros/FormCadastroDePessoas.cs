@@ -16,7 +16,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 {
     public partial class FormCadastroDePessoas : Form
     {
-        Pessoa pessoa = new();
+        private Pessoa pessoa = new();
 
         public FormCadastroDePessoas()
         {
@@ -28,7 +28,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             InitializeComponent();
 
-            pessoa = id;
+            this.pessoa = id;
 
             CarregaPessoa();
         }

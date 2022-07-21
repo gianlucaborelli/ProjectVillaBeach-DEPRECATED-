@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetoVillaBeach.Controles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Classes
 {
@@ -16,8 +18,7 @@ namespace ProjetoVillaBeach.Classes
         [Required]
         [StringLength(150, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 150 caracteres")]
         public string? Nome { get; set; }
-
-        [Required]
+                
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Observacao { get; set; }
 
@@ -25,7 +26,19 @@ namespace ProjetoVillaBeach.Classes
         public DateTime? DataInicial { get; set; }
         public DateTime? DataFinal { get; set; }
 
-        public virtual List<ValoresModalidade> ValoresModalidades { get; set; }
+        private List<ValoresModalidade> _valoresModalidades = new();
+        public virtual List<ValoresModalidade> ValoresModalidades
+        {
+            get
+            {
+                return _valoresModalidades;
+            }
+            set
+            {
+                _valoresModalidades = value;
+            }
+        }
+        
         public virtual List<Matricula> Matriculas { get; set; }//Modalidade não tem Matricula
 
         [NotMapped]
@@ -44,10 +57,60 @@ namespace ProjetoVillaBeach.Classes
 
         public void Salvar()
         {
-            this.DataInicial = DateTime.Now;
-            var contexto = new Contexto();
-            contexto.Modalidades.Add(this);
-            contexto.SaveChanges();
+            bool status;
+            if (DataInicial == DateTime.Parse("01/01/0001"))
+                DataInicial = DateTime.Now;
+
+            try
+            {
+                using (var contexto = new Contexto())
+                {
+                    switch (this.ObjectState)
+                    {
+                        case EntityObjectState.Added:
+                            contexto.Modalidades.Attach(this).State = EntityState.Added;
+                            break;
+                        case EntityObjectState.Modified:
+                            contexto.Modalidades.Attach(this).State = EntityState.Modified;
+                            break;
+                        case EntityObjectState.Deleted:
+                            contexto.Modalidades.Attach(this).State = EntityState.Deleted;
+                            break;
+                        default:
+                            contexto.Modalidades.Attach(this).State = EntityState.Unchanged;
+                            break;
+                    }
+
+                    foreach (ValoresModalidade valor in this.ValoresModalidades)
+                    {
+                        switch (valor.ObjectState)
+                        {
+                            case EntityObjectState.Added:
+                                contexto.Entry(valor).State = EntityState.Added;
+                                break;
+                            case EntityObjectState.Modified:
+                                contexto.Entry(valor).State = EntityState.Modified;
+                                break;
+                            case EntityObjectState.Deleted:
+                                contexto.Entry(valor).State = EntityState.Deleted;
+                                break;
+                            default:
+                                contexto.Entry(valor).State = EntityState.Unchanged;
+                                break;
+                        }
+                    }
+
+                    contexto.SaveChanges();
+                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
+                    status = true;
+
+                    this.ObjectState = EntityObjectState.Unchanged;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message);
+            }
         }
 
         public static ICollection<Modalidade> SelecionaTodos()
