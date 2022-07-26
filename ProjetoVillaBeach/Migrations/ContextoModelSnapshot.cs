@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoVillaBeach.Classes;
 
+#nullable disable
+
 namespace ProjetoVillaBeach.Migrations
 {
     [DbContext(typeof(Contexto))]
@@ -14,8 +16,8 @@ namespace ProjetoVillaBeach.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.17");
+                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
                 {

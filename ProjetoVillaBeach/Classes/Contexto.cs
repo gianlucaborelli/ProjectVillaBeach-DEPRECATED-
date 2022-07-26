@@ -24,13 +24,13 @@ namespace ProjetoVillaBeach.Classes
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 
         private string connectionString = "server =localhost;port=3306;database=EFCoreMySQL;user=root;password=1234";
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var serverVersion = new MariaDbServerVersion(new Version(10, 6, 7));
             optionsBuilder.UseMySql(connectionString, serverVersion);
             optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
-            optionsBuilder.UseLazyLoadingProxies().UseMySql(connectionString, serverVersion);
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

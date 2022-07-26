@@ -41,10 +41,11 @@
             // 
             // btnAbrirCadastro
             // 
-            this.btnAbrirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnAbrirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(120)))), ((int)(((byte)(205)))));
             this.btnAbrirCadastro.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAbrirCadastro.FlatAppearance.BorderSize = 0;
             this.btnAbrirCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbrirCadastro.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAbrirCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnAbrirCadastro.Location = new System.Drawing.Point(817, 751);
             this.btnAbrirCadastro.Margin = new System.Windows.Forms.Padding(4);
@@ -57,10 +58,11 @@
             // 
             // btnExcluirCadastro
             // 
-            this.btnExcluirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnExcluirCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(63)))), ((int)(((byte)(73)))));
             this.btnExcluirCadastro.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExcluirCadastro.FlatAppearance.BorderSize = 0;
             this.btnExcluirCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirCadastro.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExcluirCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnExcluirCadastro.Location = new System.Drawing.Point(19, 751);
             this.btnExcluirCadastro.Margin = new System.Windows.Forms.Padding(4);
@@ -69,13 +71,15 @@
             this.btnExcluirCadastro.TabIndex = 15;
             this.btnExcluirCadastro.Text = "Excluir Cadastro";
             this.btnExcluirCadastro.UseVisualStyleBackColor = false;
+            this.btnExcluirCadastro.Click += new System.EventHandler(this.BtnExcluirCadastro_Click);
             // 
             // btnCadastrarNovo
             // 
-            this.btnCadastrarNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnCadastrarNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(151)))), ((int)(((byte)(83)))));
             this.btnCadastrarNovo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCadastrarNovo.FlatAppearance.BorderSize = 0;
             this.btnCadastrarNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastrarNovo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCadastrarNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnCadastrarNovo.Location = new System.Drawing.Point(418, 751);
             this.btnCadastrarNovo.Margin = new System.Windows.Forms.Padding(4);
@@ -90,6 +94,7 @@
             // 
             this.dgvModalidades.AllowUserToAddRows = false;
             this.dgvModalidades.AllowUserToDeleteRows = false;
+            this.dgvModalidades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvModalidades.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvModalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dgvModalidades, 5);
@@ -109,6 +114,8 @@
             this.btnPesquisar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnPesquisar.Location = new System.Drawing.Point(816, 138);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(378, 39);
@@ -119,7 +126,7 @@
             // 
             // flatTxtBoxNomeModalidade
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.flatTxtBoxNomeModalidade, 3);
+            this.flatTxtBoxNomeModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxNomeModalidade.Dock = System.Windows.Forms.DockStyle.Top;
             this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(18, 18);
             this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
@@ -127,7 +134,7 @@
             this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome da Modalidade";
             this.flatTxtBoxNomeModalidade.Required = false;
             this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(777, 33);
+            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(378, 33);
             this.flatTxtBoxNomeModalidade.TabIndex = 19;
             this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;

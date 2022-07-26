@@ -6,18 +6,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoVillaBeach.Classes;
 
+#nullable disable
+
 namespace ProjetoVillaBeach.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220710011435_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220724043357_Inicio")]
+    partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.17");
+                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
                 {
@@ -160,7 +162,6 @@ namespace ProjetoVillaBeach.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.Property<string>("Observacao")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 

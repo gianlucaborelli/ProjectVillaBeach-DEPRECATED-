@@ -258,6 +258,8 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             }
         }
 
+        
+
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             var method = typeof(Control).GetMethod("PaintBackground",
@@ -313,6 +315,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             _services.KeyPress(sender, e);
         }
 
-
+        private void Controle_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate();
+        }
     }
 }

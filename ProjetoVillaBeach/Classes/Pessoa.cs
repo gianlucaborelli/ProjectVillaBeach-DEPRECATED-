@@ -22,13 +22,13 @@ namespace ProjetoVillaBeach.Classes
         public int IdPessoa { get; set; }
 
         [Required]
-        public ulong? NumeroCpf 
-        { 
-            get 
-            { 
-                return _numeroCpf; 
-            } 
-            set 
+        public ulong? NumeroCpf
+        {
+            get
+            {
+                return _numeroCpf;
+            }
+            set
             {
                 if (Cpf.IsCpf(value.ToString()) && Cpf.IsUnique(value.ToString()))
                 {
@@ -120,7 +120,7 @@ namespace ProjetoVillaBeach.Classes
                 {
                     throw new ArgumentException("A data de Nascimento deve ser menor que a data Atual");
                 }
-                
+
             }
         }
         private DateTime? _dataDeNascimento;
@@ -256,15 +256,25 @@ namespace ProjetoVillaBeach.Classes
             return contexto.Pessoas.ToList();
         }
 
-        public static List<Pessoa> Pesquisar(string? nome, ulong? cpf, string? rg)
+        public static ICollection<Pessoa> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
         {
-            using (var contexto = new Contexto())
+            msg = "";
+            var contexto = new Contexto();
+
+            if (!string.IsNullOrEmpty(nome) && !string.IsNullOrEmpty(rg) && cpf != null)
             {
                 IQueryable<Pessoa> query = contexto.Pessoas;
                 query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg);
 
-                return query.ToList();
+                if (query.ToList().Count >= 1)
+                    return query.ToList();
             }
+
+            if (!string.IsNullOrEmpty(nome))
+                msg = "Não foram encontradas pessoas com o parâmetro informado";
+
+            return contexto.Pessoas.ToList();
+
         }
 
         public void Excluir()

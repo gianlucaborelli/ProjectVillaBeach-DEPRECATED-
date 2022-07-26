@@ -65,6 +65,7 @@
             this.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.Size = new System.Drawing.Size(464, 33);
             this.Load += new System.EventHandler(this.OnLoad_Event);
+            this.Resize += new System.EventHandler(this.Controle_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
