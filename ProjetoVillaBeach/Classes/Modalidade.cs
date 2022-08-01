@@ -6,26 +6,88 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Modalidade : IEntityObjectState
+    public class Modalidade : IEntityObjectState, INotifyPropertyChanged
     {
         [Key]
         public int IdModalidade { get; set; }
         [Required]
         [StringLength(150, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 150 caracteres")]
-        public string? Nome { get; set; }
+        public string? Nome 
+        { 
+            get 
+            { 
+                return _nome; 
+            } 
+            set 
+            {
+                if(_nome != value)
+                {
+                    this._nome = value;
+                    OnPropertyChanged("Nome");
+                }                
+            }
+        }
+        private string? _nome;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
-        public string? Observacao { get; set; }
+        public string? Observacao
+        {
+            get
+            {
+                return _observacao;
+            }
+            set
+            {
+                if( value!= _observacao)
+                {
+                    _observacao = value;
+                    OnPropertyChanged("Observacao");
+                }                
+            }
+        }
+        private string? _observacao;
 
         [Required]
-        public DateTime? DataInicial { get; set; }
-        public DateTime? DataFinal { get; set; }
+        public DateTime? DataInicial
+        {
+            get
+            {
+                return _dataInicial;
+            }
+            set
+            {
+                if (value != _dataInicial)
+                {
+                    _dataInicial = value;
+                    OnPropertyChanged("DataInicial");
+                }
+            }
+        }
+        private DateTime? _dataInicial;
+
+        public DateTime? DataFinal
+        {
+            get
+            {
+                return _dataFinal;
+            }
+            set
+            {
+                if(value != _dataFinal)
+                {
+                    _dataFinal = value;
+                    OnPropertyChanged("DataFinal");
+                }                
+            }
+        }
+        private DateTime? _dataFinal;
 
         private List<ValoresModalidade> _valoresModalidades = new();
         public virtual List<ValoresModalidade> ValoresModalidades
@@ -55,6 +117,23 @@ namespace ProjetoVillaBeach.Classes
             }
         }
         private EntityObjectState _objectState = EntityObjectState.Unchanged;
+
+        #region INotifyPropertyChanged Implementation
+        public event PropertyChangedEventHandler? PropertyChanged;
+                
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            if (ObjectState != EntityObjectState.Added)
+                ObjectState = EntityObjectState.Modified;
+        }
+        #endregion
+
+        public Modalidade()
+        {
+            
+        }
 
         public void Salvar()
         {

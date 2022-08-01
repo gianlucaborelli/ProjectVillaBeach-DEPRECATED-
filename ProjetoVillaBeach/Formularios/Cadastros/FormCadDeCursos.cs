@@ -15,6 +15,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
     public partial class FormCadDeCursos : Form
     {
         private Modalidade mod = new();
+        private ValoresModalidade? valorModalidadeSelecionada = new();
 
         public FormCadDeCursos()
         {
@@ -25,23 +26,64 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         public FormCadDeCursos(Modalidade mod)
         {
             InitializeComponent();
-            this.mod = mod;
-            CarragaModalidade();
+             this.mod = mod;            
             AtivaControlesDeModalidade(false);
         }
 
-        private void CarragaModalidade()
+        //Formulário
+        private void Form_OnLoad(object sender, EventArgs e)
         {
-            flatTxtBoxNomeModalidade.Text = mod.Nome;
-            flatTxtBoxInicioModalidade.Text = mod.DataInicial.ToString();
-            flatTxtBoxFimModalidade.Text = mod.DataFinal.ToString();
-            txtObsModalidade.Text = mod.Observacao;
-
+            flatTxtBoxNomeModalidade.DataBindings.Add("Text", mod, "Nome", true, DataSourceUpdateMode.OnPropertyChanged);
+            flatTxtBoxInicioModalidade.DataBindings.Add("Text", mod, "DataInicial", true, DataSourceUpdateMode.OnPropertyChanged);
+            flatTxtBoxFimModalidade.DataBindings.Add("Text", mod, "DataFinal", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtObsModalidade.DataBindings.Add("Text", mod, "Observacao", true, DataSourceUpdateMode.OnPropertyChanged);
+                        
             PopupaGridValoresModalidade();
         }
 
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            this.dgvValoresModalidades.ClearSelection();
+        }
+
+        private void BtnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            bool canClose = !(mod.ObjectState == EntityObjectState.Added
+                           || mod.ObjectState == EntityObjectState.Modified);
+
+            foreach (ValoresModalidade valor in mod.ValoresModalidades)
+            {
+                if (valor.ObjectState == EntityObjectState.Added
+                 || valor.ObjectState == EntityObjectState.Modified)
+                {
+                    canClose = false;
+                    break;
+                }
+            }
+
+            if (!canClose)
+            {
+                if (DialogResult.No == MessageBox.Show("Deseja realmente sair sem salvar as alterações deste cadastro?", 
+                                                       "Deseja realmente sair",
+                                                       MessageBoxButtons.YesNo,
+                                                       MessageBoxIcon.Warning))
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            this.Dispose();
+        }
+
+        //dgvValoresModalidades
         private void PopupaGridValoresModalidade()
-        {            
+        {
             dgvValoresModalidades.DataSource = null;
 
             dgvValoresModalidades.Columns.Clear();
@@ -49,14 +91,14 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
             dgvValoresModalidades.DataSource = mod.ValoresModalidades;
 
-            dgvValoresModalidades.Columns["ObjectState"].Visible = true;
+            dgvValoresModalidades.Columns["ObjectState"].Visible = false;
             dgvValoresModalidades.Columns["IdValoresModalidades"].Visible = false;
             dgvValoresModalidades.Columns["IdModalidade"].Visible = false;
             dgvValoresModalidades.Columns["Modalidade"].Visible = false;
 
-            dgvValoresModalidades.Columns["Valor"].DisplayIndex = 0;            
+            dgvValoresModalidades.Columns["Valor"].DisplayIndex = 0;
             dgvValoresModalidades.Columns["DataInicio"].DisplayIndex = 1;
-            dgvValoresModalidades.Columns["DataFim"].DisplayIndex = 2;            
+            dgvValoresModalidades.Columns["DataFim"].DisplayIndex = 2;
 
             dgvValoresModalidades.Columns["Valor"].HeaderText = "Valor.";
             dgvValoresModalidades.Columns["DataInicio"].HeaderText = "Dt. Inicial";
@@ -67,25 +109,41 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void DgvValoresModalidades_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (this.dgvValoresModalidades.Columns[e.ColumnIndex].Name == "ObjectState")
+            var valor = dgvValoresModalidades.Rows[e.RowIndex].DataBoundItem as ValoresModalidade;
+
+            switch (valor.ObjectState)
+            {
+                case EntityObjectState.Added:
+                    dgvValoresModalidades.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                    break;
+                case EntityObjectState.Deleted:
+                    dgvValoresModalidades.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
+                    break;
+                case EntityObjectState.Modified:
+                    dgvValoresModalidades.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                    break;
+            }
+        }
+
+        private void dgvValoresModalidades_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dgvValoresModalidades.SelectedRows.Count > 0)
             {                
-                switch (e.Value)
-                {
-                    case EntityObjectState.Added:
-                        dgvValoresModalidades.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
-                        break;
-                    case EntityObjectState.Deleted:
-                        dgvValoresModalidades.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.IndianRed;
-                        break;
-                }
+                CarregaValoresModalidade(dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade);
             }
         }
 
         private void CarregaValoresModalidade(ValoresModalidade? valor)
         {
-            flatTxtBoxFimValorModalidade.Text = valor.DataFim.ToString();
-            flatTxtBoxInicioValorModalidade.Text = valor.DataInicio.ToString();
-            flatTxtBoxValorModalidade.Text = valor.Valor.ToString();
+            flatTxtBoxValorModalidade.DataBindings.Clear();
+            flatTxtBoxInicioValorModalidade.DataBindings.Clear();
+            flatTxtBoxFimValorModalidade.DataBindings.Clear();
+
+            valorModalidadeSelecionada = valor;
+
+            flatTxtBoxValorModalidade.DataBindings.Add("Text", valor, "Valor", true, DataSourceUpdateMode.OnPropertyChanged);
+            flatTxtBoxInicioValorModalidade.DataBindings.Add("Text", valor, "DataInicio", true, DataSourceUpdateMode.OnPropertyChanged);
+            flatTxtBoxFimValorModalidade.DataBindings.Add("Text", valor, "DataFim", true, DataSourceUpdateMode.OnPropertyChanged);            
         }
 
         private void AtivaControlesDeModalidade(bool status)
@@ -98,50 +156,22 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void LimparControlesValoresModalidades()
         {
-            flatTxtBoxFimValorModalidade.Clear();
-            flatTxtBoxInicioValorModalidade.Clear();
+            valorModalidadeSelecionada = null;
+
+
+            flatTxtBoxValorModalidade.DataBindings.Clear();
+            flatTxtBoxInicioValorModalidade.DataBindings.Clear();
+            flatTxtBoxFimValorModalidade.DataBindings.Clear();
+
             flatTxtBoxValorModalidade.Clear();
-        }
-
-        private void Form_OnLoad(object sender, EventArgs e)
-        {
-            this.dgvValoresModalidades.ClearSelection();
-        }
-
-        private void BtnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Form_Closing(object sender, FormClosingEventArgs e)
-        {
-            bool error = (mod.ObjectState == EntityObjectState.Added
-                       || mod.ObjectState == EntityObjectState.Modified);
-
-            foreach (ValoresModalidade valor in mod.ValoresModalidades)
-            {
-                if (valor.ObjectState == EntityObjectState.Added
-                 || valor.ObjectState == EntityObjectState.Modified)
-                {
-                    error = true;
-                    break;
-                }
-            }
-
-            if (DialogResult.No == MessageBox.Show("Deseja realmente sair sem salvar as alterações deste cadastro?", "Deseja realmente sair", MessageBoxButtons.YesNo,
-                                           MessageBoxIcon.Warning) && error)
-            {
-                e.Cancel = true;
-                return;
-            }
-
-            this.Dispose();
-        }
-
+            flatTxtBoxInicioValorModalidade.Clear();
+            flatTxtBoxFimValorModalidade.Clear();
+        }        
+        
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             mod.Salvar();
-            CarragaModalidade();
+            PopupaGridValoresModalidade();
             AtivaControlesDeModalidade(false);
         }
 
@@ -172,84 +202,38 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                 this.Dispose();
             }
         }
-
-        private void txtNomeModalidade_Leave(object sender, EventArgs e)
-        {
-            mod.Nome = flatTxtBoxNomeModalidade.Text;
-        }
-
-        private void flatTxtInicioModalidade_Leave(object sender, EventArgs e)
-        {
-            if (DateTime.TryParseExact(flatTxtBoxInicioModalidade.Text, "dd/MM/yyyy",
-                                        CultureInfo.InvariantCulture,
-                                        DateTimeStyles.None,
-                                        out DateTime inicio))
-            {
-                mod.DataInicial = inicio;
-            }
-
-        }
-
-        private void FlatTxtFimModalide_Leave(object sender, EventArgs e)
-        {
-            if (DateTime.TryParseExact(flatTxtBoxFimModalidade.Text, "dd/MM/yyyy",
-                                            CultureInfo.InvariantCulture,
-                                            DateTimeStyles.None,
-                                            out DateTime fim))
-            {
-                mod.DataFinal = fim;
-            }
-        }
-
-        private void TxtObsModalidade_Leave(object sender, EventArgs e)
-        {
-            mod.Observacao = txtObsModalidade.Text;
-        }
-
+        
         private void BtnAddModalidade_Click(object sender, EventArgs e)
         {
             ValoresModalidade? valor = new();
 
-            if (this.dgvValoresModalidades.SelectedRows.Count > 0)
-            {
-                valor = dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade;
-                valor.ObjectState = EntityObjectState.Modified;
-            }
-            else
+            if (this.dgvValoresModalidades.SelectedRows.Count == 0)            
             {
                 valor.ObjectState = EntityObjectState.Added;
                 mod.ValoresModalidades.Add(valor);
-            }
 
-            if(!string.IsNullOrEmpty(flatTxtBoxValorModalidade.Text))
-            valor.Valor = double.Parse(flatTxtBoxValorModalidade.Text);
+                if (!string.IsNullOrEmpty(flatTxtBoxValorModalidade.Text))
+                    valor.Valor = double.Parse(flatTxtBoxValorModalidade.Text);
 
-            if (DateTime.TryParseExact(flatTxtBoxInicioValorModalidade.Text, "dd/MM/yyyy",
-                                        CultureInfo.InvariantCulture,
-                                        DateTimeStyles.None,
-                                        out DateTime inicio))
-            {
-                valor.DataInicio = inicio;
-            }
+                if (DateTime.TryParseExact(flatTxtBoxInicioValorModalidade.Text, "dd/MM/yyyy",
+                                            CultureInfo.InvariantCulture,
+                                            DateTimeStyles.None,
+                                            out DateTime inicio))
+                {
+                    valor.DataInicio = inicio;
+                }
 
-            if (DateTime.TryParseExact(flatTxtBoxFimValorModalidade.Text, "dd/MM/yyyy",
-                                        CultureInfo.InvariantCulture,
-                                        DateTimeStyles.None,
-                                        out DateTime fim))
-            {
-                valor.DataFim = fim;
-            }
+                if (DateTime.TryParseExact(flatTxtBoxFimValorModalidade.Text, "dd/MM/yyyy",
+                                            CultureInfo.InvariantCulture,
+                                            DateTimeStyles.None,
+                                            out DateTime fim))
+                {
+                    valor.DataFim = fim;
+                }
+            }            
 
             LimparControlesValoresModalidades();
             PopupaGridValoresModalidade();
-        }
-
-        private void dgvValoresModalidades_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (this.dgvValoresModalidades.SelectedRows.Count > 0)
-            {
-                CarregaValoresModalidade(dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade);
-            }
         }
 
         private void BtnCancelarAlteracaoValor_Click(object sender, EventArgs e)
@@ -259,7 +243,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         }
 
         private void btnExcluirValor_Click(object sender, EventArgs e)
-        {             
+        {
             if (this.dgvValoresModalidades.SelectedRows.Count > 0)
             {
                 ValoresModalidade? valor = dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade;
@@ -267,6 +251,6 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                 LimparControlesValoresModalidades();
                 PopupaGridValoresModalidade();
             }
-        }
+        }        
     }
 }

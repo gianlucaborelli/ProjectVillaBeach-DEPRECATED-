@@ -87,7 +87,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
-            this.btnVoltar.Location = new System.Drawing.Point(21, 19);
+            this.btnVoltar.Location = new System.Drawing.Point(20, 20);
             this.btnVoltar.Margin = new System.Windows.Forms.Padding(5);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(50, 50);
@@ -117,7 +117,7 @@
             this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(16, 16);
+            this.btnExcluir.Location = new System.Drawing.Point(20, 15);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(5);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Padding = new System.Windows.Forms.Padding(10, 0, 35, 0);
@@ -138,7 +138,7 @@
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(1006, 16);
+            this.btnSalvar.Location = new System.Drawing.Point(1006, 15);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(5);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Padding = new System.Windows.Forms.Padding(10, 0, 35, 0);
@@ -155,52 +155,49 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flatTxtBoxNomeModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.tableLayoutPanel1.SetColumnSpan(this.flatTxtBoxNomeModalidade, 3);
-            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(20, 20);
+            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(15, 10);
             this.flatTxtBoxNomeModalidade.Margin = new System.Windows.Forms.Padding(5);
             this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
             this.flatTxtBoxNomeModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
             this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome da Modalidade";
             this.flatTxtBoxNomeModalidade.Required = false;
             this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(439, 34);
+            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(450, 34);
             this.flatTxtBoxNomeModalidade.TabIndex = 6;
             this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtBoxNomeModalidade.Leave += new System.EventHandler(this.txtNomeModalidade_Leave);
             // 
             // flatTxtBoxInicioModalidade
             // 
             this.flatTxtBoxInicioModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxInicioModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxInicioModalidade.Location = new System.Drawing.Point(20, 75);
+            this.flatTxtBoxInicioModalidade.Location = new System.Drawing.Point(15, 60);
             this.flatTxtBoxInicioModalidade.Margin = new System.Windows.Forms.Padding(5);
             this.flatTxtBoxInicioModalidade.Name = "flatTxtBoxInicioModalidade";
             this.flatTxtBoxInicioModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
             this.flatTxtBoxInicioModalidade.PlaceholderText = "Início";
             this.flatTxtBoxInicioModalidade.Required = false;
             this.flatTxtBoxInicioModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxInicioModalidade.Size = new System.Drawing.Size(207, 34);
+            this.flatTxtBoxInicioModalidade.Size = new System.Drawing.Size(215, 34);
             this.flatTxtBoxInicioModalidade.TabIndex = 7;
             this.flatTxtBoxInicioModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxInicioModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            this.flatTxtBoxInicioModalidade.Leave += new System.EventHandler(this.flatTxtInicioModalidade_Leave);
             // 
             // flatTxtBoxFimModalidade
             // 
             this.flatTxtBoxFimModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxFimModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxFimModalidade.Location = new System.Drawing.Point(252, 75);
+            this.flatTxtBoxFimModalidade.Location = new System.Drawing.Point(250, 60);
             this.flatTxtBoxFimModalidade.Margin = new System.Windows.Forms.Padding(5);
             this.flatTxtBoxFimModalidade.Name = "flatTxtBoxFimModalidade";
             this.flatTxtBoxFimModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
             this.flatTxtBoxFimModalidade.PlaceholderText = "Fim";
             this.flatTxtBoxFimModalidade.Required = false;
             this.flatTxtBoxFimModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxFimModalidade.Size = new System.Drawing.Size(207, 34);
+            this.flatTxtBoxFimModalidade.Size = new System.Drawing.Size(215, 34);
             this.flatTxtBoxFimModalidade.TabIndex = 8;
             this.flatTxtBoxFimModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxFimModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            this.flatTxtBoxFimModalidade.Leave += new System.EventHandler(this.FlatTxtFimModalide_Leave);
             // 
             // dgvValoresModalidades
             // 
@@ -210,14 +207,14 @@
             this.dgvValoresModalidades.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvValoresModalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvValoresModalidades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValoresModalidades.Location = new System.Drawing.Point(699, 18);
+            this.dgvValoresModalidades.Location = new System.Drawing.Point(708, 8);
             this.dgvValoresModalidades.MultiSelect = false;
             this.dgvValoresModalidades.Name = "dgvValoresModalidades";
             this.dgvValoresModalidades.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.dgvValoresModalidades, 8);
             this.dgvValoresModalidades.RowTemplate.Height = 25;
             this.dgvValoresModalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvValoresModalidades.Size = new System.Drawing.Size(494, 636);
+            this.dgvValoresModalidades.Size = new System.Drawing.Size(494, 656);
             this.dgvValoresModalidades.TabIndex = 9;
             this.dgvValoresModalidades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValoresModalidades_CellClick);
             this.dgvValoresModalidades.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvValoresModalidades_CellFormatting);
@@ -227,9 +224,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox1, 4);
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(18, 286);
+            this.groupBox1.Location = new System.Drawing.Point(13, 271);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 368);
+            this.groupBox1.Size = new System.Drawing.Size(679, 393);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Valores";
@@ -239,11 +236,11 @@
             this.tableLayoutPanel2.ColumnCount = 7;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxValorModalidade, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnAdicionar, 5, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnExcluirValor, 3, 5);
@@ -254,27 +251,27 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(654, 337);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(673, 362);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // flatTxtBoxValorModalidade
             // 
             this.flatTxtBoxValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxValorModalidade.Location = new System.Drawing.Point(13, 13);
+            this.flatTxtBoxValorModalidade.Location = new System.Drawing.Point(13, 8);
             this.flatTxtBoxValorModalidade.Name = "flatTxtBoxValorModalidade";
             this.flatTxtBoxValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtBoxValorModalidade.PlaceholderText = "Valor";
             this.flatTxtBoxValorModalidade.Required = false;
             this.flatTxtBoxValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxValorModalidade.Size = new System.Drawing.Size(192, 33);
+            this.flatTxtBoxValorModalidade.Size = new System.Drawing.Size(205, 33);
             this.flatTxtBoxValorModalidade.TabIndex = 0;
             this.flatTxtBoxValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
@@ -285,9 +282,9 @@
             this.btnAdicionar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Location = new System.Drawing.Point(439, 123);
+            this.btnAdicionar.Location = new System.Drawing.Point(455, 108);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(192, 54);
+            this.btnAdicionar.Size = new System.Drawing.Size(205, 54);
             this.btnAdicionar.TabIndex = 3;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -299,9 +296,9 @@
             this.btnExcluirValor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExcluirValor.FlatAppearance.BorderSize = 0;
             this.btnExcluirValor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirValor.Location = new System.Drawing.Point(226, 123);
+            this.btnExcluirValor.Location = new System.Drawing.Point(234, 108);
             this.btnExcluirValor.Name = "btnExcluirValor";
-            this.btnExcluirValor.Size = new System.Drawing.Size(192, 54);
+            this.btnExcluirValor.Size = new System.Drawing.Size(205, 54);
             this.btnExcluirValor.TabIndex = 4;
             this.btnExcluirValor.Text = "Excluir";
             this.btnExcluirValor.UseVisualStyleBackColor = false;
@@ -313,9 +310,9 @@
             this.btnCancelarAlterarValor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCancelarAlterarValor.FlatAppearance.BorderSize = 0;
             this.btnCancelarAlterarValor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarAlterarValor.Location = new System.Drawing.Point(13, 123);
+            this.btnCancelarAlterarValor.Location = new System.Drawing.Point(13, 108);
             this.btnCancelarAlterarValor.Name = "btnCancelarAlterarValor";
-            this.btnCancelarAlterarValor.Size = new System.Drawing.Size(192, 54);
+            this.btnCancelarAlterarValor.Size = new System.Drawing.Size(205, 54);
             this.btnCancelarAlterarValor.TabIndex = 5;
             this.btnCancelarAlterarValor.Text = "Cancelar";
             this.btnCancelarAlterarValor.UseVisualStyleBackColor = false;
@@ -325,13 +322,13 @@
             // 
             this.flatTxtBoxInicioValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxInicioValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxInicioValorModalidade.Location = new System.Drawing.Point(13, 68);
+            this.flatTxtBoxInicioValorModalidade.Location = new System.Drawing.Point(13, 58);
             this.flatTxtBoxInicioValorModalidade.Name = "flatTxtBoxInicioValorModalidade";
             this.flatTxtBoxInicioValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtBoxInicioValorModalidade.PlaceholderText = "Início deste valor";
             this.flatTxtBoxInicioValorModalidade.Required = false;
             this.flatTxtBoxInicioValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxInicioValorModalidade.Size = new System.Drawing.Size(192, 33);
+            this.flatTxtBoxInicioValorModalidade.Size = new System.Drawing.Size(205, 33);
             this.flatTxtBoxInicioValorModalidade.TabIndex = 1;
             this.flatTxtBoxInicioValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxInicioValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
@@ -340,13 +337,13 @@
             // 
             this.flatTxtBoxFimValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
             this.flatTxtBoxFimValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxFimValorModalidade.Location = new System.Drawing.Point(226, 68);
+            this.flatTxtBoxFimValorModalidade.Location = new System.Drawing.Point(234, 58);
             this.flatTxtBoxFimValorModalidade.Name = "flatTxtBoxFimValorModalidade";
             this.flatTxtBoxFimValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.flatTxtBoxFimValorModalidade.PlaceholderText = "Fim deste valor";
             this.flatTxtBoxFimValorModalidade.Required = false;
             this.flatTxtBoxFimValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxFimValorModalidade.Size = new System.Drawing.Size(192, 33);
+            this.flatTxtBoxFimValorModalidade.Size = new System.Drawing.Size(205, 33);
             this.flatTxtBoxFimValorModalidade.TabIndex = 2;
             this.flatTxtBoxFimValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxFimValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
@@ -355,26 +352,25 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txtObsModalidade, 4);
             this.txtObsModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtObsModalidade.Location = new System.Drawing.Point(18, 128);
+            this.txtObsModalidade.Location = new System.Drawing.Point(13, 108);
             this.txtObsModalidade.Multiline = true;
             this.txtObsModalidade.Name = "txtObsModalidade";
             this.tableLayoutPanel1.SetRowSpan(this.txtObsModalidade, 2);
-            this.txtObsModalidade.Size = new System.Drawing.Size(660, 142);
+            this.txtObsModalidade.Size = new System.Drawing.Size(679, 152);
             this.txtObsModalidade.TabIndex = 11;
-            this.txtObsModalidade.Leave += new System.EventHandler(this.TxtObsModalidade_Leave);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.txtObsModalidade, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxNomeModalidade, 1, 1);
@@ -385,16 +381,16 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 90);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.42858F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1215, 674);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
@@ -414,6 +410,7 @@
             this.Text = "FormCadDeCursos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form_OnLoad);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
