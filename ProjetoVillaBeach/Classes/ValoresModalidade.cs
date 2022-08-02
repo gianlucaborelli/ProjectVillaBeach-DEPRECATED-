@@ -11,12 +11,8 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class ValoresModalidade : IEntityObjectState, INotifyPropertyChanged
-    {
-        [Key]
-        public int IdValoresModalidades { get; set; }
-
-        private double _valor;
+    public class ValoresModalidade : BaseClass 
+    {   
         public double Valor
         {
             get
@@ -25,15 +21,11 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if (_valor != value)
-                {
-                    _valor = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _valor, value);
             }
         }
+        private double _valor;
 
-        private DateTime _dataInicio;
         public DateTime DataInicio
         {
             get
@@ -42,15 +34,11 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if (value != _dataInicio)
-                {
-                    _dataInicio = value;
-                    OnPropertyChanged();
-                }                    
+                SetProperty(ref _dataInicio, value);
             }
         }
-
-        private DateTime? _dataFim;
+        private DateTime _dataInicio;
+        
         public DateTime? DataFim
         {
             get
@@ -59,44 +47,14 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if (value != _dataInicio)
-                {
-                    _dataFim = value;
-                    OnPropertyChanged();
-                }
+                SetProperty(ref _dataFim, value);
             }
         }
+        private DateTime? _dataFim;
 
         public int IdModalidade { get; set; }
         public virtual Modalidade Modalidade { get; set; }
 
         public virtual List<Mensalidade> Mensalidades { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
-        #region INotifyPropertyChanged Implementation
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-            if (ObjectState != EntityObjectState.Added)
-                ObjectState = EntityObjectState.Modified;
-        }
-        #endregion
     }
 }

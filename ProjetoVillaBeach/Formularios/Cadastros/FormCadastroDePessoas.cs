@@ -57,7 +57,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             Endereco endereco = new();
 
-            endereco.IdPessoa = pessoa.IdPessoa;
+            endereco.IdPessoa = pessoa.Id;
 
             endereco.ObjectState = EntityObjectState.Added;
 

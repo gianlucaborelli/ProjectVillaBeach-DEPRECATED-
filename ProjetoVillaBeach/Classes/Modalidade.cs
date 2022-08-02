@@ -13,10 +13,8 @@ using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Modalidade : IEntityObjectState, INotifyPropertyChanged
+    public class Modalidade : BaseClass
     {
-        [Key]
-        public int IdModalidade { get; set; }
         [Required]
         [StringLength(150, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 150 caracteres")]
         public string? Nome 
@@ -103,33 +101,7 @@ namespace ProjetoVillaBeach.Classes
         }
 
         public virtual List<Matricula> Matriculas { get; set; }//Modalidade não tem Matricula
-
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
-        #region INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler? PropertyChanged;
-                
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-            if (ObjectState != EntityObjectState.Added)
-                ObjectState = EntityObjectState.Modified;
-        }
-        #endregion
-
+        
         public Modalidade()
         {
             
@@ -137,7 +109,6 @@ namespace ProjetoVillaBeach.Classes
 
         public void Salvar()
         {
-            bool status;
             if (DataInicial == DateTime.Parse("01/01/0001"))
                 DataInicial = DateTime.Now;
 
@@ -182,8 +153,7 @@ namespace ProjetoVillaBeach.Classes
 
                     contexto.SaveChanges();
                     NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
-                    status = true;
-
+                    
                     this.ObjectState = EntityObjectState.Unchanged;
 
                     foreach (ValoresModalidade valor in this.ValoresModalidades)

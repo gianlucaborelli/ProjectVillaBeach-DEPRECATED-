@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoVillaBeach.Classes;
 
@@ -10,9 +11,10 @@ using ProjetoVillaBeach.Classes;
 namespace ProjetoVillaBeach.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20220802011755_UpdateTelefone")]
+    partial class UpdateTelefone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,7 +87,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Matricula", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdMatricula")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -101,7 +103,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("IdPessoa")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdMatricula");
 
                     b.HasIndex("IdModalidade");
 
@@ -112,7 +114,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Mensalidade", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdMensalidade")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -131,7 +133,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("IdValorModalidade")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdMensalidade");
 
                     b.HasIndex("IdMatricula");
 

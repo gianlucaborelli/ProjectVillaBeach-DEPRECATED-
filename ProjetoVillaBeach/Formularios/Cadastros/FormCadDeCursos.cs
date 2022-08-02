@@ -92,7 +92,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             dgvValoresModalidades.DataSource = mod.ValoresModalidades;
 
             dgvValoresModalidades.Columns["ObjectState"].Visible = false;
-            dgvValoresModalidades.Columns["IdValoresModalidades"].Visible = false;
+            dgvValoresModalidades.Columns["Id"].Visible = false;
             dgvValoresModalidades.Columns["IdModalidade"].Visible = false;
             dgvValoresModalidades.Columns["Modalidade"].Visible = false;
 

@@ -8,34 +8,35 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Telefone : IEntityObjectState
+    public class Telefone : BaseClass
     {
-        [Key]
-        public int IdTelefone { get; set; }        
-        public int Numero { get; set; }
-        public string Observacao { get; set; }
-
-        public int IdPessoa { get; set; }
-        public virtual Pessoa? Pessoa { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
+        public int Numero
         {
             get
             {
-                return _objectState;
+                return _numero;
             }
             set
             {
-                _objectState = value;
+                SetProperty(ref _numero, value);
             }
         }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
+        private int _numero;
 
-        public Telefone()
+        public string? Obs 
         {
-
+            get
+            {
+                return _obs;
+            }
+            set
+            {
+                SetProperty(ref _obs, value);
+            }
         }
+        private string? _obs;
 
+        public int IdPessoa { get; set; }
+        public virtual Pessoa? Pessoa { get; set; }
     }
 }

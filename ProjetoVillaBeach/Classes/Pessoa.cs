@@ -14,14 +14,10 @@ using System.Runtime.CompilerServices;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Pessoa : IEntityObjectState, INotifyPropertyChanged
+    public class Pessoa : BaseClass
     {
         #region Property
 
-        [Key]
-        public int IdPessoa { get; set; }
-
-        [Required]
         public ulong? NumeroCpf
         {
             get
@@ -32,8 +28,7 @@ namespace ProjetoVillaBeach.Classes
             {
                 if (Cpf.IsCpf(value.ToString()) && Cpf.IsUnique(value.ToString()))
                 {
-                    _numeroCpf = value;
-                    OnPropertyChanged();
+                    SetProperty(ref _numeroCpf, value);
                 }
                 else
                 {
@@ -51,15 +46,14 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                _numeroRg = value;
-                OnPropertyChanged();
+                SetProperty(ref _numeroRg, value);
             }
         }
         private string? _numeroRg;
 
         [Required]
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
-        public string? Nome
+        public string Nome
         {
             get
             {
@@ -67,11 +61,10 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                _nome = value;
-                OnPropertyChanged();
+                SetProperty(ref _nome, value);
             }
         }
-        private string? _nome;
+        private string _nome;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Filiacao1
@@ -82,11 +75,10 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                _filiacao1 = value;
-                OnPropertyChanged();
+                SetProperty(ref _filiacao1, value);
             }
         }
-        private string _filiacao1;
+        private string? _filiacao1;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Filiacao2
@@ -97,11 +89,10 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                _filiacao2 = value;
-                OnPropertyChanged();
+                SetProperty(ref _filiacao2, value);
             }
         }
-        private string _filiacao2;
+        private string? _filiacao2;
 
         public DateTime? DataDeNascimento
         {
@@ -113,8 +104,7 @@ namespace ProjetoVillaBeach.Classes
             {
                 if (value <= DateTime.Now)
                 {
-                    _dataDeNascimento = value;
-                    OnPropertyChanged();
+                    SetProperty(ref _dataDeNascimento, value);
                 }
                 else
                 {
@@ -125,7 +115,18 @@ namespace ProjetoVillaBeach.Classes
         }
         private DateTime? _dataDeNascimento;
 
-        public DateTime DataDeCadastro { get; private set; }
+        public DateTime? DataDeCadastro
+        {
+            get
+            {
+                return _dataDeCadastro;
+            }
+            set
+            {
+                SetProperty(ref _dataDeCadastro, value);
+            }
+        }
+        private DateTime? _dataDeCadastro;
 
         public virtual List<Telefone> Telefones { get; set; }
 
@@ -146,43 +147,8 @@ namespace ProjetoVillaBeach.Classes
 
         public virtual List<Matricula> Matriculas { get; set; }
 
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
         #endregion
-
-        #region INotifyPropertyChanged Implementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void PropertyChanged_Method(object sender, PropertyChangedEventArgs e)
-        {
-            if (ObjectState != EntityObjectState.Added)
-                ObjectState = EntityObjectState.Modified;
-        }
-        #endregion
-
-        public Pessoa()
-        {
-            this.PropertyChanged += PropertyChanged_Method;
-        }
-
+        
         public bool Salvar()
         {
             bool status = false;

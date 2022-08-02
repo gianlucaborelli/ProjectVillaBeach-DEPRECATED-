@@ -33,14 +33,14 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
 
             dgvModalidades.Columns["ObjectState"].Visible = false;
 
-            dgvModalidades.Columns["IdModalidade"].DisplayIndex = 0;
+            dgvModalidades.Columns["Id"].DisplayIndex = 0;
             dgvModalidades.Columns["Nome"].DisplayIndex = 1;
             dgvModalidades.Columns["Observacao"].DisplayIndex = 2;
             dgvModalidades.Columns["DataInicial"].DisplayIndex = 3;
             dgvModalidades.Columns["DataFinal"].DisplayIndex = 4;
 
-            dgvModalidades.Columns["IdModalidade"].HeaderText = "Cod.";
-            dgvModalidades.Columns["IdModalidade"].Width = 60;
+            dgvModalidades.Columns["Id"].HeaderText = "Cod.";
+            dgvModalidades.Columns["Id"].Width = 60;
             
             dgvModalidades.Columns["Nome"].HeaderText = "Nome.";
             

@@ -36,14 +36,11 @@ namespace ProjetoVillaBeach.Classes
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Pessoa
-            modelBuilder.Entity<Pessoa>()
-                .HasIndex(u => u.NumeroCpf)
-                   .IsUnique();
 
             modelBuilder.Entity<Pessoa>()
                 .HasMany<Endereco>(c => c.Enderecos)
                     .WithOne(e => e.Pessoa)
-                        .HasForeignKey(e => e.IdEndereco);
+                        .HasForeignKey(e => e.Id);
 
             modelBuilder.Entity<Pessoa>()
                 .HasMany<Email>(c => c.Email)
@@ -92,7 +89,7 @@ namespace ProjetoVillaBeach.Classes
             modelBuilder.Entity<Matricula>()
                .HasMany<Mensalidade>(c => c.Mensalidades)
                     .WithOne(e => e.Matricula)
-                        .HasForeignKey(e => e.IdMensalidade);
+                        .HasForeignKey(e => e.Id);
 
             // Modalidade
             modelBuilder.Entity<Modalidade>()
