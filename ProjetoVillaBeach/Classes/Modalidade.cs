@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using ProjetoVillaBeach.Controles;
 using System;
 using System.Collections.Generic;
@@ -17,22 +18,18 @@ namespace ProjetoVillaBeach.Classes
     {
         [Required]
         [StringLength(150, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 150 caracteres")]
-        public string? Nome 
-        { 
-            get 
-            { 
-                return _nome; 
-            } 
-            set 
+        public string Nome
+        {
+            get
             {
-                if(_nome != value)
-                {
-                    this._nome = value;
-                    OnPropertyChanged("Nome");
-                }                
+                return _nome;
+            }
+            set
+            {
+                SetProperty(ref _nome, value);
             }
         }
-        private string? _nome;
+        private string _nome;
 
         [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
         public string? Observacao
@@ -43,17 +40,13 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if( value!= _observacao)
-                {
-                    _observacao = value;
-                    OnPropertyChanged("Observacao");
-                }                
+                SetProperty(ref _observacao, value);
             }
         }
         private string? _observacao;
 
         [Required]
-        public DateTime? DataInicial
+        public DateTime DataInicial
         {
             get
             {
@@ -61,14 +54,10 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if (value != _dataInicial)
-                {
-                    _dataInicial = value;
-                    OnPropertyChanged("DataInicial");
-                }
+                SetProperty(ref _dataInicial, value);
             }
         }
-        private DateTime? _dataInicial;
+        private DateTime _dataInicial;
 
         public DateTime? DataFinal
         {
@@ -78,16 +67,15 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if(value != _dataFinal)
+                if(value > DataInicial)
                 {
-                    _dataFinal = value;
-                    OnPropertyChanged("DataFinal");
-                }                
+                    SetaFimDeModalidade();
+                    SetProperty(ref _dataFinal, value);                    
+                }
             }
         }
         private DateTime? _dataFinal;
-
-        private List<ValoresModalidade> _valoresModalidades = new();
+                
         public virtual List<ValoresModalidade> ValoresModalidades
         {
             get
@@ -95,16 +83,28 @@ namespace ProjetoVillaBeach.Classes
                 return _valoresModalidades;
             }
             set
-            {
-                _valoresModalidades = value;
+            {   
+                SetProperty(ref _valoresModalidades, value);                
             }
         }
+        private List<ValoresModalidade> _valoresModalidades = new();
 
         public virtual List<Matricula> Matriculas { get; set; }//Modalidade não tem Matricula
-        
+
         public Modalidade()
         {
             
+        }
+
+        private void SetaFimDeModalidade()
+        {
+            foreach(ValoresModalidade valor in ValoresModalidades)
+            {
+                if(valor.DataFim == null)
+                {
+                    valor.DataFim = this.DataFinal;
+                }
+            }
         }
 
         public void Salvar()
@@ -153,7 +153,7 @@ namespace ProjetoVillaBeach.Classes
 
                     contexto.SaveChanges();
                     NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
-                    
+
                     this.ObjectState = EntityObjectState.Unchanged;
 
                     foreach (ValoresModalidade valor in this.ValoresModalidades)
