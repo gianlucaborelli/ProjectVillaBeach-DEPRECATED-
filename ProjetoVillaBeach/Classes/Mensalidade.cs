@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Mensalidade : IEntityObjectState
+    public class Mensalidade : BaseClass
     {
-        [Key]
-        public int IdMensalidade { get; set; }        
         public DateTime DataGerada { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime DataPagamento { get; set; }
@@ -22,20 +20,5 @@ namespace ProjetoVillaBeach.Classes
 
         public int IdValorModalidade { get; set; }
         public virtual ValoresModalidade ValoresModalidade { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
     }
 }

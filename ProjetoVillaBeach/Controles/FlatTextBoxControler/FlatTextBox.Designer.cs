@@ -42,6 +42,7 @@
             this.txtBox.Name = "txtBox";
             this.txtBox.Size = new System.Drawing.Size(456, 16);
             this.txtBox.TabIndex = 0;
+            this.txtBox.TextChanged += new System.EventHandler(this.FlatTextBox_TextChanged);
             this.txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Event);
             this.txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyUp);
             this.txtBox.Leave += new System.EventHandler(this.Leave_Event);
@@ -65,6 +66,7 @@
             this.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
             this.Size = new System.Drawing.Size(464, 33);
             this.Load += new System.EventHandler(this.OnLoad_Event);
+            this.Resize += new System.EventHandler(this.Controle_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

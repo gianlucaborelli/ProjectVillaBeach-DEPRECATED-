@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ProjetoVillaBeach.Classes;
 using ProjetoVillaBeach.Formularios;
 using ProjetoVillaBeach.Formularios.Pesquisas;
+using ProjetoVillaBeach.Formularios.Cadastros;
 
 namespace ProjetoVillaBeach
 {
@@ -44,7 +45,15 @@ namespace ProjetoVillaBeach
         }
 
         private void AbrirFormulario(Form FormFilho)
-        {
+        {   
+            foreach(Control ctrol in this.pnlConteudo.Controls)
+            {
+                if (ctrol is Form)
+                {
+                    ctrol.Dispose();
+                }
+            }
+
             if (this.pnlConteudo.Controls.Count > 0)
                 this.pnlConteudo.Controls.RemoveAt(0);
 
@@ -104,6 +113,11 @@ namespace ProjetoVillaBeach
         private void BtnMatricula_Click(object sender, EventArgs e)
         {
             ShowSubMenu(SubMenuMatricula);
+        }
+
+        private void BtnCurso_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormPesquisaDeCursos());
         }
     }
 }

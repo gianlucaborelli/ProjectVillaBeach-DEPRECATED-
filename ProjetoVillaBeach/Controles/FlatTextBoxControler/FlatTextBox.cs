@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 {
+    [DefaultEvent("_TextChanged")]
+    [DefaultBindingProperty("Text")]
     public partial class FlatTextBox : UserControl, IValidationType, INotifyPropertyChanged
     {
         #region Custom Property 
@@ -162,8 +164,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         public void Clear()
         {
             txtBox.Clear();
-        } 
-
+        }
 
         #endregion
 
@@ -242,9 +243,9 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
 
         public FlatTextBox()
         {
-            InitializeComponent();
+            InitializeComponent();              
         }
-        private IValidationServices _services = null;
+        private IValidationServices _services = null;        
 
         private void OnLoad_Event(object sender, EventArgs e)
         {
@@ -256,7 +257,7 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             {
                 RequiredMet = false;
             }
-        }
+        }        
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -313,6 +314,18 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             _services.KeyPress(sender, e);
         }
 
-
+        private void Controle_Resize(object sender, EventArgs e)
+        {
+            this.Invalidate();
+        }
+        
+        public event EventHandler _TextChanged;   
+        
+        private void FlatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.OnTextChanged(e);
+            if (_TextChanged != null)
+                _TextChanged.Invoke(sender, e);
+        }
     }
 }

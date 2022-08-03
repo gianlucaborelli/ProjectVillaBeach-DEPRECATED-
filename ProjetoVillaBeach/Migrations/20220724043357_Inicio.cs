@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace ProjetoVillaBeach.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,7 +21,7 @@ namespace ProjetoVillaBeach.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Observacao = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                    Observacao = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataInicial = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     DataFinal = table.Column<DateTime>(type: "datetime(6)", nullable: true)

@@ -8,33 +8,40 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Email : IEntityObjectState
+    public class Email : BaseClass
     {
-        [Key]
-        public int IdEmail { get; set; }
-        public string Endereco { get; set; }
-        public string Observacao { get; set; }
-
-        public int IdPessoa { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
+        public string EmailAddress 
         {
             get
             {
-                return _objectState;
+                return _emailAddress;
             }
             set
             {
-                _objectState = value;
+                SetProperty(ref _emailAddress, value);
             }
         }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
+        private string _emailAddress;
 
+        public string? Obs
+        {
+            get
+            {
+                return _obs;
+            }
+            set
+            {
+                SetProperty(ref _obs, value);
+            }
+        }
+        private string? _obs;
+
+        public int IdPessoa { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
+             
         public Email()
         {
-            if (new EmailAddressAttribute().IsValid((Endereco)))
+            if (new EmailAddressAttribute().IsValid((EmailAddress)))
             { 
 
             }

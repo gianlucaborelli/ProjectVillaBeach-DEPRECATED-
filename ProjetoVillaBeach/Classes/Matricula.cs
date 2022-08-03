@@ -8,12 +8,33 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Matricula : IEntityObjectState
+    public class Matricula : BaseClass
     {
-        [Key]
-        public int IdMatricula { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
+        public DateTime DataInicio
+        {
+            get
+            {
+                return _dataInicio;
+            }
+            set
+            {
+                SetProperty(ref _dataInicio, value);
+            }
+        }
+        private DateTime _dataInicio;
+
+        public DateTime DataFim
+        {
+            get
+            {
+                return _dataFim;
+            }
+            set
+            {
+                SetProperty(ref _dataFim, value);
+            }
+        }
+        private DateTime _dataFim;
 
         public int IdPessoa { get; set; }
         public virtual Pessoa Pessoa { get; set; }
@@ -22,20 +43,5 @@ namespace ProjetoVillaBeach.Classes
         public virtual Modalidade Modalidade { get; set; }
 
         public virtual List<Mensalidade> Mensalidades { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
     }
 }

@@ -6,37 +6,38 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoVillaBeach.Classes;
 
+#nullable disable
+
 namespace ProjetoVillaBeach.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220710011435_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220802012825_UpdateMensalidadeMatricula")]
+    partial class UpdateMensalidadeMatricula
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.17");
+                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
                 {
-                    b.Property<int>("IdEmail")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Endereco")
+                    b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("IdPessoa")
                         .HasColumnType("int");
 
-                    b.Property<string>("Observacao")
-                        .IsRequired()
+                    b.Property<string>("Obs")
                         .HasColumnType("longtext");
 
-                    b.HasKey("IdEmail");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -45,7 +46,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Endereco", b =>
                 {
-                    b.Property<int>("IdEndereco")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -77,7 +78,7 @@ namespace ProjetoVillaBeach.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("varchar(2)");
 
-                    b.HasKey("IdEndereco");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -86,7 +87,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Matricula", b =>
                 {
-                    b.Property<int>("IdMatricula")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -102,7 +103,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("IdPessoa")
                         .HasColumnType("int");
 
-                    b.HasKey("IdMatricula");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdModalidade");
 
@@ -113,7 +114,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Mensalidade", b =>
                 {
-                    b.Property<int>("IdMensalidade")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -132,7 +133,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("IdValorModalidade")
                         .HasColumnType("int");
 
-                    b.HasKey("IdMensalidade");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdMatricula");
 
@@ -143,7 +144,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Modalidade", b =>
                 {
-                    b.Property<int>("IdModalidade")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -160,22 +161,21 @@ namespace ProjetoVillaBeach.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.Property<string>("Observacao")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.HasKey("IdModalidade");
+                    b.HasKey("Id");
 
                     b.ToTable("Modalidades");
                 });
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Pessoa", b =>
                 {
-                    b.Property<int>("IdPessoa")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataDeCadastro")
+                    b.Property<DateTime?>("DataDeCadastro")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("DataDeNascimento")
@@ -195,23 +195,19 @@ namespace ProjetoVillaBeach.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<ulong?>("NumeroCpf")
-                        .IsRequired()
                         .HasColumnType("bigint unsigned");
 
                     b.Property<string>("NumeroRg")
                         .HasColumnType("longtext");
 
-                    b.HasKey("IdPessoa");
-
-                    b.HasIndex("NumeroCpf")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("Pessoas");
                 });
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.Telefone", b =>
                 {
-                    b.Property<int>("IdTelefone")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -221,11 +217,10 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
-                    b.Property<string>("Observacao")
-                        .IsRequired()
+                    b.Property<string>("Obs")
                         .HasColumnType("longtext");
 
-                    b.HasKey("IdTelefone");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -234,7 +229,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Classes.ValoresModalidade", b =>
                 {
-                    b.Property<int>("IdValoresModalidades")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -250,7 +245,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<double>("Valor")
                         .HasColumnType("double");
 
-                    b.HasKey("IdValoresModalidades");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdModalidade");
 

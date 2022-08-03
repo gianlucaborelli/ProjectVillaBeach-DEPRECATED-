@@ -11,42 +11,105 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Endereco : IEntityObjectState
+    public class Endereco : BaseClass
     {
-        [Key]
-        public int IdEndereco { get; set; }      
-        public string? Cep { get; set; }
-        public string? Logradouro { get; set; }
-        public string? Numero { get; set; }
-
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "Bairro deve conter de 3 a 100 caracteres")]
-        public string? Bairro { get; set; }
-
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "Cidade deve conter de 3 a 100 caracteres")]
-        public string? Localidade { get; set; }
-
-        [StringLength(2, MinimumLength = 2, ErrorMessage = "Estado deve conter 2 caracteres")]
-        public string? Uf { get; set; }
-
-        [StringLength(100, ErrorMessage = "OBservação deve conter o maximo de 100 caracteres")]
-        public string? Obs { get; set; }
-
-        public int IdPessoa { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
+        public string? Cep
         {
             get
             {
-                return _objectState;
+                return _cep;
             }
             set
             {
-                _objectState = value;
+                SetProperty(ref _cep, value);
             }
         }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
+        private string? _cep;
+
+        public string? Logradouro 
+        {
+            get
+            { 
+                return _logradouro;
+            } 
+            set
+            {
+                SetProperty(ref _logradouro, value);
+            }
+        }
+        private string? _logradouro;
+
+        public string? Numero 
+        { 
+            get 
+            {
+                return _numero;
+            }
+            set
+            {
+                SetProperty(ref _numero, value);
+            }
+        }
+        private string? _numero;
+
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "Bairro deve conter de 3 a 100 caracteres")]
+        public string? Bairro 
+        {
+            get 
+            {
+                return _bairro;
+            }
+            set
+            {
+                SetProperty(ref _bairro, value);
+            }
+        }
+        private string? _bairro;
+
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "Cidade deve conter de 3 a 100 caracteres")]
+        public string? Localidade
+        {
+            get
+            {
+                return _localidade;
+            }
+            set
+            {
+                SetProperty(ref _localidade, value);
+            }
+        }
+        private string? _localidade;
+
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "Estado deve conter 2 caracteres")]
+        public string? Uf
+        {
+            get
+            {
+                return _uf;
+            }
+            set
+            {
+                SetProperty(ref _uf, value);
+            }
+        }
+        private string? _uf;
+
+        [StringLength(100, ErrorMessage = "OBservação deve conter o maximo de 100 caracteres")]
+        public string? Obs
+        {
+            get
+            {
+                return _obs;
+            }
+            set
+            {
+                SetProperty(ref _obs, value);
+            }
+        }
+        private string? _obs;
+
+        public int IdPessoa { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
 
         public Endereco()
         {
@@ -61,7 +124,7 @@ namespace ProjetoVillaBeach.Classes
             Bairro = endereco.Bairro;
             Localidade = endereco.Localidade;
             Uf = endereco.Uf;
-            Cep = endereco.Cep;            
+            Cep = endereco.Cep;
         }
 
         public static string TrataCep(string cep)
@@ -74,7 +137,7 @@ namespace ProjetoVillaBeach.Classes
                     cep = cep.Replace("-", "");
                     cep = cep.Insert(5, "-");
                 }
-            }           
+            }
 
             return cep;
         }
@@ -84,11 +147,11 @@ namespace ProjetoVillaBeach.Classes
             using (HttpClient? client = new())
             {
                 Endereco endereco = new();
-                
+
                 var response = client.GetAsync("https://viacep.com.br/ws/" + cep + "/json/").Result;
 
                 if (response.IsSuccessStatusCode)
-                {  
+                {
                     endereco = await response.Content.ReadAsAsync<Endereco>();
                 }
                 return endereco;
@@ -130,5 +193,5 @@ namespace ProjetoVillaBeach.Classes
                 contexto.SaveChanges();
             }
         }
-    }    
+    }
 }
