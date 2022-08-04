@@ -35,20 +35,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.flatTxtBoxNomeModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
-            this.flatTxtBoxInicioModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
-            this.flatTxtBoxFimModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.dgvValoresModalidades = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.flatTxtBoxValorModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnExcluirValor = new System.Windows.Forms.Button();
             this.btnCancelarAlterarValor = new System.Windows.Forms.Button();
+            this.flatTxtBoxValorModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.flatTxtBoxInicioValorModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.flatTxtBoxFimValorModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.txtObsModalidade = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flatTxtBoxFimModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtBoxInicioModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
+            this.flatTxtBoxNomeModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvValoresModalidades)).BeginInit();
@@ -65,7 +65,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1215, 90);
+            this.panel1.Size = new System.Drawing.Size(1206, 90);
             this.panel1.TabIndex = 4;
             // 
             // label1
@@ -101,10 +101,10 @@
             this.panel2.Controls.Add(this.btnExcluir);
             this.panel2.Controls.Add(this.btnSalvar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 764);
+            this.panel2.Location = new System.Drawing.Point(0, 741);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1215, 90);
+            this.panel2.Size = new System.Drawing.Size(1206, 90);
             this.panel2.TabIndex = 5;
             // 
             // btnExcluir
@@ -138,7 +138,7 @@
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvar.Location = new System.Drawing.Point(1006, 15);
+            this.btnSalvar.Location = new System.Drawing.Point(997, 15);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(5);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Padding = new System.Windows.Forms.Padding(10, 0, 35, 0);
@@ -149,56 +149,6 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
-            // flatTxtBoxNomeModalidade
-            // 
-            this.flatTxtBoxNomeModalidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flatTxtBoxNomeModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel1.SetColumnSpan(this.flatTxtBoxNomeModalidade, 3);
-            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(15, 10);
-            this.flatTxtBoxNomeModalidade.Margin = new System.Windows.Forms.Padding(5);
-            this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
-            this.flatTxtBoxNomeModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
-            this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome da Modalidade";
-            this.flatTxtBoxNomeModalidade.Required = false;
-            this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(450, 34);
-            this.flatTxtBoxNomeModalidade.TabIndex = 6;
-            this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            // 
-            // flatTxtBoxInicioModalidade
-            // 
-            this.flatTxtBoxInicioModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxInicioModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxInicioModalidade.Location = new System.Drawing.Point(15, 60);
-            this.flatTxtBoxInicioModalidade.Margin = new System.Windows.Forms.Padding(5);
-            this.flatTxtBoxInicioModalidade.Name = "flatTxtBoxInicioModalidade";
-            this.flatTxtBoxInicioModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
-            this.flatTxtBoxInicioModalidade.PlaceholderText = "Início";
-            this.flatTxtBoxInicioModalidade.Required = false;
-            this.flatTxtBoxInicioModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxInicioModalidade.Size = new System.Drawing.Size(215, 34);
-            this.flatTxtBoxInicioModalidade.TabIndex = 7;
-            this.flatTxtBoxInicioModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtBoxInicioModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            // 
-            // flatTxtBoxFimModalidade
-            // 
-            this.flatTxtBoxFimModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxFimModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxFimModalidade.Location = new System.Drawing.Point(250, 60);
-            this.flatTxtBoxFimModalidade.Margin = new System.Windows.Forms.Padding(5);
-            this.flatTxtBoxFimModalidade.Name = "flatTxtBoxFimModalidade";
-            this.flatTxtBoxFimModalidade.Padding = new System.Windows.Forms.Padding(9, 5, 5, 0);
-            this.flatTxtBoxFimModalidade.PlaceholderText = "Fim";
-            this.flatTxtBoxFimModalidade.Required = false;
-            this.flatTxtBoxFimModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxFimModalidade.Size = new System.Drawing.Size(215, 34);
-            this.flatTxtBoxFimModalidade.TabIndex = 8;
-            this.flatTxtBoxFimModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtBoxFimModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            // 
             // dgvValoresModalidades
             // 
             this.dgvValoresModalidades.AllowUserToAddRows = false;
@@ -207,14 +157,14 @@
             this.dgvValoresModalidades.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvValoresModalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvValoresModalidades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValoresModalidades.Location = new System.Drawing.Point(708, 8);
+            this.dgvValoresModalidades.Location = new System.Drawing.Point(699, 8);
             this.dgvValoresModalidades.MultiSelect = false;
             this.dgvValoresModalidades.Name = "dgvValoresModalidades";
             this.dgvValoresModalidades.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.dgvValoresModalidades, 8);
             this.dgvValoresModalidades.RowTemplate.Height = 25;
             this.dgvValoresModalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvValoresModalidades.Size = new System.Drawing.Size(494, 656);
+            this.dgvValoresModalidades.Size = new System.Drawing.Size(494, 633);
             this.dgvValoresModalidades.TabIndex = 9;
             this.dgvValoresModalidades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValoresModalidades_CellClick);
             this.dgvValoresModalidades.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvValoresModalidades_CellFormatting);
@@ -224,29 +174,29 @@
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox1, 4);
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(13, 271);
+            this.groupBox1.Location = new System.Drawing.Point(13, 265);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(679, 393);
+            this.groupBox1.Size = new System.Drawing.Size(670, 376);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Valores";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 7;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxValorModalidade, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAdicionar, 5, 5);
-            this.tableLayoutPanel2.Controls.Add(this.btnExcluirValor, 3, 5);
-            this.tableLayoutPanel2.Controls.Add(this.btnCancelarAlterarValor, 1, 5);
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxInicioValorModalidade, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxFimValorModalidade, 3, 3);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.btnAdicionar, 4, 5);
+            this.tableLayoutPanel2.Controls.Add(this.btnExcluirValor, 2, 5);
+            this.tableLayoutPanel2.Controls.Add(this.btnCancelarAlterarValor, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxValorModalidade, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxInicioValorModalidade, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.flatTxtBoxFimValorModalidade, 2, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -258,23 +208,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(673, 362);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(664, 345);
             this.tableLayoutPanel2.TabIndex = 6;
-            // 
-            // flatTxtBoxValorModalidade
-            // 
-            this.flatTxtBoxValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxValorModalidade.Location = new System.Drawing.Point(13, 8);
-            this.flatTxtBoxValorModalidade.Name = "flatTxtBoxValorModalidade";
-            this.flatTxtBoxValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
-            this.flatTxtBoxValorModalidade.PlaceholderText = "Valor";
-            this.flatTxtBoxValorModalidade.Required = false;
-            this.flatTxtBoxValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxValorModalidade.Size = new System.Drawing.Size(205, 33);
-            this.flatTxtBoxValorModalidade.TabIndex = 0;
-            this.flatTxtBoxValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtBoxValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             // 
             // btnAdicionar
             // 
@@ -282,9 +217,9 @@
             this.btnAdicionar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Location = new System.Drawing.Point(455, 108);
+            this.btnAdicionar.Location = new System.Drawing.Point(451, 108);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(205, 54);
+            this.btnAdicionar.Size = new System.Drawing.Size(210, 54);
             this.btnAdicionar.TabIndex = 3;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -296,9 +231,9 @@
             this.btnExcluirValor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExcluirValor.FlatAppearance.BorderSize = 0;
             this.btnExcluirValor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirValor.Location = new System.Drawing.Point(234, 108);
+            this.btnExcluirValor.Location = new System.Drawing.Point(227, 108);
             this.btnExcluirValor.Name = "btnExcluirValor";
-            this.btnExcluirValor.Size = new System.Drawing.Size(205, 54);
+            this.btnExcluirValor.Size = new System.Drawing.Size(208, 54);
             this.btnExcluirValor.TabIndex = 4;
             this.btnExcluirValor.Text = "Excluir";
             this.btnExcluirValor.UseVisualStyleBackColor = false;
@@ -310,41 +245,71 @@
             this.btnCancelarAlterarValor.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCancelarAlterarValor.FlatAppearance.BorderSize = 0;
             this.btnCancelarAlterarValor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarAlterarValor.Location = new System.Drawing.Point(13, 108);
+            this.btnCancelarAlterarValor.Location = new System.Drawing.Point(3, 108);
             this.btnCancelarAlterarValor.Name = "btnCancelarAlterarValor";
-            this.btnCancelarAlterarValor.Size = new System.Drawing.Size(205, 54);
+            this.btnCancelarAlterarValor.Size = new System.Drawing.Size(208, 54);
             this.btnCancelarAlterarValor.TabIndex = 5;
             this.btnCancelarAlterarValor.Text = "Cancelar";
             this.btnCancelarAlterarValor.UseVisualStyleBackColor = false;
             this.btnCancelarAlterarValor.Click += new System.EventHandler(this.BtnCancelarAlteracaoValor_Click);
             // 
+            // flatTxtBoxValorModalidade
+            // 
+            this.flatTxtBoxValorModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxValorModalidade.BorderSize = 2;
+            this.flatTxtBoxValorModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxValorModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxValorModalidade.Location = new System.Drawing.Point(3, 8);
+            this.flatTxtBoxValorModalidade.Multiline = false;
+            this.flatTxtBoxValorModalidade.Name = "flatTxtBoxValorModalidade";
+            this.flatTxtBoxValorModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxValorModalidade.PasswordChar = false;
+            this.flatTxtBoxValorModalidade.PlaceholderText = "Valor";
+            this.flatTxtBoxValorModalidade.Required = false;
+            this.flatTxtBoxValorModalidade.RequirementsAreSatisfied = false;
+            this.flatTxtBoxValorModalidade.Size = new System.Drawing.Size(208, 39);
+            this.flatTxtBoxValorModalidade.TabIndex = 6;
+            this.flatTxtBoxValorModalidade.UnderlinedStyle = true;
+            this.flatTxtBoxValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtBoxValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            // 
             // flatTxtBoxInicioValorModalidade
             // 
-            this.flatTxtBoxInicioValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxInicioValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxInicioValorModalidade.Location = new System.Drawing.Point(13, 58);
+            this.flatTxtBoxInicioValorModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxInicioValorModalidade.BorderSize = 2;
+            this.flatTxtBoxInicioValorModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxInicioValorModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxInicioValorModalidade.Location = new System.Drawing.Point(3, 58);
+            this.flatTxtBoxInicioValorModalidade.Multiline = false;
             this.flatTxtBoxInicioValorModalidade.Name = "flatTxtBoxInicioValorModalidade";
-            this.flatTxtBoxInicioValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
-            this.flatTxtBoxInicioValorModalidade.PlaceholderText = "Início deste valor";
+            this.flatTxtBoxInicioValorModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxInicioValorModalidade.PasswordChar = false;
+            this.flatTxtBoxInicioValorModalidade.PlaceholderText = "Inicio do valor";
             this.flatTxtBoxInicioValorModalidade.Required = false;
             this.flatTxtBoxInicioValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxInicioValorModalidade.Size = new System.Drawing.Size(205, 33);
-            this.flatTxtBoxInicioValorModalidade.TabIndex = 1;
+            this.flatTxtBoxInicioValorModalidade.Size = new System.Drawing.Size(208, 39);
+            this.flatTxtBoxInicioValorModalidade.TabIndex = 7;
+            this.flatTxtBoxInicioValorModalidade.UnderlinedStyle = true;
             this.flatTxtBoxInicioValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxInicioValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
             // 
             // flatTxtBoxFimValorModalidade
             // 
-            this.flatTxtBoxFimValorModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxFimValorModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxFimValorModalidade.Location = new System.Drawing.Point(234, 58);
+            this.flatTxtBoxFimValorModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxFimValorModalidade.BorderSize = 2;
+            this.flatTxtBoxFimValorModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxFimValorModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxFimValorModalidade.Location = new System.Drawing.Point(227, 58);
+            this.flatTxtBoxFimValorModalidade.Multiline = false;
             this.flatTxtBoxFimValorModalidade.Name = "flatTxtBoxFimValorModalidade";
-            this.flatTxtBoxFimValorModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
-            this.flatTxtBoxFimValorModalidade.PlaceholderText = "Fim deste valor";
+            this.flatTxtBoxFimValorModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxFimValorModalidade.PasswordChar = false;
+            this.flatTxtBoxFimValorModalidade.PlaceholderText = "Fim do valor";
             this.flatTxtBoxFimValorModalidade.Required = false;
             this.flatTxtBoxFimValorModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxFimValorModalidade.Size = new System.Drawing.Size(205, 33);
-            this.flatTxtBoxFimValorModalidade.TabIndex = 2;
+            this.flatTxtBoxFimValorModalidade.Size = new System.Drawing.Size(208, 39);
+            this.flatTxtBoxFimValorModalidade.TabIndex = 8;
+            this.flatTxtBoxFimValorModalidade.UnderlinedStyle = true;
             this.flatTxtBoxFimValorModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxFimValorModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
             // 
@@ -356,7 +321,7 @@
             this.txtObsModalidade.Multiline = true;
             this.txtObsModalidade.Name = "txtObsModalidade";
             this.tableLayoutPanel1.SetRowSpan(this.txtObsModalidade, 2);
-            this.txtObsModalidade.Size = new System.Drawing.Size(679, 152);
+            this.txtObsModalidade.Size = new System.Drawing.Size(670, 146);
             this.txtObsModalidade.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -373,10 +338,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.txtObsModalidade, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxNomeModalidade, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvValoresModalidades, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxInicioModalidade, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxFimModalidade, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxInicioModalidade, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxNomeModalidade, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 90);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -391,15 +356,76 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.42858F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1215, 674);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1206, 651);
             this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // flatTxtBoxFimModalidade
+            // 
+            this.flatTxtBoxFimModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxFimModalidade.BorderSize = 2;
+            this.flatTxtBoxFimModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxFimModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxFimModalidade.Location = new System.Drawing.Point(245, 58);
+            this.flatTxtBoxFimModalidade.Multiline = false;
+            this.flatTxtBoxFimModalidade.Name = "flatTxtBoxFimModalidade";
+            this.flatTxtBoxFimModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxFimModalidade.PasswordChar = false;
+            this.flatTxtBoxFimModalidade.PlaceholderText = "Fim";
+            this.flatTxtBoxFimModalidade.Required = false;
+            this.flatTxtBoxFimModalidade.RequirementsAreSatisfied = false;
+            this.flatTxtBoxFimModalidade.Size = new System.Drawing.Size(216, 39);
+            this.flatTxtBoxFimModalidade.TabIndex = 12;
+            this.flatTxtBoxFimModalidade.UnderlinedStyle = true;
+            this.flatTxtBoxFimModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtBoxFimModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
+            // 
+            // flatTxtBoxInicioModalidade
+            // 
+            this.flatTxtBoxInicioModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxInicioModalidade.BorderSize = 2;
+            this.flatTxtBoxInicioModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxInicioModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxInicioModalidade.Location = new System.Drawing.Point(13, 58);
+            this.flatTxtBoxInicioModalidade.Multiline = false;
+            this.flatTxtBoxInicioModalidade.Name = "flatTxtBoxInicioModalidade";
+            this.flatTxtBoxInicioModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxInicioModalidade.PasswordChar = false;
+            this.flatTxtBoxInicioModalidade.PlaceholderText = "Inicio";
+            this.flatTxtBoxInicioModalidade.Required = false;
+            this.flatTxtBoxInicioModalidade.RequirementsAreSatisfied = false;
+            this.flatTxtBoxInicioModalidade.Size = new System.Drawing.Size(216, 39);
+            this.flatTxtBoxInicioModalidade.TabIndex = 13;
+            this.flatTxtBoxInicioModalidade.UnderlinedStyle = true;
+            this.flatTxtBoxInicioModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtBoxInicioModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
+            // 
+            // flatTxtBoxNomeModalidade
+            // 
+            this.flatTxtBoxNomeModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxNomeModalidade.BorderSize = 2;
+            this.tableLayoutPanel1.SetColumnSpan(this.flatTxtBoxNomeModalidade, 3);
+            this.flatTxtBoxNomeModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxNomeModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(13, 8);
+            this.flatTxtBoxNomeModalidade.Multiline = false;
+            this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
+            this.flatTxtBoxNomeModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxNomeModalidade.PasswordChar = false;
+            this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome";
+            this.flatTxtBoxNomeModalidade.Required = false;
+            this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
+            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(448, 39);
+            this.flatTxtBoxNomeModalidade.TabIndex = 14;
+            this.flatTxtBoxNomeModalidade.UnderlinedStyle = true;
+            this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             // 
             // FormCadDeCursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
-            this.ClientSize = new System.Drawing.Size(1215, 854);
+            this.ClientSize = new System.Drawing.Size(1206, 831);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -431,19 +457,19 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxNomeModalidade;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxInicioModalidade;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxFimModalidade;
         private System.Windows.Forms.DataGridView dgvValoresModalidades;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxValorModalidade;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxFimValorModalidade;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxInicioValorModalidade;
         private System.Windows.Forms.TextBox txtObsModalidade;
         private System.Windows.Forms.Button btnCancelarAlterarValor;
         private System.Windows.Forms.Button btnExcluirValor;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxFimModalidade;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxInicioModalidade;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxNomeModalidade;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxValorModalidade;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxInicioValorModalidade;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxFimValorModalidade;
     }
 }
