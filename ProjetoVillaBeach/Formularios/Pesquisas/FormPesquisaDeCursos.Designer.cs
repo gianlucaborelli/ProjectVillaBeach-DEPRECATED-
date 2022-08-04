@@ -33,8 +33,8 @@
             this.btnCadastrarNovo = new System.Windows.Forms.Button();
             this.dgvModalidades = new System.Windows.Forms.DataGridView();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.flatTxtBoxNomeModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flatTxtBoxNomeModalidade = new ProjetoVillaBeach.Controles.FlatTextBoxControler.FlatTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModalidades)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -124,21 +124,6 @@
             this.btnPesquisar.UseVisualStyleBackColor = false;
             this.btnPesquisar.Click += new System.EventHandler(this.BtnPesquisar_Click);
             // 
-            // flatTxtBoxNomeModalidade
-            // 
-            this.flatTxtBoxNomeModalidade.BackColor = System.Drawing.Color.Gainsboro;
-            this.flatTxtBoxNomeModalidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(18, 18);
-            this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
-            this.flatTxtBoxNomeModalidade.Padding = new System.Windows.Forms.Padding(5, 3, 3, 0);
-            this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome da Modalidade";
-            this.flatTxtBoxNomeModalidade.Required = false;
-            this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
-            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(378, 33);
-            this.flatTxtBoxNomeModalidade.TabIndex = 19;
-            this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
-            this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 7;
@@ -149,12 +134,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxNomeModalidade, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnExcluirCadastro, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnCadastrarNovo, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnAbrirCadastro, 5, 8);
             this.tableLayoutPanel1.Controls.Add(this.dgvModalidades, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnPesquisar, 5, 5);
+            this.tableLayoutPanel1.Controls.Add(this.flatTxtBoxNomeModalidade, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -171,6 +156,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1213, 835);
             this.tableLayoutPanel1.TabIndex = 20;
+            // 
+            // flatTxtBoxNomeModalidade
+            // 
+            this.flatTxtBoxNomeModalidade.BorderColor = System.Drawing.Color.DarkBlue;
+            this.flatTxtBoxNomeModalidade.BorderSize = 2;
+            this.flatTxtBoxNomeModalidade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flatTxtBoxNomeModalidade.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flatTxtBoxNomeModalidade.Location = new System.Drawing.Point(18, 18);
+            this.flatTxtBoxNomeModalidade.Multiline = false;
+            this.flatTxtBoxNomeModalidade.Name = "flatTxtBoxNomeModalidade";
+            this.flatTxtBoxNomeModalidade.Padding = new System.Windows.Forms.Padding(7);
+            this.flatTxtBoxNomeModalidade.PasswordChar = false;
+            this.flatTxtBoxNomeModalidade.PlaceholderText = "Nome";
+            this.flatTxtBoxNomeModalidade.Required = false;
+            this.flatTxtBoxNomeModalidade.RequirementsAreSatisfied = false;
+            this.flatTxtBoxNomeModalidade.Size = new System.Drawing.Size(378, 39);
+            this.flatTxtBoxNomeModalidade.TabIndex = 19;
+            this.flatTxtBoxNomeModalidade.UnderlinedStyle = true;
+            this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
+            this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
             // 
             // FormPesquisaDeCursos
             // 
@@ -197,7 +202,7 @@
         private System.Windows.Forms.Button btnCadastrarNovo;
         private System.Windows.Forms.DataGridView dgvModalidades;
         private System.Windows.Forms.Button btnPesquisar;
-        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxNomeModalidade;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Controles.FlatTextBoxControler.FlatTextBox flatTxtBoxNomeModalidade;
     }
 }
