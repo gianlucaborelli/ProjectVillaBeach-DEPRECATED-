@@ -46,6 +46,7 @@
             this.btnAddEndereco = new System.Windows.Forms.Button();
             this.flpEndereco = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddContatos = new System.Windows.Forms.Button();
+            this.imageCapture1 = new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture();
             this.tbContatos = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@
             this.tableLayoutPanel2.Controls.Add(this.flatTxtCpf, 7, 3);
             this.tableLayoutPanel2.Controls.Add(this.flatTxtDn, 7, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 1, 13);
+            this.tableLayoutPanel2.Controls.Add(this.imageCapture1, 1, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 15;
@@ -376,6 +378,16 @@
             this.btnAddContatos.Text = "Adicionar Contato";
             this.btnAddContatos.UseVisualStyleBackColor = false;
             // 
+            // imageCapture1
+            // 
+            this.imageCapture1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageCapture1.Location = new System.Drawing.Point(9, 9);
+            this.imageCapture1.Margin = new System.Windows.Forms.Padding(4);
+            this.imageCapture1.Name = "imageCapture1";
+            this.tableLayoutPanel2.SetRowSpan(this.imageCapture1, 11);
+            this.imageCapture1.Size = new System.Drawing.Size(227, 278);
+            this.imageCapture1.TabIndex = 10;
+            // 
             // tbContatos
             // 
             this.tbContatos.AutoScroll = true;
@@ -485,5 +497,6 @@
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtNome;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtCpf;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtDn;
+        private Controles.ImageCaptureControler.ImageCapture imageCapture1;
     }
 }

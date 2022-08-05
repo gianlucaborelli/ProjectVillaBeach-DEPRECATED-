@@ -39,9 +39,11 @@
             this.btnCadastroDePessoas = new System.Windows.Forms.Button();
             this.btnCadastro = new System.Windows.Forms.Button();
             this.pnlConteudo = new System.Windows.Forms.Panel();
+            this.imageCapture1 = new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture();
             this.pnlMenuLateral.SuspendLayout();
             this.SubMenuMatricula.SuspendLayout();
             this.SubMenuCadastro.SuspendLayout();
+            this.pnlConteudo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTitulo
@@ -182,12 +184,21 @@
             // pnlConteudo
             // 
             this.pnlConteudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
+            this.pnlConteudo.Controls.Add(this.imageCapture1);
             this.pnlConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlConteudo.Location = new System.Drawing.Point(260, 84);
             this.pnlConteudo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlConteudo.Name = "pnlConteudo";
             this.pnlConteudo.Size = new System.Drawing.Size(884, 661);
             this.pnlConteudo.TabIndex = 2;
+            // 
+            // imageCapture1
+            // 
+            this.imageCapture1.Location = new System.Drawing.Point(140, 84);
+            this.imageCapture1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageCapture1.Name = "imageCapture1";
+            this.imageCapture1.Size = new System.Drawing.Size(305, 367);
+            this.imageCapture1.TabIndex = 0;
             // 
             // FormPrincipal
             // 
@@ -206,6 +217,7 @@
             this.pnlMenuLateral.ResumeLayout(false);
             this.SubMenuMatricula.ResumeLayout(false);
             this.SubMenuCadastro.ResumeLayout(false);
+            this.pnlConteudo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,5 +235,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnMatricula;
         private System.Windows.Forms.Button btnCurso;
+        private Controles.ImageCaptureControler.ImageCapture imageCapture1;
     }
 }
