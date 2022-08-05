@@ -44,11 +44,12 @@
             this.btnOpenImageFile.FlatAppearance.BorderSize = 0;
             this.btnOpenImageFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenImageFile.Image = global::ProjetoVillaBeach.Properties.Resources.icons8_Browse_Folder_32px_1;
-            this.btnOpenImageFile.Location = new System.Drawing.Point(7, 213);
+            this.btnOpenImageFile.Location = new System.Drawing.Point(7, 218);
             this.btnOpenImageFile.Name = "btnOpenImageFile";
-            this.btnOpenImageFile.Size = new System.Drawing.Size(62, 39);
+            this.btnOpenImageFile.Size = new System.Drawing.Size(34, 34);
             this.btnOpenImageFile.TabIndex = 0;
             this.btnOpenImageFile.UseVisualStyleBackColor = false;
+            this.btnOpenImageFile.Click += new System.EventHandler(this.OpenImagemFile_Click);
             // 
             // btnOpenCaptureImage
             // 
@@ -57,9 +58,9 @@
             this.btnOpenCaptureImage.FlatAppearance.BorderSize = 0;
             this.btnOpenCaptureImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenCaptureImage.Image = global::ProjetoVillaBeach.Properties.Resources.icons8_camera_32px_1;
-            this.btnOpenCaptureImage.Location = new System.Drawing.Point(151, 213);
+            this.btnOpenCaptureImage.Location = new System.Drawing.Point(180, 218);
             this.btnOpenCaptureImage.Name = "btnOpenCaptureImage";
-            this.btnOpenCaptureImage.Size = new System.Drawing.Size(62, 39);
+            this.btnOpenCaptureImage.Size = new System.Drawing.Size(34, 34);
             this.btnOpenCaptureImage.TabIndex = 1;
             this.btnOpenCaptureImage.UseVisualStyleBackColor = false;
             this.btnOpenCaptureImage.Click += new System.EventHandler(this.OpenCaptureImage_Click);
@@ -72,9 +73,9 @@
             this.btnClearImageCaptured.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearImageCaptured.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClearImageCaptured.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.btnClearImageCaptured.Location = new System.Drawing.Point(79, 213);
+            this.btnClearImageCaptured.Location = new System.Drawing.Point(51, 218);
             this.btnClearImageCaptured.Name = "btnClearImageCaptured";
-            this.btnClearImageCaptured.Size = new System.Drawing.Size(62, 39);
+            this.btnClearImageCaptured.Size = new System.Drawing.Size(119, 34);
             this.btnClearImageCaptured.TabIndex = 2;
             this.btnClearImageCaptured.Text = "Limpar";
             this.btnClearImageCaptured.UseVisualStyleBackColor = false;
@@ -85,7 +86,8 @@
             this.pbImageCaptured.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbImageCaptured.Location = new System.Drawing.Point(7, 7);
             this.pbImageCaptured.Name = "pbImageCaptured";
-            this.pbImageCaptured.Size = new System.Drawing.Size(206, 196);
+            this.pbImageCaptured.Size = new System.Drawing.Size(207, 201);
+            this.pbImageCaptured.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImageCaptured.TabIndex = 3;
             this.pbImageCaptured.TabStop = false;
             this.pbImageCaptured.SizeChanged += new System.EventHandler(this.PictureBox_SizeChanged);
@@ -94,11 +96,11 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel1.Controls.Add(this.pbImageCaptured, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnOpenCaptureImage, 5, 3);
@@ -111,7 +113,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(221, 259);
             this.tableLayoutPanel1.TabIndex = 4;
