@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Drawing;
 
 namespace ProjetoVillaBeach.Classes
 {
@@ -23,14 +25,62 @@ namespace ProjetoVillaBeach.Classes
 
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 
-        private string connectionString = "server =localhost;port=3306;database=EFCoreMySQL;user=root;password=1234";
-        
+        private readonly string connectionString = "server =localhost;port=3306;database=EFCoreMySQL;user=root;password=1234";
+
+        public Contexto()
+        {
+            ChangeTracker.StateChanged += OnEntityStateChanged;
+            ChangeTracker.Tracked += OnTracked;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var serverVersion = new MariaDbServerVersion(new Version(10, 6, 7));
             optionsBuilder.UseMySql(connectionString, serverVersion);
             optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
             optionsBuilder.UseLazyLoadingProxies();
+        }
+
+        private void OnTracked(object? sender, EntityTrackedEventArgs? e)
+        {
+            var baseClass = (BaseClass)e.Entry.Entity;
+
+            switch (baseClass.ObjectState)
+            {
+                case EntityObjectState.Added:
+                    e.Entry.State = EntityState.Added;
+                    break;
+                case EntityObjectState.Modified:
+                    e.Entry.State = EntityState.Modified;
+                    break;
+                case EntityObjectState.Deleted:
+                    e.Entry.State = EntityState.Deleted;
+                    break;
+                default:
+                    e.Entry.State = EntityState.Unchanged;
+                    break;
+            }
+        }
+
+        private void OnEntityStateChanged(object? sender, EntityStateChangedEventArgs? e)
+        {
+            var baseClass = (BaseClass)e.Entry.Entity;
+
+            switch (e.NewState)
+            {
+                case EntityState.Added:
+                    baseClass.ObjectState = EntityObjectState.Added;
+                    break;
+                case EntityState.Modified:
+                    baseClass.ObjectState = EntityObjectState.Modified;
+                    break;
+                case EntityState.Deleted:
+                    baseClass.ObjectState = EntityObjectState.Deleted;
+                    break;
+                case EntityState.Unchanged:
+                    baseClass.ObjectState = EntityObjectState.Unchanged;
+                    break;
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -83,7 +133,7 @@ namespace ProjetoVillaBeach.Classes
 
             modelBuilder.Entity<Matricula>()
                .HasOne<Modalidade>(e => e.Modalidade)
-                    .WithMany(c => c.Matriculas)                    
+                    .WithMany(c => c.Matriculas)
                         .HasForeignKey(e => e.IdModalidade);
 
             modelBuilder.Entity<Matricula>()

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProjetoVillaBeach.Controles;
 using System;
 using System.Collections.Generic;
@@ -94,6 +94,7 @@ namespace ProjetoVillaBeach.Classes
         public Modalidade()
         {
             
+            
         }
 
         private void SetaFimDeModalidade()
@@ -115,53 +116,10 @@ namespace ProjetoVillaBeach.Classes
             try
             {
                 using (var contexto = new Contexto())
-                {
-                    switch (this.ObjectState)
-                    {
-                        case EntityObjectState.Added:
-                            contexto.Modalidades.Attach(this).State = EntityState.Added;
-                            break;
-                        case EntityObjectState.Modified:
-                            contexto.Modalidades.Attach(this).State = EntityState.Modified;
-                            break;
-                        case EntityObjectState.Deleted:
-                            contexto.Modalidades.Attach(this).State = EntityState.Deleted;
-                            break;
-                        default:
-                            contexto.Modalidades.Attach(this).State = EntityState.Unchanged;
-                            break;
-                    }
-
-                    foreach (ValoresModalidade valor in this.ValoresModalidades)
-                    {
-                        switch (valor.ObjectState)
-                        {
-                            case EntityObjectState.Added:
-                                contexto.Entry(valor).State = EntityState.Added;
-                                break;
-                            case EntityObjectState.Modified:
-                                contexto.Entry(valor).State = EntityState.Modified;
-                                break;
-                            case EntityObjectState.Deleted:
-                                contexto.Entry(valor).State = EntityState.Deleted;
-                                break;
-                            default:
-                                contexto.Entry(valor).State = EntityState.Unchanged;
-                                break;
-                        }
-                    }
-
+                {   
+                    contexto.Modalidades.Add(this);
                     contexto.SaveChanges();
-                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
-
-                    this.ObjectState = EntityObjectState.Unchanged;
-
-                    foreach (ValoresModalidade valor in this.ValoresModalidades)
-                    {
-                        if (valor.ObjectState != EntityObjectState.Unchanged)
-                            valor.ObjectState = EntityObjectState.Unchanged;
-
-                    }
+                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);                                        
                 }
             }
             catch (Exception ex)

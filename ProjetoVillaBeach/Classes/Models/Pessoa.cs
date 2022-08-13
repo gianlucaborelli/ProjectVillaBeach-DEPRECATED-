@@ -240,7 +240,6 @@ namespace ProjetoVillaBeach.Classes
                 msg = "Não foram encontradas pessoas com o parâmetro informado";
 
             return contexto.Pessoas.ToList();
-
         }
 
         public void Excluir()
@@ -249,16 +248,5 @@ namespace ProjetoVillaBeach.Classes
             contexto.Remove(this);
             contexto.SaveChanges();
         }
-
-        public void Atualizar()
-        {
-            using (var contexto = new Contexto())
-            {
-                contexto.Set<Pessoa>().Update(this);
-
-                contexto.SaveChanges();
-            }
-        }
-
     }
 }
