@@ -387,6 +387,7 @@
             this.flatTxtBoxInicioModalidade.UnderlinedStyle = true;
             this.flatTxtBoxInicioModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxInicioModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
+            this.flatTxtBoxInicioModalidade.Leave += new System.EventHandler(this.FlatTxtInicioModalidade_Leave);
             // 
             // flatTxtBoxNomeModalidade
             // 
@@ -408,6 +409,7 @@
             this.flatTxtBoxNomeModalidade.UnderlinedStyle = true;
             this.flatTxtBoxNomeModalidade.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtBoxNomeModalidade.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
+            this.flatTxtBoxNomeModalidade.Leave += new System.EventHandler(this.FlatTxtNomeModalidade_Leave);
             // 
             // txtObsModalidade
             // 

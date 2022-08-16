@@ -53,8 +53,11 @@ namespace ProjetoVillaBeach.Classes
                 return _dataInicial;
             }
             set
-            {
-                SetProperty(ref _dataInicial, value);
+            {                
+                if (DataFinal != null && value < DataFinal)
+                    throw new ArgumentException("A Data de inicio não pode ser maior que sua data final");
+                else
+                    SetProperty(ref _dataInicial, value);               
             }
         }
         private DateTime _dataInicial;
@@ -67,15 +70,14 @@ namespace ProjetoVillaBeach.Classes
             }
             set
             {
-                if(value > DataInicial)
-                {
-                    SetaFimDeModalidade();
-                    SetProperty(ref _dataFinal, value);                    
-                }
+                if (value > DataInicial)
+                    SetProperty(ref _dataFinal, value);
+                else
+                    throw new ArgumentException("A Data de inicio não pode ser maior que sua data final");
             }
         }
         private DateTime? _dataFinal;
-                
+
         public virtual List<ValoresModalidade> ValoresModalidades
         {
             get
@@ -83,30 +85,13 @@ namespace ProjetoVillaBeach.Classes
                 return _valoresModalidades;
             }
             set
-            {   
-                SetProperty(ref _valoresModalidades, value);                
+            {
+                SetProperty(ref _valoresModalidades, value);
             }
         }
         private List<ValoresModalidade> _valoresModalidades = new();
 
         public virtual List<Matricula> Matriculas { get; set; }//Modalidade não tem Matricula
-
-        public Modalidade()
-        {
-            
-            
-        }
-
-        private void SetaFimDeModalidade()
-        {
-            foreach(ValoresModalidade valor in ValoresModalidades)
-            {
-                if(valor.DataFim == null)
-                {
-                    valor.DataFim = this.DataFinal;
-                }
-            }
-        }
 
         public void Salvar()
         {
@@ -116,10 +101,10 @@ namespace ProjetoVillaBeach.Classes
             try
             {
                 using (var contexto = new Contexto())
-                {   
+                {
                     contexto.Modalidades.Add(this);
                     contexto.SaveChanges();
-                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);                                        
+                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
                 }
             }
             catch (Exception ex)
@@ -156,16 +141,6 @@ namespace ProjetoVillaBeach.Classes
             var contexto = new Contexto();
             contexto.Remove(this);
             contexto.SaveChanges();
-        }
-
-        public void Atualizar()
-        {
-            using (var contexto = new Contexto())
-            {
-                contexto.Set<Modalidade>().Update(this);
-
-                contexto.SaveChanges();
-            }
         }
     }
 }

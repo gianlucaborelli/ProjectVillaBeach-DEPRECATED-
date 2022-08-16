@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ProjetoVillaBeach.Classes.RepositoryService
 {
     public interface IRepositoryService<T>
     {
-        bool Salvar(bool Insert, T objeto);
+        bool Salvar(T objeto);
 
         bool Excluir(T objeto);
 
-        T Pesquisar(int codigo);
+        T? Pesquisar(int codigo);
 
         ICollection<T> PesquisarTodos();
 

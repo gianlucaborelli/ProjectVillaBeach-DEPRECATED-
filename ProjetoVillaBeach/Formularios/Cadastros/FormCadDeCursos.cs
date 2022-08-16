@@ -1,4 +1,6 @@
 ﻿using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Classes.Controllers;
+using ProjetoVillaBeach.Controles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,27 +18,29 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
     {
         private Modalidade mod = new();
         private ValoresModalidade? valorModalidadeSelecionada = new();
-        
+
+        private ModalidadeController modController;
+
         public FormCadDeCursos()
         {
             InitializeComponent();
-            mod.ObjectState = EntityObjectState.Added;
+            modController = new();
         }
 
-        public FormCadDeCursos(Modalidade mod)
+        public FormCadDeCursos(Modalidade modalidade)
         {
             InitializeComponent();
-            this.mod = mod;
             AtivaControlesDeModalidade(false);
+            modController = new(modalidade);
         }
 
         //Formulário
         private void Form_OnLoad(object sender, EventArgs e)
         {
-            flatTxtBoxNomeModalidade.DataBindings.Add("Text", mod, "Nome", true, DataSourceUpdateMode.OnPropertyChanged);
-            flatTxtBoxInicioModalidade.DataBindings.Add("Text", mod, "DataInicial", true, DataSourceUpdateMode.OnPropertyChanged);
-            flatTxtBoxFimModalidade.DataBindings.Add("Text", mod, "DataFinal", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtObsModalidade.DataBindings.Add("Text", mod, "Observacao", true, DataSourceUpdateMode.OnPropertyChanged);
+            flatTxtBoxNomeModalidade.Text = modController.ModalidadeSelecionada.Nome;
+            flatTxtBoxInicioModalidade.Text = modController.ModalidadeSelecionada.DataInicial.ToString("dd/MM/yyyy");
+            flatTxtBoxFimModalidade.Text = modController.ModalidadeSelecionada.DataFinal.ToString();
+            txtObsModalidade.Text = modController.ModalidadeSelecionada.Observacao;
 
             PopupaGridValoresModalidade();
         }
@@ -53,10 +57,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            bool canClose = !(mod.ObjectState == EntityObjectState.Added
-                           || mod.ObjectState == EntityObjectState.Modified);
+            bool canClose = !(modController.ModalidadeSelecionada.ObjectState == EntityObjectState.Added
+                           || modController.ModalidadeSelecionada.ObjectState == EntityObjectState.Modified);
 
-            foreach (ValoresModalidade valor in mod.ValoresModalidades)
+            foreach (ValoresModalidade valor in modController.ModalidadeSelecionada.ValoresModalidades)
             {
                 if (valor.ObjectState == EntityObjectState.Added
                  || valor.ObjectState == EntityObjectState.Modified)
@@ -89,7 +93,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             dgvValoresModalidades.Columns.Clear();
             dgvValoresModalidades.Rows.Clear();
 
-            dgvValoresModalidades.DataSource = mod.ValoresModalidades;
+            dgvValoresModalidades.DataSource = modController.ModalidadeSelecionada.ValoresModalidades;
 
             dgvValoresModalidades.Columns["ObjectState"].Visible = false;
             dgvValoresModalidades.Columns["Id"].Visible = false;
@@ -153,7 +157,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             txtObsModalidade.Enabled = status;
             flatTxtBoxNomeModalidade.Enabled = status;
 
-            if(mod.DataFinal == null)
+            if (mod.DataFinal == null)
             {
                 flatTxtBoxFimModalidade.Enabled = true;
             }
@@ -162,7 +166,6 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         private void LimparControlesValoresModalidades()
         {
             valorModalidadeSelecionada = null;
-
 
             flatTxtBoxValorModalidade.DataBindings.Clear();
             flatTxtBoxInicioValorModalidade.DataBindings.Clear();
@@ -175,9 +178,20 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            mod.Salvar();
-            PopupaGridValoresModalidade();
-            AtivaControlesDeModalidade(false);
+            try
+            {
+                if (modController.Salvar())
+                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                PopupaGridValoresModalidade();
+                AtivaControlesDeModalidade(false);
+            }
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -189,12 +203,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                     "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
                     == DialogResult.OK)
                 {
-                    mod.ObjectState = EntityObjectState.Deleted;
-
                     try
                     {
-                        mod.Excluir();
-                        this.Dispose();
+                        if (modController.Excluir())
+                            this.Dispose();
                     }
                     catch (Exception ex)
                     {
@@ -213,34 +225,31 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             if (string.IsNullOrEmpty(flatTxtBoxValorModalidade.Text))
                 return;
 
-            ValoresModalidade? valor = new();
-
-            if (this.dgvValoresModalidades.SelectedRows.Count == 0)
+            try
             {
-                valor.ObjectState = EntityObjectState.Added;
-                mod.ValoresModalidades.Add(valor);
-
-                valor.Valor = double.Parse(flatTxtBoxValorModalidade.Text);
-
-                if (DateTime.TryParseExact(flatTxtBoxInicioValorModalidade.Text, "dd/MM/yyyy",
-                                            CultureInfo.InvariantCulture,
-                                            DateTimeStyles.None,
-                                            out DateTime inicio))
+                if (this.dgvValoresModalidades.SelectedRows.Count == 0)
                 {
-                    valor.DataInicio = inicio;
-                }
+                    ValoresModalidade? valor = new()
+                    {
+                        ObjectState = EntityObjectState.Added,
+                        Valor = double.Parse(flatTxtBoxValorModalidade.Text),
+                        DataInicio = flatTxtBoxInicioValorModalidade.ReturnValue<DateTime>()
 
-                if (DateTime.TryParseExact(flatTxtBoxFimValorModalidade.Text, "dd/MM/yyyy",
-                                            CultureInfo.InvariantCulture,
-                                            DateTimeStyles.None,
-                                            out DateTime fim))
-                {
-                    valor.DataFim = fim;
+                    };
+                    valor.DataFim = flatTxtBoxFimValorModalidade.ReturnValue<DateTime?>();
+
+                    modController.AddValorModalidade(valor);
                 }
             }
-
-            LimparControlesValoresModalidades();
-            PopupaGridValoresModalidade();
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Error);
+            }
+            finally
+            {
+                LimparControlesValoresModalidades();
+                PopupaGridValoresModalidade();
+            }
         }
 
         private void BtnCancelarAlteracaoValor_Click(object sender, EventArgs e)
@@ -257,6 +266,30 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                 valor.ObjectState = EntityObjectState.Deleted;
                 LimparControlesValoresModalidades();
                 PopupaGridValoresModalidade();
+            }
+        }
+
+        private void FlatTxtNomeModalidade_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                modController.ModalidadeSelecionada.Nome = flatTxtBoxNomeModalidade.ReturnValue<string>();
+            }
+            catch (ArgumentException ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Error);
+            }
+        }
+
+        private void FlatTxtInicioModalidade_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                modController.ModalidadeSelecionada.DataInicial = flatTxtBoxInicioModalidade.ReturnValue<DateTime>();
+            }
+            catch (ArgumentException ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Error);
             }
         }
     }
