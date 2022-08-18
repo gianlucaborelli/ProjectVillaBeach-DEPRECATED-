@@ -232,7 +232,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                     ValoresModalidade? valor = new()
                     {
                         ObjectState = EntityObjectState.Added,
-                        Valor = double.Parse(flatTxtBoxValorModalidade.Text),
+                        Valor = decimal.Parse(flatTxtBoxValorModalidade.Text),
                         DataInicio = flatTxtBoxInicioValorModalidade.ReturnValue<DateTime>()
 
                     };

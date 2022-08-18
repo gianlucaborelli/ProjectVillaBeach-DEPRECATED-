@@ -153,6 +153,11 @@ namespace ProjetoVillaBeach.Classes
                     .WithMany(e => e.ValoresModalidades)
                         .HasForeignKey(c => c.IdModalidade);
 
+            modelBuilder.Entity<ValoresModalidade>()
+               .Property(p => p.Valor)
+                    .HasPrecision(10, 2);
+
+
             // Mensalidade
             modelBuilder.Entity<Mensalidade>()
                .HasOne<Matricula>(c => c.Matricula)

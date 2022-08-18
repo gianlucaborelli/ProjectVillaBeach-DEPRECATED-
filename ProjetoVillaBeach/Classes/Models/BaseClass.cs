@@ -11,37 +11,9 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public abstract class BaseClass: NotifyBase, IEntityObjectState
+    public abstract class BaseClass: NotifyBase
     {
         [Key]
         public int Id { get; set; }
-
-        [NotMapped]
-        public EntityObjectState ObjectState
-        {
-            get
-            {
-                return _objectState;
-            }
-            set
-            {
-                _objectState = value;
-            }
-        }
-        private EntityObjectState _objectState = EntityObjectState.Unchanged;
-
-        protected bool SetProperty<T>(ref T _backField, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(_backField, value))
-                return false;
-
-            _backField = value;
-            OnPropertyChanged(propertyName);
-
-            if (ObjectState != EntityObjectState.Added)
-                ObjectState = EntityObjectState.Modified;
-
-            return true;
-        }
     }
 }

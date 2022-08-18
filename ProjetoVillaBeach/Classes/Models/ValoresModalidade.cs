@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class ValoresModalidade : BaseClass
+    public class ValoresModalidade : DateBaseClass
     {
-        public double Valor
+        public decimal Valor
         {
             get
             {
@@ -26,43 +26,8 @@ namespace ProjetoVillaBeach.Classes
                 SetProperty(ref _valor, value);
             }
         }
-        private double _valor;
-
-        public DateTime DataInicio
-        {
-            get
-            {
-                return _dataInicio;
-            }
-            set
-            {
-                if (DataFim != null && value < DataFim)
-                    throw new ArgumentException("A Data de inicio não pode ser maior que sua data final");
-
-                SetProperty(ref _dataInicio, value);
-            }
-        }
-        private DateTime _dataInicio;
-
-        public DateTime? DataFim
-        {
-            get
-            {
-                return _dataFim;
-            }
-            set
-            {
-                if(value != null)
-                {
-                    if (value > DataInicio)
-                        SetProperty(ref _dataFim, value);
-                    else
-                        throw new ArgumentException("A Data de inicio não pode ser maior que sua data final");
-                }                
-            }
-        }
-        private DateTime? _dataFim;
-
+        private decimal _valor;
+                
         public int IdModalidade { get; set; }
         public virtual Modalidade Modalidade { get; set; }
 
