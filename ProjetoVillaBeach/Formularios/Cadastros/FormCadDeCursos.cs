@@ -16,8 +16,8 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 {
     public partial class FormCadDeCursos : Form
     {
-        private Modalidade mod = new();
-        private ValoresModalidade? valorModalidadeSelecionada = new();
+        private Course mod = new();
+        private Price? valorModalidadeSelecionada = new();
 
         private ModalidadeController modController;
 
@@ -27,7 +27,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             modController = new();
         }
 
-        public FormCadDeCursos(Modalidade modalidade)
+        public FormCadDeCursos(Course modalidade)
         {
             InitializeComponent();
             AtivaControlesDeModalidade(false);
@@ -37,10 +37,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         //Formulário
         private void Form_OnLoad(object sender, EventArgs e)
         {
-            flatTxtBoxNomeModalidade.Text = modController.ModalidadeSelecionada.Nome;
-            flatTxtBoxInicioModalidade.Text = modController.ModalidadeSelecionada.DataInicial.ToString("dd/MM/yyyy");
-            flatTxtBoxFimModalidade.Text = modController.ModalidadeSelecionada.DataFinal.ToString();
-            txtObsModalidade.Text = modController.ModalidadeSelecionada.Observacao;
+            flatTxtBoxNomeModalidade.Text = modController.ModalidadeSelecionada.Name;
+            flatTxtBoxInicioModalidade.Text = modController.ModalidadeSelecionada.DataInicio.ToString("dd/MM/yyyy");
+            flatTxtBoxFimModalidade.Text = modController.ModalidadeSelecionada.DataFim.ToString();
+            txtObsModalidade.Text = modController.ModalidadeSelecionada.Description;
 
             PopupaGridValoresModalidade();
         }
@@ -60,7 +60,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             bool canClose = !(modController.ModalidadeSelecionada.ObjectState == EntityObjectState.Added
                            || modController.ModalidadeSelecionada.ObjectState == EntityObjectState.Modified);
 
-            foreach (ValoresModalidade valor in modController.ModalidadeSelecionada.ValoresModalidades)
+            foreach (Price valor in modController.ModalidadeSelecionada.Prices)
             {
                 if (valor.ObjectState == EntityObjectState.Added
                  || valor.ObjectState == EntityObjectState.Modified)
@@ -93,18 +93,16 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             dgvValoresModalidades.Columns.Clear();
             dgvValoresModalidades.Rows.Clear();
 
-            dgvValoresModalidades.DataSource = modController.ModalidadeSelecionada.ValoresModalidades;
+            dgvValoresModalidades.DataSource = modController.ModalidadeSelecionada.Prices;
 
             dgvValoresModalidades.Columns["ObjectState"].Visible = false;
             dgvValoresModalidades.Columns["Id"].Visible = false;
-            dgvValoresModalidades.Columns["IdModalidade"].Visible = false;
-            dgvValoresModalidades.Columns["Modalidade"].Visible = false;
 
-            dgvValoresModalidades.Columns["Valor"].DisplayIndex = 0;
+            dgvValoresModalidades.Columns["Value"].DisplayIndex = 0;
             dgvValoresModalidades.Columns["DataInicio"].DisplayIndex = 1;
             dgvValoresModalidades.Columns["DataFim"].DisplayIndex = 2;
 
-            dgvValoresModalidades.Columns["Valor"].HeaderText = "Valor.";
+            dgvValoresModalidades.Columns["Value"].HeaderText = "Valor.";
             dgvValoresModalidades.Columns["DataInicio"].HeaderText = "Dt. Inicial";
             dgvValoresModalidades.Columns["DataFim"].HeaderText = "Dt. Final";
 
@@ -113,7 +111,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void DgvValoresModalidades_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var valor = dgvValoresModalidades.Rows[e.RowIndex].DataBoundItem as ValoresModalidade;
+            var valor = dgvValoresModalidades.Rows[e.RowIndex].DataBoundItem as Price;
 
             switch (valor.ObjectState)
             {
@@ -133,11 +131,11 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             if (this.dgvValoresModalidades.SelectedRows.Count > 0)
             {
-                CarregaValoresModalidade(dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade);
+                CarregaValoresModalidade(dgvValoresModalidades.CurrentRow.DataBoundItem as Price);
             }
         }
 
-        private void CarregaValoresModalidade(ValoresModalidade? valor)
+        private void CarregaValoresModalidade(Price? valor)
         {
             flatTxtBoxValorModalidade.DataBindings.Clear();
             flatTxtBoxInicioValorModalidade.DataBindings.Clear();
@@ -157,7 +155,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             txtObsModalidade.Enabled = status;
             flatTxtBoxNomeModalidade.Enabled = status;
 
-            if (mod.DataFinal == null)
+            if (mod.DataFim == null)
             {
                 flatTxtBoxFimModalidade.Enabled = true;
             }
@@ -229,10 +227,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             {
                 if (this.dgvValoresModalidades.SelectedRows.Count == 0)
                 {
-                    ValoresModalidade? valor = new()
+                    Price? valor = new()
                     {
                         ObjectState = EntityObjectState.Added,
-                        Valor = decimal.Parse(flatTxtBoxValorModalidade.Text),
+                        Value = decimal.Parse(flatTxtBoxValorModalidade.Text),
                         DataInicio = flatTxtBoxInicioValorModalidade.ReturnValue<DateTime>()
 
                     };
@@ -262,7 +260,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             if (this.dgvValoresModalidades.SelectedRows.Count > 0)
             {
-                ValoresModalidade? valor = dgvValoresModalidades.CurrentRow.DataBoundItem as ValoresModalidade;
+                Price? valor = dgvValoresModalidades.CurrentRow.DataBoundItem as Price;
                 valor.ObjectState = EntityObjectState.Deleted;
                 LimparControlesValoresModalidades();
                 PopupaGridValoresModalidade();
@@ -273,7 +271,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             try
             {
-                modController.ModalidadeSelecionada.Nome = flatTxtBoxNomeModalidade.ReturnValue<string>();
+                modController.ModalidadeSelecionada.Name = flatTxtBoxNomeModalidade.ReturnValue<string>();
             }
             catch (ArgumentException ex)
             {
@@ -285,7 +283,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             try
             {
-                modController.ModalidadeSelecionada.DataInicial = flatTxtBoxInicioModalidade.ReturnValue<DateTime>();
+                modController.ModalidadeSelecionada.DataInicio = flatTxtBoxInicioModalidade.ReturnValue<DateTime>();
             }
             catch (ArgumentException ex)
             {

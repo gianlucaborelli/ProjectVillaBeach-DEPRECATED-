@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,26 +12,21 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class ValoresModalidade : DateBaseClass
+    public class Price : DateBaseClass
     {
-        public decimal Valor
+        public decimal Value
         {
             get
             {
-                return _valor;
+                return _value;
             }
             set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("Valor não pode ser menor que Zero");
-                SetProperty(ref _valor, value);
+                SetProperty(ref _value, value);
             }
         }
-        private decimal _valor;
-                
-        public int IdModalidade { get; set; }
-        public virtual Modalidade Modalidade { get; set; }
-
-        public virtual List<Mensalidade> Mensalidades { get; set; }
+        private decimal _value;
     }
 }

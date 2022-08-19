@@ -26,7 +26,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             dgvModalidades.Columns.Clear();
             dgvModalidades.Rows.Clear();
             
-            dgvModalidades.DataSource = Modalidade.Pesquisar(flatTxtBoxNomeModalidade.Text, out string msg);
+            dgvModalidades.DataSource = Course.Pesquisar(flatTxtBoxNomeModalidade.Text, out string msg);
 
             if(!string.IsNullOrEmpty(msg))
                 NotificacaoPopUp.MostrarNotificacao(msg, NotificacaoPopUp.AlertType.Info);
@@ -34,31 +34,31 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             dgvModalidades.Columns["ObjectState"].Visible = false;
 
             dgvModalidades.Columns["Id"].DisplayIndex = 0;
-            dgvModalidades.Columns["Nome"].DisplayIndex = 1;
-            dgvModalidades.Columns["Observacao"].DisplayIndex = 2;
-            dgvModalidades.Columns["DataInicial"].DisplayIndex = 3;
-            dgvModalidades.Columns["DataFinal"].DisplayIndex = 4;
+            dgvModalidades.Columns["Name"].DisplayIndex = 1;
+            dgvModalidades.Columns["Description"].DisplayIndex = 2;
+            dgvModalidades.Columns["DataInicio"].DisplayIndex = 3;
+            dgvModalidades.Columns["DataFim"].DisplayIndex = 4;
 
             dgvModalidades.Columns["Id"].HeaderText = "Cod.";
             dgvModalidades.Columns["Id"].Width = 60;
             
-            dgvModalidades.Columns["Nome"].HeaderText = "Nome.";
+            dgvModalidades.Columns["Name"].HeaderText = "Nome.";
             
-            dgvModalidades.Columns["Observacao"].HeaderText = "Obs.";
+            dgvModalidades.Columns["Description"].HeaderText = "Obs.";
 
-            dgvModalidades.Columns["DataInicial"].HeaderText = "Dt. Inicial";
-            dgvModalidades.Columns["DataInicial"].Width = 120;            
+            dgvModalidades.Columns["DataInicio"].HeaderText = "Dt. Inicial";
+            dgvModalidades.Columns["DataInicio"].Width = 120;            
 
-            dgvModalidades.Columns["DataFinal"].HeaderText = "Dt. Final";
-            dgvModalidades.Columns["DataFinal"].Width = 120;            
+            dgvModalidades.Columns["DataFim"].HeaderText = "Dt. Final";
+            dgvModalidades.Columns["DataFim"].Width = 120;            
         }
 
         private void AbrirCadastro()
         {
             foreach (DataGridViewRow row in this.dgvModalidades.SelectedRows)
             {
-                Modalidade? mod;
-                mod = row.DataBoundItem as Modalidade;
+                Course? mod;
+                mod = row.DataBoundItem as Course;
 
                 if (mod != null)
                 {
@@ -103,8 +103,8 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {
             foreach (DataGridViewRow row in this.dgvModalidades.SelectedRows)
             {
-                Modalidade? mod;
-                mod = row.DataBoundItem as Modalidade;
+                Course? mod;
+                mod = row.DataBoundItem as Course;
 
                 if (mod != null)
                 {

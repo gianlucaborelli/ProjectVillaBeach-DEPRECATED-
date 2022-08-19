@@ -40,7 +40,7 @@ namespace ProjetoVillaBeach.Classes
         public virtual Pessoa Pessoa { get; set; }
 
         public int IdModalidade { get; set; }
-        public virtual Modalidade Modalidade { get; set; }
+        public virtual Course Modalidade { get; set; }
 
         public virtual List<Mensalidade> Mensalidades { get; set; }
     }

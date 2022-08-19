@@ -19,6 +19,6 @@ namespace ProjetoVillaBeach.Classes
         public virtual Matricula Matricula { get; set; }
 
         public int IdValorModalidade { get; set; }
-        public virtual ValoresModalidade ValoresModalidade { get; set; }
+        public virtual Price ValoresModalidade { get; set; }
     }
 }

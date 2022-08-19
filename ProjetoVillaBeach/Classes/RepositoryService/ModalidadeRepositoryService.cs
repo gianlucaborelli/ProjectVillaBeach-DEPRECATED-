@@ -3,39 +3,39 @@ using System.Linq;
 
 namespace ProjetoVillaBeach.Classes.RepositoryService
 {
-    public class ModalidadeRepositoryService : IRepositoryService<Modalidade>
+    public class ModalidadeRepositoryService : IRepositoryService<Course>
     {
-        public bool Excluir(Modalidade objeto)
+        public bool Excluir(Course objeto)
         {
             var contexto = new Contexto();
             contexto.Remove(objeto);
             return (contexto.SaveChanges() > 0);
         }
 
-        public Modalidade? Pesquisar(int codigo)
+        public Course? Pesquisar(int codigo)
         {
             var contexto = new Contexto();
-            return (from p in contexto.Modalidades where p.Id == codigo select p).FirstOrDefault();            
+            return (from p in contexto.Courses where p.Id == codigo select p).FirstOrDefault();            
         }
 
-        public ICollection<Modalidade> PesquisarTexto(string descricao)
+        public ICollection<Course> PesquisarTexto(string descricao)
         {
             var contexto = new Contexto();
-            return (from p in contexto.Modalidades
-                        where p.Nome.ToUpper().Contains(descricao.ToUpper())
+            return (from p in contexto.Courses
+                    where p.Name.ToUpper().Contains(descricao.ToUpper())
                         select p).ToList();
         }
 
-        public ICollection<Modalidade> PesquisarTodos()
+        public ICollection<Course> PesquisarTodos()
         {
             var contexto = new Contexto();
-            return contexto.Modalidades.ToList();            
+            return contexto.Courses.ToList();            
         }
 
-        public bool Salvar(Modalidade objeto)
+        public bool Salvar(Course objeto)
         {
             var contexto = new Contexto();
-            contexto.Modalidades.Add(objeto);
+            contexto.Courses.Add(objeto);
             return (contexto.SaveChanges() > 0);
         }
     }

@@ -12,7 +12,7 @@ namespace ProjetoVillaBeach.Classes.Controllers
     {
         private ModalidadeRepositoryService modalidade = new();
 
-        public Modalidade ModalidadeSelecionada { get; set; }
+        public Course ModalidadeSelecionada { get; set; }
 
         public ModalidadeController()
         {
@@ -20,7 +20,7 @@ namespace ProjetoVillaBeach.Classes.Controllers
             ModalidadeSelecionada.ObjectState = EntityObjectState.Added;
         }
 
-        public ModalidadeController(Modalidade mod)
+        public ModalidadeController(Course mod)
         {
             ModalidadeSelecionada = mod;
         }
@@ -35,30 +35,30 @@ namespace ProjetoVillaBeach.Classes.Controllers
             return modalidade.Excluir(this.ModalidadeSelecionada);
         }
 
-        public Modalidade? Pesquisar(int codigo)
+        public Course? Pesquisar(int codigo)
         {
             return modalidade.Pesquisar(codigo);
         }
 
-        public ICollection<Modalidade> PesquisarTodos()
+        public ICollection<Course> PesquisarTodos()
         {
             return modalidade.PesquisarTodos();
         }
 
-        public ICollection<Modalidade> PesquisarTexto(string descricao)
+        public ICollection<Course> PesquisarTexto(string descricao)
         {
             return modalidade.PesquisarTexto(descricao);
         }
 
-        public void AddValorModalidade(ValoresModalidade valorModalidade)
+        public void AddValorModalidade(Price valorModalidade)
         {
-            if(ModalidadeSelecionada.DataFinal != null)
+            if(ModalidadeSelecionada.DataFim != null)
                 throw new ArgumentException("A Modalidade não está mais ativa");
 
-            if(valorModalidade.DataInicio < ModalidadeSelecionada.DataInicial)            
+            if(valorModalidade.DataInicio < ModalidadeSelecionada.DataInicio)            
                 throw new ArgumentException("A Data de inicio do valor não pode ser menor que o inicio da modalidade");
             
-            foreach (ValoresModalidade valor in ModalidadeSelecionada.ValoresModalidades)
+            foreach (Price valor in ModalidadeSelecionada.Prices)
             {
                 if (valor.DataFim == null)
                 {
@@ -66,7 +66,7 @@ namespace ProjetoVillaBeach.Classes.Controllers
                     valor.DataFim = valor.DataFim.Value.AddDays(-1);
                 }
             }
-            ModalidadeSelecionada.ValoresModalidades.Add(valorModalidade);
+            ModalidadeSelecionada.Prices.Add(valorModalidade);
         }
     }
 }

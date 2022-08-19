@@ -16,12 +16,12 @@ namespace ProjetoVillaBeach.Classes
     {
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Modalidade> Modalidades { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Telefone> Telefones { get; set; }
         public DbSet<Matricula> Matriculas { get; set; }
         public DbSet<Mensalidade> Mensalidades { get; set; }
-        public DbSet<ValoresModalidade> ValoresModalidades { get; set; }
+        public DbSet<Price> Prices { get; set; }
 
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 
@@ -132,7 +132,7 @@ namespace ProjetoVillaBeach.Classes
                         .HasForeignKey(e => e.IdPessoa);
 
             modelBuilder.Entity<Matricula>()
-               .HasOne<Modalidade>(e => e.Modalidade)
+               .HasOne<Course>(e => e.Modalidade)
                     .WithMany(c => c.Matriculas)
                         .HasForeignKey(e => e.IdModalidade);
 
@@ -142,19 +142,11 @@ namespace ProjetoVillaBeach.Classes
                         .HasForeignKey(e => e.Id);
 
             // Modalidade
-            modelBuilder.Entity<Modalidade>()
-               .HasMany<ValoresModalidade>(c => c.ValoresModalidades)
-                    .WithOne(e => e.Modalidade)
-                        .HasForeignKey(e => e.IdModalidade);
+            
 
             // ValoresModalidade
-            modelBuilder.Entity<ValoresModalidade>()
-               .HasOne<Modalidade>(c => c.Modalidade)
-                    .WithMany(e => e.ValoresModalidades)
-                        .HasForeignKey(c => c.IdModalidade);
-
-            modelBuilder.Entity<ValoresModalidade>()
-               .Property(p => p.Valor)
+            modelBuilder.Entity<Price>()
+               .Property(p => p.Value)
                     .HasPrecision(10, 2);
 
 
@@ -163,13 +155,6 @@ namespace ProjetoVillaBeach.Classes
                .HasOne<Matricula>(c => c.Matricula)
                     .WithMany(e => e.Mensalidades)
                         .HasForeignKey(c => c.IdMatricula);
-
-            modelBuilder.Entity<Mensalidade>()
-               .HasOne<ValoresModalidade>(c => c.ValoresModalidade)
-                    .WithMany(e => e.Mensalidades)
-                        .HasForeignKey(c => c.IdValorModalidade);
-
-
         }
     }
 }
