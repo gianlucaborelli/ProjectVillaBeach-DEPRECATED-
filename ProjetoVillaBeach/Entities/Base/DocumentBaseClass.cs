@@ -7,7 +7,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoVillaBeach.Classes.Models
+namespace ProjetoVillaBeach.Entities.Base
 {
     //[Index(nameof(Number), IsUnique = true)]
     public abstract class DocumentBaseClass: NotifyBase

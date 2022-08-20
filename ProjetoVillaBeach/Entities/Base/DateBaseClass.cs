@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities.Base
 {
     public abstract class DateBaseClass: BaseClass
     {
@@ -39,6 +39,5 @@ namespace ProjetoVillaBeach.Classes
             }
         }
         private DateTime? _dataFim;
-
     }
 }

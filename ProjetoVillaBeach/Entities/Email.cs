@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ProjetoVillaBeach.Entities.Base;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities
 {
     public class Email : BaseClass
     {

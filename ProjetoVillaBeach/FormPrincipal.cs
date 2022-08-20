@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Formularios;
 using ProjetoVillaBeach.Formularios.Pesquisas;
 using ProjetoVillaBeach.Formularios.Cadastros;

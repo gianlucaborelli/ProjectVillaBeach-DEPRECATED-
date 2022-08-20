@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoVillaBeach.Classes.Models
+namespace ProjetoVillaBeach.Entities
 {
     public class Document//: DocumentBaseClass<T>
     {

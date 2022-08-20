@@ -8,8 +8,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using ProjetoVillaBeach.Entities.Base;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities
 {
     public class Endereco : BaseClass
     {

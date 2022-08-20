@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProjetoVillaBeach.Classes.RepositoryService
+namespace ProjetoVillaBeach.Entities.RepositoryService
 {
     public interface IRepositoryService<T>
     {

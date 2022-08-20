@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities.Base
 {
     public abstract class BaseClass: NotifyBase
     {

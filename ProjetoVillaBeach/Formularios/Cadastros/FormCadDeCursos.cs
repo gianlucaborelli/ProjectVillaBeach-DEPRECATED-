@@ -1,6 +1,7 @@
-﻿using ProjetoVillaBeach.Classes;
-using ProjetoVillaBeach.Classes.Controllers;
+﻿using ProjetoVillaBeach.Classes.Controllers;
 using ProjetoVillaBeach.Controles;
+using ProjetoVillaBeach.Entities.Base;
+using ProjetoVillaBeach.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

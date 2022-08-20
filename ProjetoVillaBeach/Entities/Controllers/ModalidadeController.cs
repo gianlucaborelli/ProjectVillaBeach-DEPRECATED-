@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjetoVillaBeach.Classes.RepositoryService;
-using ProjetoVillaBeach.Formularios.Cadastros;
+using ProjetoVillaBeach.Entities;
+using ProjetoVillaBeach.Entities.Base;
+using ProjetoVillaBeach.Entities.RepositoryService;
 
 namespace ProjetoVillaBeach.Classes.Controllers
 {

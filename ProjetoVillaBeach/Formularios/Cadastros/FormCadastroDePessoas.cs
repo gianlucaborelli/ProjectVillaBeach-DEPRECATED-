@@ -9,8 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Controles;
+using ProjetoVillaBeach.Entities.Base;
 
 namespace ProjetoVillaBeach.Formularios.Cadastros
 {

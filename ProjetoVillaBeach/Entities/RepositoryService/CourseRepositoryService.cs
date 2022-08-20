@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjetoVillaBeach.Classes.RepositoryService
+namespace ProjetoVillaBeach.Entities.RepositoryService
 {
     public class CourseRepositoryService : IRepositoryService<Course>
     {

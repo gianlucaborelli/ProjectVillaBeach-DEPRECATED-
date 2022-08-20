@@ -1,4 +1,4 @@
-﻿using ProjetoVillaBeach.Classes;
+﻿using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Controles;
 using System;
 using System.Collections.Generic;

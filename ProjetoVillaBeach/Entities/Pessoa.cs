@@ -11,8 +11,9 @@ using ProjetoVillaBeach.Classes.Documents;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ProjetoVillaBeach.Entities.Base;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities
 {
     public class Pessoa : BaseClass
     {

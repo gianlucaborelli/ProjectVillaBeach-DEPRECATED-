@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.Drawing;
+using ProjetoVillaBeach.Entities.Base;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities
 {
     internal class Contexto : DbContext
     {
@@ -22,6 +22,7 @@ namespace ProjetoVillaBeach.Classes
         public DbSet<Matricula> Matriculas { get; set; }
         public DbSet<Mensalidade> Mensalidades { get; set; }
         public DbSet<Price> Prices { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 

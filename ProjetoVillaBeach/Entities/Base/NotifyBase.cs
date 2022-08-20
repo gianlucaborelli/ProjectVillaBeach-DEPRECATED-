@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities.Base
 {
     public abstract class NotifyBase : INotifyPropertyChanged, IEntityObjectState
     {

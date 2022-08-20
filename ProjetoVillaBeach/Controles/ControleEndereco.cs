@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities.Base;
+using ProjetoVillaBeach.Entities;
 
 namespace ProjetoVillaBeach.Controles
 {

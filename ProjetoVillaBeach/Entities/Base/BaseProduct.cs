@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoVillaBeach.Classes
+namespace ProjetoVillaBeach.Entities.Base
 {
     public class BaseProduct: DateBaseClass
     {
