@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Product: DateBaseClass
+    public class BaseProduct: DateBaseClass
     {
         [Required]
         [StringLength(150, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 150 caracteres")]

@@ -10,7 +10,7 @@ namespace ProjetoVillaBeach.Classes.Controllers
 {
     public class ModalidadeController
     {
-        private ModalidadeRepositoryService modalidade = new();
+        private CourseRepositoryService modalidade = new();
 
         public Course ModalidadeSelecionada { get; set; }
 

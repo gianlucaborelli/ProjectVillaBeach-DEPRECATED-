@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ProjetoVillaBeach.Classes.RepositoryService
 {
-    public class ModalidadeRepositoryService : IRepositoryService<Course>
+    public class CourseRepositoryService : IRepositoryService<Course>
     {
         public bool Excluir(Course objeto)
         {

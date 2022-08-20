@@ -141,10 +141,8 @@ namespace ProjetoVillaBeach.Classes
                     .WithOne(e => e.Matricula)
                         .HasForeignKey(e => e.Id);
 
-            // Modalidade
-            
 
-            // ValoresModalidade
+            // Price
             modelBuilder.Entity<Price>()
                .Property(p => p.Value)
                     .HasPrecision(10, 2);

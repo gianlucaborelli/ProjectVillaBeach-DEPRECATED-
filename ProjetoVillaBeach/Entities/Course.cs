@@ -14,35 +14,9 @@ using System.Windows.Forms;
 
 namespace ProjetoVillaBeach.Classes
 {
-    public class Course : Product
+    public class Course : BaseProduct
     {
         public virtual List<Matricula> Matriculas { get; set; }
-
-        public void Salvar()
-        {
-            if (DataInicio == DateTime.Parse("01/01/0001"))
-                DataInicio = DateTime.Now;
-
-            try
-            {
-                using (var contexto = new Contexto())
-                {
-                    contexto.Courses.Add(this);
-                    contexto.SaveChanges();
-                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.InnerException.Message);
-            }
-        }
-
-        public static ICollection<Course> SelecionaTodos()
-        {
-            var contexto = new Contexto();
-            return contexto.Courses.ToList();
-        }
 
         public static ICollection<Course> Pesquisar(string? nome, out string msg)
         {
@@ -58,7 +32,6 @@ namespace ProjetoVillaBeach.Classes
                 msg = "Não foram encontradas modalidades com o parâmetro informado";
 
             return contexto.Courses.ToList();
-
         }
 
         public void Excluir()
