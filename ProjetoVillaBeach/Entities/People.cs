@@ -15,7 +15,7 @@ using ProjetoVillaBeach.Entities.Base;
 
 namespace ProjetoVillaBeach.Entities
 {
-    public class Pessoa : BaseClass
+    public class People : BaseClass
     {
         #region Property
 
@@ -161,41 +161,6 @@ namespace ProjetoVillaBeach.Entities
             {
                 using (var contexto = new Contexto())
                 {
-                    switch (this.ObjectState)
-                    {
-                        case EntityObjectState.Added:
-                            contexto.Pessoas.Attach(this).State = EntityState.Added;
-                            break;
-                        case EntityObjectState.Modified:
-                            contexto.Pessoas.Attach(this).State = EntityState.Modified;
-                            break;
-                        case EntityObjectState.Deleted:
-                            contexto.Pessoas.Attach(this).State = EntityState.Deleted;
-                            break;
-                        default:
-                            contexto.Pessoas.Attach(this).State = EntityState.Unchanged;
-                            break;
-                    }
-
-                    foreach (Endereco endereco in this.Enderecos)
-                    {
-                        switch (endereco.ObjectState)
-                        {
-                            case EntityObjectState.Added:
-                                contexto.Entry(endereco).State = EntityState.Added;
-                                break;
-                            case EntityObjectState.Modified:
-                                contexto.Entry(endereco).State = EntityState.Modified;
-                                break;
-                            case EntityObjectState.Deleted:
-                                contexto.Entry(endereco).State = EntityState.Deleted;
-                                break;
-                            default:
-                                contexto.Entry(endereco).State = EntityState.Unchanged;
-                                break;
-                        }
-                    }
-
                     contexto.SaveChanges();
                     NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
                     status = true;
@@ -217,20 +182,20 @@ namespace ProjetoVillaBeach.Entities
             return status;
         }
 
-        public static ICollection<Pessoa> SelecionaTodos()
+        public static ICollection<People> SelecionaTodos()
         {
             var contexto = new Contexto();
-            return contexto.Pessoas.ToList();
+            return contexto.Peoples.ToList();
         }
 
-        public static ICollection<Pessoa> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
+        public static ICollection<People> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
         {
             msg = "";
             var contexto = new Contexto();
 
             if (!string.IsNullOrEmpty(nome) && !string.IsNullOrEmpty(rg) && cpf != null)
             {
-                IQueryable<Pessoa> query = contexto.Pessoas;
+                IQueryable<People> query = contexto.Peoples;
                 query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg);
 
                 if (query.ToList().Count >= 1)
@@ -240,7 +205,7 @@ namespace ProjetoVillaBeach.Entities
             if (!string.IsNullOrEmpty(nome))
                 msg = "Não foram encontradas pessoas com o parâmetro informado";
 
-            return contexto.Pessoas.ToList();
+            return contexto.Peoples.ToList();
         }
 
         public void Excluir()

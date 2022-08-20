@@ -38,7 +38,7 @@ namespace ProjetoVillaBeach.Entities
         private DateTime _dataFim;
 
         public int IdPessoa { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
+        public virtual People Pessoa { get; set; }
 
         public int IdModalidade { get; set; }
         public virtual Course Modalidade { get; set; }

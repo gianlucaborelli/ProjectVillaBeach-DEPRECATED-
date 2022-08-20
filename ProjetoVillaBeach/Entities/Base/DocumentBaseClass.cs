@@ -21,7 +21,7 @@ namespace ProjetoVillaBeach.Entities.Base
         {
             using (var ctx = new Contexto())
             {
-                var pessoa = ctx.Pessoas
+                var pessoa = ctx.Peoples
                                 .Where(p => p.NumeroCpf == ulong.Parse(document))
                                 .ToList();
 

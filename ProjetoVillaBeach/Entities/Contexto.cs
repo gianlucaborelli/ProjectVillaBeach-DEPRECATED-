@@ -14,7 +14,7 @@ namespace ProjetoVillaBeach.Entities
 {
     internal class Contexto : DbContext
     {
-        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<People> Peoples { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Email> Emails { get; set; }
@@ -88,22 +88,22 @@ namespace ProjetoVillaBeach.Entities
         {
             //Pessoa
 
-            modelBuilder.Entity<Pessoa>()
+            modelBuilder.Entity<People>()
                 .HasMany<Endereco>(c => c.Enderecos)
                     .WithOne(e => e.Pessoa)
                         .HasForeignKey(e => e.Id);
 
-            modelBuilder.Entity<Pessoa>()
+            modelBuilder.Entity<People>()
                 .HasMany<Email>(c => c.Email)
                     .WithOne(e => e.Pessoa)
                         .HasForeignKey(e => e.IdPessoa);
 
-            modelBuilder.Entity<Pessoa>()
+            modelBuilder.Entity<People>()
                 .HasMany<Telefone>(c => c.Telefones)
                     .WithOne(e => e.Pessoa)
                         .HasForeignKey(e => e.IdPessoa);
 
-            modelBuilder.Entity<Pessoa>()
+            modelBuilder.Entity<People>()
                 .HasMany<Matricula>(c => c.Matriculas)
                     .WithOne(e => e.Pessoa)
                         .HasForeignKey(e => e.IdPessoa);
@@ -116,19 +116,19 @@ namespace ProjetoVillaBeach.Entities
 
             // Email
             modelBuilder.Entity<Email>()
-               .HasOne<Pessoa>(e => e.Pessoa)
+               .HasOne<People>(e => e.Pessoa)
                     .WithMany(c => c.Email)
                         .HasForeignKey(e => e.IdPessoa);
 
             // Telefone
             modelBuilder.Entity<Telefone>()
-               .HasOne<Pessoa>(e => e.Pessoa)
+               .HasOne<People>(e => e.Pessoa)
                     .WithMany(c => c.Telefones)
                         .HasForeignKey(e => e.IdPessoa);
 
             // Matricula
             modelBuilder.Entity<Matricula>()
-               .HasOne<Pessoa>(e => e.Pessoa)
+               .HasOne<People>(e => e.Pessoa)
                     .WithMany(c => c.Matriculas)
                         .HasForeignKey(e => e.IdPessoa);
 

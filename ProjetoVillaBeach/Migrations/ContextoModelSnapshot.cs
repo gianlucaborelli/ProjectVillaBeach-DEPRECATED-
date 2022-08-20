@@ -169,7 +169,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.ToTable("Mensalidades");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Entities.Pessoa", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.People", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,7 +202,7 @@ namespace ProjetoVillaBeach.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoas");
+                    b.ToTable("Peoples");
                 });
 
             modelBuilder.Entity("ProjetoVillaBeach.Entities.Price", b =>
@@ -286,7 +286,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Entities.Email", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Entities.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Email")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -297,7 +297,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Entities.Endereco", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Entities.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Enderecos")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -314,7 +314,7 @@ namespace ProjetoVillaBeach.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjetoVillaBeach.Entities.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Matriculas")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -357,7 +357,7 @@ namespace ProjetoVillaBeach.Migrations
 
             modelBuilder.Entity("ProjetoVillaBeach.Entities.Telefone", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Entities.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Telefones")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -378,7 +378,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Mensalidades");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Entities.Pessoa", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.People", b =>
                 {
                     b.Navigation("Email");
 

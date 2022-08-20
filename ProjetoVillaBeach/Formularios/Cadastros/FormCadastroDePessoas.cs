@@ -17,7 +17,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 {
     public partial class FormCadastroDePessoas : Form
     {
-        private Pessoa pessoa = new();
+        private People pessoa = new();
 
         public FormCadastroDePessoas()
         {
@@ -25,7 +25,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             pessoa.ObjectState = EntityObjectState.Added;
         }
 
-        public FormCadastroDePessoas(Pessoa id)
+        public FormCadastroDePessoas(People id)
         {
             InitializeComponent();
 

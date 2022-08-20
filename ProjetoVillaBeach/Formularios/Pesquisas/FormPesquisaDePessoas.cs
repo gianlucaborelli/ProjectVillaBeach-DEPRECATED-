@@ -37,7 +37,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
 
-            dataGridView1.DataSource = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text, out string msg);
+            dataGridView1.DataSource = People.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text, out string msg);
 
             if (!string.IsNullOrEmpty(msg))
                 NotificacaoPopUp.MostrarNotificacao(msg, NotificacaoPopUp.AlertType.Info);
@@ -73,8 +73,8 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {            
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                Pessoa? pessoa;
-                pessoa = row.DataBoundItem as Pessoa;
+                People? pessoa;
+                pessoa = row.DataBoundItem as People;
                 
                 if (pessoa != null)
                 {
@@ -103,8 +103,8 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                Pessoa? pessoa;
-                pessoa = row.DataBoundItem as Pessoa;
+                People? pessoa;
+                pessoa = row.DataBoundItem as People;
 
                 if (pessoa != null)
                 {

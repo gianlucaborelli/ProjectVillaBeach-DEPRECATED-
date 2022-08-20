@@ -94,7 +94,7 @@ namespace ProjetoVillaBeach.Classes.Documents
         {
             using (var ctx = new Contexto())
             {
-                var pessoa = ctx.Pessoas
+                var pessoa = ctx.Peoples
                                 .Where(p => p.NumeroCpf == ulong.Parse(cpf))
                                 .ToList();
 
