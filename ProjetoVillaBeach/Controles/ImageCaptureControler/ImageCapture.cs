@@ -10,12 +10,57 @@ using System.Windows.Forms;
 using System.Windows;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Channels;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 {
     public partial class ImageCapture : UserControl
     {
         private OpenFileDialog openImagemFileDialog;
+
+        [Category("Appearance")]
+        [Description("The text displayed by the control.")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public Image? Captured
+        {
+            get
+            {
+                return pbImageCaptured.Image;
+            }
+            set
+            {
+                OnImageChanging();
+                pbImageCaptured.Image = value;
+                OnImageChanged();
+            }
+        }
+
+        #region Event ImageChanged
+        public delegate void ImageChangedEventHandler(object sender, EventArgs args);
+
+        public event ImageChangedEventHandler ImageChanged;
+
+        protected virtual void OnImageChanged()
+        {
+            if (ImageChanged != null)
+                ImageChanged(this, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Event ImageChanging
+        public delegate void ImageChangingEventHandler(object sender, EventArgs args);
+
+        public event ImageChangedEventHandler ImageChanging;
+
+        protected virtual void OnImageChanging()
+        {
+            if (ImageChanging != null)
+                ImageChanging(this, EventArgs.Empty);
+        }
+        #endregion
 
         public ImageCapture()
         {
@@ -53,8 +98,9 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                //funcionario.InformaFoto(frm.image);
-                //pbFuncionario.Image = funcionario.Foto;
+                OnImageChanging();
+                pbImageCaptured.Image = frm.image;
+                OnImageChanged();
             }
         }
 
@@ -67,17 +113,21 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 
         private void OpenImagemFile_Click(object sender, EventArgs e)
         {
-            openImagemFileDialog = new();
-            openImagemFileDialog.FileName = "Selecione uma imagem";
-            openImagemFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif;*.tif;...";
-            openImagemFileDialog.Title = "Pesquise uma imagem";
-            openImagemFileDialog.InitialDirectory = @"C:\";
+            openImagemFileDialog = new()
+            {
+                FileName = "Selecione uma imagem",
+                Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif;*.tif;...",
+                Title = "Pesquise uma imagem",
+                InitialDirectory = @"C:\"
+            };
 
             if (openImagemFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
+                    OnImageChanging();
                     pbImageCaptured.Image = new Bitmap(openImagemFileDialog.FileName);
+                    OnImageChanged();
                 }
                 catch (Exception ex)
                 {
@@ -85,5 +135,7 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
                 }
             }
         }
+
+
     }
 }

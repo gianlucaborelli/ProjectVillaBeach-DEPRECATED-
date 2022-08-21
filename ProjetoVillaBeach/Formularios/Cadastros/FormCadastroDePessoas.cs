@@ -237,5 +237,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
                 NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
             }
         }
+
+        private void ImageCapturePeople_ImageChanged(object sender, EventArgs args)
+        {
+            peopleController.SelectedPeople.Photo = ImageCapturePeople.Captured;
+        }
     }
 }

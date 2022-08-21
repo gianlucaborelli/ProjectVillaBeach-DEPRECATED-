@@ -22,8 +22,6 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
         public ImageCaptureForm()
         {
             InitializeComponent();
-            
-            //videoSource.Start();
         }
 
         //Cria evento de arrastar o formulário principal

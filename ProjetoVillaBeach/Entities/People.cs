@@ -177,7 +177,8 @@ namespace ProjetoVillaBeach.Entities
                 File.Delete(TempPathPhoto);
 
             photo.Save(TempPathPhoto, System.Drawing.Imaging.ImageFormat.Png);
-            Photo = photo;
+            //Photo.Dispose();
+            //Photo = photo;
         }
 
         public void SavePhoto()
