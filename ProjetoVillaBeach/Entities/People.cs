@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ProjetoVillaBeach.Entities.Base;
+using System.Drawing;
+using System.IO;
+using System.Configuration;
 
 namespace ProjetoVillaBeach.Entities
 {
@@ -103,15 +106,10 @@ namespace ProjetoVillaBeach.Entities
             }
             set
             {
-                if (value <= DateTime.Now)
-                {
-                    SetProperty(ref _dataDeNascimento, value);
-                }
-                else
-                {
-                    throw new ArgumentException("A data de Nascimento deve ser menor que a data Atual");
-                }
+                if (value >= DateTime.Now)
+                    throw new ArgumentException("A data de Nascimento não pode ser maior que a data Atual");
 
+                SetProperty(ref _dataDeNascimento, value);
             }
         }
         private DateTime? _dataDeNascimento;
@@ -133,7 +131,6 @@ namespace ProjetoVillaBeach.Entities
 
         public virtual List<Email> Email { get; set; }
 
-        private List<Endereco> _enderecos = new List<Endereco>();
         public virtual List<Endereco> Enderecos
         {
             get
@@ -145,47 +142,57 @@ namespace ProjetoVillaBeach.Entities
                 _enderecos = value;
             }
         }
+        private List<Endereco> _enderecos = new List<Endereco>();
 
         public virtual List<Matricula> Matriculas { get; set; }
 
-        #endregion
-        
-        public bool Salvar()
+        public string? PathPhoto { get; set; }
+
+        [NotMapped]
+        public Image? Photo
         {
-            bool status = false;
-
-            if (DataDeCadastro == DateTime.Parse("01/01/0001"))
-                DataDeCadastro = DateTime.Now;
-
-            try
+            get
             {
-                using (var contexto = new Contexto())
-                {
-                    contexto.SaveChanges();
-                    NotificacaoPopUp.MostrarNotificacao("Salvo com sucesso", NotificacaoPopUp.AlertType.Success);
-                    status = true;
-
-                    this.ObjectState = EntityObjectState.Unchanged;
-                }
+                if (PathPhoto == null)
+                    return null;
+                return Image.FromFile(PathPhoto);
             }
-            catch (Exception ex)
+            set
             {
-                if (ex.Message.Contains("Duplicate"))
-                    MessageBox.Show(ex.ToString());
-                else
-                    MessageBox.Show(ex.ToString());
+                if (value != null)
+                    SetPhoto(value);
             }
-            finally
-            {
-
-            }
-            return status;
         }
 
-        public static ICollection<People> SelecionaTodos()
+        [NotMapped]
+        private string? TempPathPhoto;        
+
+        #endregion
+                
+        private void SetPhoto(Image photo)
         {
-            var contexto = new Contexto();
-            return contexto.Peoples.ToList();
+            TempPathPhoto = "C:\\Nova pasta\\" + Id.ToString() + ".png";
+
+            if (File.Exists(TempPathPhoto))
+                File.Delete(TempPathPhoto);
+
+            photo.Save(TempPathPhoto, System.Drawing.Imaging.ImageFormat.Png);
+            Photo = photo;
+        }
+
+        public void SavePhoto()
+        {
+            if (TempPathPhoto == null)
+                return;
+
+            var path = ConfigurationManager.AppSettings["PathPhoto"] + Id.ToString() + ".png";
+
+            if (File.Exists(TempPathPhoto))
+                File.Move(TempPathPhoto, path);
+
+            File.Delete(TempPathPhoto);
+
+            PathPhoto = path;
         }
 
         public static ICollection<People> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
@@ -206,13 +213,6 @@ namespace ProjetoVillaBeach.Entities
                 msg = "Não foram encontradas pessoas com o parâmetro informado";
 
             return contexto.Peoples.ToList();
-        }
-
-        public void Excluir()
-        {
-            var contexto = new Contexto();
-            contexto.Remove(this);
-            contexto.SaveChanges();
         }
     }
 }

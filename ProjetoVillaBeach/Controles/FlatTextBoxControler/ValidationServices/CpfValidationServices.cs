@@ -3,6 +3,7 @@ using ProjetoVillaBeach.Classes.Documents;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,9 +72,23 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             return "C.P.F.";
         }
 
-        public bool ReturnValue<T>(string input, out T value)
+        public bool ReturnValue<T>(string input, out T? value)
         {
-            throw new NotImplementedException();
+            if (TryToValidate(input) == EnumValidationStatus.Valid)
+            {
+                input = input.Trim();
+                input = input.Replace(".", "").Replace("-", "");
+
+                var valid = ulong.
+                                TryParse(input,
+                                out ulong valor);
+
+                value = (dynamic)valor;
+                return valid;
+            }
+
+            value = default(T?);
+            return true;            
         }
     }
 }

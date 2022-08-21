@@ -200,7 +200,7 @@
             this.flatTxtFiliacao2.UnderlinedStyle = true;
             this.flatTxtFiliacao2.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao2.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtFiliacao2.Validated += new System.EventHandler(this.Filiacao2FlatTextBox_Valited);
+            this.flatTxtFiliacao2.Leave += new System.EventHandler(this.FlatTxtBoxFiliacao2_Leave);
             // 
             // flatTxtRg
             // 
@@ -220,7 +220,7 @@
             this.flatTxtRg.UnderlinedStyle = true;
             this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtRg.Validated += new System.EventHandler(this.RgFlatTextBox_Valited);
+            this.flatTxtRg.Leave += new System.EventHandler(this.FlatTxtBoxRG_Leave);
             // 
             // flatTxtFiliacao1
             // 
@@ -242,7 +242,7 @@
             this.flatTxtFiliacao1.UnderlinedStyle = true;
             this.flatTxtFiliacao1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao1.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtFiliacao1.Validated += new System.EventHandler(this.Filiacao1FlatTextBox_Valited);
+            this.flatTxtFiliacao1.Leave += new System.EventHandler(this.FlatTxtBoxFiliacao1_Leave);
             // 
             // flatTxtNome
             // 
@@ -284,7 +284,7 @@
             this.flatTxtCpf.UnderlinedStyle = true;
             this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
-            this.flatTxtCpf.Validated += new System.EventHandler(this.CpfFlatTextBox_Validated);
+            this.flatTxtCpf.Leave += new System.EventHandler(this.FlatTxtBoxCPF_Leave);
             // 
             // flatTxtDn
             // 
@@ -304,7 +304,7 @@
             this.flatTxtDn.UnderlinedStyle = true;
             this.flatTxtDn.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtDn.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            this.flatTxtDn.Validated += new System.EventHandler(this.DataDeNascimentoFlatTextBox_Valited);
+            this.flatTxtDn.Leave += new System.EventHandler(this.FlatTxtBoxDN_Leave);
             // 
             // tableLayoutPanel6
             // 

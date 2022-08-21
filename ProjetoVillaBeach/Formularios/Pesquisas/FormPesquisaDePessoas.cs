@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetoVillaBeach.Entities;
+using ProjetoVillaBeach.Entities.Controllers;
 using ProjetoVillaBeach;
 using ProjetoVillaBeach.Controles;
 
 namespace ProjetoVillaBeach.Formularios.Pesquisas
 {
     public partial class FormPesquisaDePessoas : Form
-    {   
+    {
         public FormPesquisaDePessoas()
         {
             InitializeComponent();
@@ -70,12 +71,12 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         }
 
         private void AbrirCadastro()
-        {            
+        {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
                 People? pessoa;
                 pessoa = row.DataBoundItem as People;
-                
+
                 if (pessoa != null)
                 {
                     Cadastros.FormCadastroDePessoas frm = new(pessoa);
@@ -86,7 +87,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
                     frm.BringToFront();
                     frm.Show();
                 }
-            }            
+            }
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -103,19 +104,27 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                People? pessoa;
-                pessoa = row.DataBoundItem as People;
-
-                if (pessoa != null)
+                try
                 {
-                   var returned = MessageBox.Show("Deseja realmente excluir esse cadastro?\n" +
-                        "\nAo prosseguir não será possivel reverter.", 
-                        "Confirmar ação", 
-                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    PeopleController peopleController = new(row.DataBoundItem as People);
 
-                    if (returned == DialogResult.OK)
-                        pessoa.Excluir();
-
+                    if (peopleController.SelectedPeople != null)
+                        if (MessageBox.Show("Deseja realmente excluir esse cadastro?\n\n" +
+                                            "Ao prosseguir não será possivel reverter.",
+                                            "Confirmar ação",
+                                            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                                            == DialogResult.OK)
+                            peopleController.Excluir();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao excluir:\n" + ex.Message,
+                                    "Erro ao excluir",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+                finally
+                {
                     CarregaGrid();
                 }
             }
