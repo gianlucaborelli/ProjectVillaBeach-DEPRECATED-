@@ -29,11 +29,20 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         public EnumValidationStatus TryToValidate(string value)
         {
             if (!string.IsNullOrEmpty(value))
-            {
                 return EnumValidationStatus.Valid;
-            }
 
             return EnumValidationStatus.NotChangedOrEmpty;
+        }
+
+        public bool ReturnValue<T>(string input, out T value)
+        {
+            if (TryToValidate(input) == EnumValidationStatus.Valid)
+            {
+                value = (dynamic)input;
+                return true;
+            }
+
+            throw new ArgumentException("A caixa de texto está em branco");
         }
     }
 }

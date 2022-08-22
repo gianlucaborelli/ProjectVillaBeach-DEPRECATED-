@@ -29,5 +29,6 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         /// </summary> 
         string CreateStringMasked(string value);
 
+        bool ReturnValue<T>(string input, out T? value);
     }
 }

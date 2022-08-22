@@ -1,5 +1,7 @@
 ﻿using ProjetoVillaBeach.Classes.Documents;
 using System;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -58,6 +60,25 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         public override string ToString()
         {
             return "Data";
+        }
+
+        public bool ReturnValue<T>(string input, out T? value)
+        {
+            if (TryToValidate(input) == EnumValidationStatus.Valid)
+            {
+                var valid = DateTime
+                                .TryParseExact(input,
+                                "dd/MM/yyyy",
+                                CultureInfo.InvariantCulture,
+                                DateTimeStyles.None,
+                                out DateTime valor);
+
+                value = (dynamic)valor;
+                return valid;
+            }
+
+            value = default(T?);
+            return false;
         }
     }
 }

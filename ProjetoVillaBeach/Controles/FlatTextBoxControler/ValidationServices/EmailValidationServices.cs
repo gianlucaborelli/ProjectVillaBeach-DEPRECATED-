@@ -45,5 +45,10 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         {
             return "E-mail";
         }
+
+        public bool ReturnValue<T>(string input, out T value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
+using ProjetoVillaBeach.Entities.Controllers;
 using ProjetoVillaBeach;
+using ProjetoVillaBeach.Controles;
 
 namespace ProjetoVillaBeach.Formularios.Pesquisas
 {
     public partial class FormPesquisaDePessoas : Form
-    {   
+    {
         public FormPesquisaDePessoas()
         {
             InitializeComponent();
@@ -29,28 +31,52 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             frm.BringToFront();
             frm.Show();
         }
+        private void CarregaGrid()
+        {
+            dataGridView1.DataSource = null;
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Rows.Clear();
+
+            dataGridView1.DataSource = People.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text, out string msg);
+
+            if (!string.IsNullOrEmpty(msg))
+                NotificacaoPopUp.MostrarNotificacao(msg, NotificacaoPopUp.AlertType.Info);
+
+            /*dataGridView1.Columns["ObjectState"].Visible = false;
+
+            dataGridView1.Columns["IdModalidade"].DisplayIndex = 0;
+            dataGridView1.Columns["Nome"].DisplayIndex = 1;
+            dataGridView1.Columns["Observacao"].DisplayIndex = 2;
+            dataGridView1.Columns["DataInicial"].DisplayIndex = 3;
+            dataGridView1.Columns["DataFinal"].DisplayIndex = 4;
+
+            dataGridView1.Columns["IdModalidade"].HeaderText = "Cod.";
+            dataGridView1.Columns["IdModalidade"].Width = 60;
+
+            dataGridView1.Columns["Nome"].HeaderText = "Nome.";
+
+            dataGridView1.Columns["Observacao"].HeaderText = "Obs.";
+
+            dataGridView1.Columns["DataInicial"].HeaderText = "Dt. Inicial";
+            dataGridView1.Columns["DataInicial"].Width = 120;
+
+            dataGridView1.Columns["DataFinal"].HeaderText = "Dt. Final";
+            dataGridView1.Columns["DataFinal"].Width = 120;*/
+        }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            List<Pessoa> pessoas = Pessoa.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text);
-
-            if (pessoas.Count > 0)
-            {
-                dataGridView1.DataSource = pessoas;
-            }
-            else
-            {
-                dataGridView1.DataSource = Pessoa.SelecionaTodos();
-            }
+            CarregaGrid();
         }
 
         private void AbrirCadastro()
-        {            
+        {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                Pessoa? pessoa;
-                pessoa = row.DataBoundItem as Pessoa;
-                
+                People? pessoa;
+                pessoa = row.DataBoundItem as People;
+
                 if (pessoa != null)
                 {
                     Cadastros.FormCadastroDePessoas frm = new(pessoa);
@@ -61,7 +87,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
                     frm.BringToFront();
                     frm.Show();
                 }
-            }            
+            }
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -78,18 +104,28 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                Pessoa? pessoa;
-                pessoa = row.DataBoundItem as Pessoa;
-
-                if (pessoa != null)
+                try
                 {
-                   var returned = MessageBox.Show("Deseja realmente excluir esse cadastro?\n" +
-                        "\nAo prosseguir não será possivel reverter.", 
-                        "Confirmar ação", 
-                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    PeopleController peopleController = new(row.DataBoundItem as People);
 
-                    if (returned == DialogResult.OK)
-                        pessoa.Excluir();
+                    if (peopleController.SelectedPeople != null)
+                        if (MessageBox.Show("Deseja realmente excluir esse cadastro?\n\n" +
+                                            "Ao prosseguir não será possivel reverter.",
+                                            "Confirmar ação",
+                                            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                                            == DialogResult.OK)
+                            peopleController.Excluir();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao excluir:\n" + ex.Message,
+                                    "Erro ao excluir",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    CarregaGrid();
                 }
             }
         }

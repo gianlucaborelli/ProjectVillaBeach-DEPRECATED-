@@ -9,38 +9,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Controles;
+using ProjetoVillaBeach.Entities.Base;
+using ProjetoVillaBeach.Entities.Controllers;
 
 namespace ProjetoVillaBeach.Formularios.Cadastros
 {
     public partial class FormCadastroDePessoas : Form
     {
-        Pessoa pessoa = new();
+        private PeopleController peopleController;
+        private People pessoa = new();
 
         public FormCadastroDePessoas()
         {
             InitializeComponent();
-            pessoa.ObjectState = EntityObjectState.Added;
+            peopleController = new();
         }
 
-        public FormCadastroDePessoas(Pessoa id)
+        public FormCadastroDePessoas(People id)
         {
             InitializeComponent();
-
-            pessoa = id;
-            
-            CarregaPessoa();
+            peopleController = new(id);
         }
 
         private void CarregaPessoa()
         {
-            flatTxtNome.Text = pessoa.Nome;
-            flatTxtCpf.Text = pessoa.NumeroCpf.ToString();
-            flatTxtDn.Text = pessoa.DataDeNascimento.ToString();
-            flatTxtRg.Text = pessoa.NumeroRg;
-            flatTxtFiliacao1.Text = pessoa.Filiacao1;
-            flatTxtFiliacao2.Text = pessoa.Filiacao2;
+            flatTxtNome.Text = peopleController.SelectedPeople.Nome;
+            flatTxtCpf.Text = peopleController.SelectedPeople.NumeroCpf.ToString();
+            flatTxtDn.Text = peopleController.SelectedPeople.DataDeNascimento?.ToString("dd/MM/yyyy");
+            flatTxtRg.Text = peopleController.SelectedPeople.NumeroRg?.ToString();
+            flatTxtFiliacao1.Text = peopleController.SelectedPeople.Filiacao1;
+            flatTxtFiliacao2.Text = peopleController.SelectedPeople.Filiacao2;
+
+            ImageCapturePeople.Captured = peopleController.SelectedPeople.Photo;
+
 
             if (flpEndereco.Controls.Count > 0)
                 flpEndereco.Controls.Clear();
@@ -56,7 +59,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         {
             Endereco endereco = new();
 
-            endereco.IdPessoa = pessoa.IdPessoa;
+            endereco.IdPessoa = pessoa.Id;
 
             endereco.ObjectState = EntityObjectState.Added;
 
@@ -88,9 +91,51 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            pessoa.Salvar();
+            try
+            {
+                if (peopleController.Salvar())
+                    NotificacaoPopUp.MostrarNotificacao("Salvo com Sucesso",
+                                                        NotificacaoPopUp.AlertType.Success);
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao("Erro ao Salvar \n" + ex.Message,
+                                                    NotificacaoPopUp.AlertType.Error);
+            }
+        }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            if (peopleController.SelectedPeople.ObjectState != EntityObjectState.Added)
+            {
+                if (MessageBox.Show("Deseja realmente excluir este cadastro?\n\n" +
+                                    "Após confirmar a exclusão, não será possivel reverter!",
+                                    "Confirmar ação",
+                                    MessageBoxButtons.OKCancel,
+                                    MessageBoxIcon.Warning)
+                                    == DialogResult.OK)
+                {
+                    try
+                    {
+                        if (peopleController.Excluir())
+                        {
+                            NotificacaoPopUp.MostrarNotificacao("Excluido com Sucesso",
+                                                   NotificacaoPopUp.AlertType.Info);
+                            this.Dispose();
+                        }                            
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void Form_OnLoad(object sender, EventArgs e)
+        {
             CarregaPessoa();
-        } 
+        }
 
         private void Calendar_Click(object sender, EventArgs e)
         {
@@ -125,84 +170,87 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void NomeFlatTextBox_Leave(object sender, EventArgs e)
         {
-            pessoa.Nome = flatTxtNome.Text;
-        }
-
-        private void Filiacao1FlatTextBox_Valited(object sender, EventArgs e)
-        {
-            pessoa.Filiacao1 = flatTxtFiliacao1.Text;
-        }
-
-        private void DataDeNascimentoFlatTextBox_Valited(object sender, EventArgs e)
-        {
             try
             {
-                if(!DateTime.TryParseExact(flatTxtDn.Text, "dd/MM/yyyy", 
-                                        CultureInfo.InvariantCulture, 
-                                        DateTimeStyles.None, 
-                                        out DateTime date))
-                {
-                    NotificacaoPopUp.MostrarNotificacao("Formato da data escolhida é invalida", NotificacaoPopUp.AlertType.Warning);
-                    flatTxtDn.Text = string.Empty;
-                }
-                pessoa.DataDeNascimento = date;
-            }
-            catch(ArgumentException ex)
-            {
-                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
-                flatTxtDn.Text = string.Empty;
-            }            
-        }
-
-        private void Filiacao2FlatTextBox_Valited(object sender, EventArgs e)
-        {
-            pessoa.Filiacao2 = flatTxtFiliacao2.Text;
-        }
-
-        private void CpfFlatTextBox_Validated(object sender, EventArgs e)
-        {
-            try
-            {
-                pessoa.NumeroCpf = flatTxtCpf.ToUlongParse();
-            }
-            catch (ArgumentException ex)
-            {
-                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+                peopleController.SelectedPeople.Nome = flatTxtNome.ReturnValue<string>();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }            
+        }
+
+        private void FlatTxtBoxCPF_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                peopleController.SelectedPeople.NumeroCpf = flatTxtCpf.ReturnValue<ulong>();
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
             }
         }
 
-        private void RgFlatTextBox_Valited(object sender, EventArgs e)
+        private void FlatTxtBoxFiliacao1_Leave(object sender, EventArgs e)
         {
-            pessoa.NumeroRg = flatTxtRg.Text;
+            try
+            {
+                peopleController.SelectedPeople.Filiacao1 = flatTxtFiliacao1.ReturnValue<string>();
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
         }
 
-        private void BtnExcluir_Click(object sender, EventArgs e)
+        private void FlatTxtBoxFiliacao2_Leave(object sender, EventArgs e)
         {
-            if(pessoa.ObjectState != EntityObjectState.Added)
+            try
             {
-                var returned = MessageBox.Show("Deseja realmente excluir este cadastro?\n" +
-                                "\nApós confirmar a exclusão, não será possivel reverter!",
-                                "Confirmar ação", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                peopleController.SelectedPeople.Filiacao2 = flatTxtFiliacao2.ReturnValue<string>();
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+        }
 
-                if (returned == DialogResult.OK)
-                {
-                    pessoa.ObjectState = EntityObjectState.Deleted;
+        private void FlatTxtBoxRG_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                peopleController.SelectedPeople.NumeroRg = flatTxtRg.ReturnValue<string>();
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+        }
 
-                    try
-                    {
-                        pessoa.Excluir();
-                        this.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }            
+        private void FlatTxtBoxDN_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                peopleController.SelectedPeople.DataDeNascimento = flatTxtDn.ReturnValue<DateTime?>();
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+        }
+
+        private void ImageCapturePeople_ImageChanged(object sender, EventArgs args)
+        {
+            try
+            {
+                peopleController.SelectedPeople.Photo = ImageCapturePeople.Captured;
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+            
         }
     }
 }

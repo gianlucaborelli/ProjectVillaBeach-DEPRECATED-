@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Formularios;
 using ProjetoVillaBeach.Formularios.Pesquisas;
+using ProjetoVillaBeach.Formularios.Cadastros;
+using System.Configuration;
 
 namespace ProjetoVillaBeach
 {
@@ -22,6 +25,13 @@ namespace ProjetoVillaBeach
             Splasher.Show();
 
             Splasher.Status = "Loading Files...";
+
+            if (!Directory.Exists(ConfigurationManager.AppSettings["PathPhoto"]))
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["PathPhoto"]);
+
+            if (!Directory.Exists(ConfigurationManager.AppSettings["TempPathPhoto"]))
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["TempPathPhoto"]);
+
             System.Threading.Thread.Sleep(2000);
 
             Splasher.Status = "Loading Plug/Ins...";
@@ -44,7 +54,15 @@ namespace ProjetoVillaBeach
         }
 
         private void AbrirFormulario(Form FormFilho)
-        {
+        {   
+            foreach(Control ctrol in this.pnlConteudo.Controls)
+            {
+                if (ctrol is Form)
+                {
+                    ctrol.Dispose();
+                }
+            }
+
             if (this.pnlConteudo.Controls.Count > 0)
                 this.pnlConteudo.Controls.RemoveAt(0);
 
@@ -62,6 +80,8 @@ namespace ProjetoVillaBeach
             //Adicionar aqui todos SubMenu Criados
             SubMenuCadastro.Visible = false;
             SubMenuCadastro.Enabled= false;
+            SubMenuMatricula.Enabled= false;
+            SubMenuMatricula.Visible = false;
         }
 
         //Metodo mostra Menu
@@ -97,6 +117,16 @@ namespace ProjetoVillaBeach
 
             //Conexao.EncriptaConexao();
             //Conexao.DecriptaConexao();
+        }
+
+        private void BtnMatricula_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(SubMenuMatricula);
+        }
+
+        private void BtnCurso_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormPesquisaDeCursos());
         }
     }
 }
