@@ -11,16 +11,18 @@ using System.Windows;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Channels;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 {
+    [DefaultEvent("ImageChanged")]
+    [DefaultBindingProperty("Captured")]
     public partial class ImageCapture : UserControl
     {
         private OpenFileDialog openImagemFileDialog;
 
         [Category("Appearance")]
-        [Description("The text displayed by the control.")]
+        [Description("The Image displayed by the control.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
@@ -135,7 +137,5 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
                 }
             }
         }
-
-
     }
 }

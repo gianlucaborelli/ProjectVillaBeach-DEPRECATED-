@@ -12,6 +12,9 @@ namespace ProjetoVillaBeach.Entities.Base
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            if (ObjectState != EntityObjectState.Added)
+                ObjectState = EntityObjectState.Modified;
         }
 
         [NotMapped]
@@ -36,8 +39,7 @@ namespace ProjetoVillaBeach.Entities.Base
             _backField = value;
             OnPropertyChanged(propertyName);
 
-            if (ObjectState != EntityObjectState.Added)
-                ObjectState = EntityObjectState.Modified;
+            
 
             return true;
         }

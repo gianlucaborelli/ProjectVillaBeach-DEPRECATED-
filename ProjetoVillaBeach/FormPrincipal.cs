@@ -29,6 +29,9 @@ namespace ProjetoVillaBeach
             if (!Directory.Exists(ConfigurationManager.AppSettings["PathPhoto"]))
                 Directory.CreateDirectory(ConfigurationManager.AppSettings["PathPhoto"]);
 
+            if (!Directory.Exists(ConfigurationManager.AppSettings["TempPathPhoto"]))
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["TempPathPhoto"]);
+
             System.Threading.Thread.Sleep(2000);
 
             Splasher.Status = "Loading Plug/Ins...";

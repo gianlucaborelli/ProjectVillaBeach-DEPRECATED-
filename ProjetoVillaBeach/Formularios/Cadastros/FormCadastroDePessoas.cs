@@ -42,6 +42,8 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             flatTxtFiliacao1.Text = peopleController.SelectedPeople.Filiacao1;
             flatTxtFiliacao2.Text = peopleController.SelectedPeople.Filiacao2;
 
+            ImageCapturePeople.Captured = peopleController.SelectedPeople.Photo;
+
 
             if (flpEndereco.Controls.Count > 0)
                 flpEndereco.Controls.Clear();
@@ -240,7 +242,15 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
 
         private void ImageCapturePeople_ImageChanged(object sender, EventArgs args)
         {
-            peopleController.SelectedPeople.Photo = ImageCapturePeople.Captured;
+            try
+            {
+                peopleController.SelectedPeople.Photo = ImageCapturePeople.Captured;
+            }
+            catch (Exception ex)
+            {
+                NotificacaoPopUp.MostrarNotificacao(ex.Message, NotificacaoPopUp.AlertType.Warning);
+            }
+            
         }
     }
 }

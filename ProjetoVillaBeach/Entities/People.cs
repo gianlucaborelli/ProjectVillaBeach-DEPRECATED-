@@ -153,45 +153,75 @@ namespace ProjetoVillaBeach.Entities
         {
             get
             {
-                if (PathPhoto == null)
-                    return null;
-                return Image.FromFile(PathPhoto);
+                _photo = GetImage();
+                return _photo;
             }
             set
             {
-                if (value != null)
-                    SetPhoto(value);
+                _photo = SetPhoto(value);
+                OnPropertyChanged();
             }
         }
-
+        private Image? _photo;
+        
         [NotMapped]
-        private string? TempPathPhoto;        
+        public string? TempPathPhoto { get; set; }
 
         #endregion
-                
-        private void SetPhoto(Image photo)
+
+        private Image GetImage()
         {
-            TempPathPhoto = "C:\\Nova pasta\\" + Id.ToString() + ".png";
+            if (PathPhoto != null)
+                return Image.FromFile(PathPhoto);
 
-            if (File.Exists(TempPathPhoto))
-                File.Delete(TempPathPhoto);
+            if (TempPathPhoto != null)
+                return Image.FromFile(TempPathPhoto);
 
-            photo.Save(TempPathPhoto, System.Drawing.Imaging.ImageFormat.Png);
-            //Photo.Dispose();
-            //Photo = photo;
+            return null;
+        }
+
+        private Image? SetPhoto(Image? photo)
+        {
+            TempPathPhoto = ConfigurationManager.AppSettings["TempPathPhoto"] + Id.ToString() + ".png";
+
+            if (photo == null)
+                if (PathPhoto != null)
+                {
+                    File.Move(PathPhoto, TempPathPhoto);
+                    Photo.Dispose();
+                    return null;
+                }
+                    
+            if (photo != null)
+
+
+
+
+
+
+
+
+            PathPhoto = string.Empty;
+
+            PathPhoto = ConfigurationManager.AppSettings["PathPhoto"] + Id.ToString() + ".png";
+
+            if (File.Exists(PathPhoto))
+                File.Delete(PathPhoto);
+
+            if (photo != null)
+                photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
+
+            return photo;
         }
 
         public void SavePhoto()
         {
-            if (TempPathPhoto == null)
-                return;
-
             var path = ConfigurationManager.AppSettings["PathPhoto"] + Id.ToString() + ".png";
 
-            if (File.Exists(TempPathPhoto))
-                File.Move(TempPathPhoto, path);
+            if (File.Exists(PathPhoto))
+                File.Move(PathPhoto, path);
 
-            File.Delete(TempPathPhoto);
+            File.Delete(PathPhoto);
 
             PathPhoto = path;
         }
