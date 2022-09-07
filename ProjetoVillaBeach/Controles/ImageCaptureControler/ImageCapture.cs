@@ -64,6 +64,18 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
         }
         #endregion
 
+        #region Event ImageDelete
+        public delegate void ImageDeleteEventHandler(object sender, EventArgs args);
+
+        public event ImageDeleteEventHandler ImageDelete;
+
+        protected virtual void OnImageDelete()
+        {
+            if (ImageDelete != null)
+                ImageDelete(this, EventArgs.Empty);
+        }
+        #endregion
+
         public ImageCapture()
         {
             InitializeComponent();

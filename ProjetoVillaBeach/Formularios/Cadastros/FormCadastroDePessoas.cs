@@ -252,5 +252,10 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             }
             
         }
+
+        private void ImageCapturePeople_ImageDelete(object sender, EventArgs args)
+        {
+            
+        }
     }
 }

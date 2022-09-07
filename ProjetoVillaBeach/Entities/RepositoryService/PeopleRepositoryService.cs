@@ -39,6 +39,7 @@ namespace ProjetoVillaBeach.Entities.RepositoryService
         {
             var contexto = new Contexto();
             contexto.Peoples.Add(objeto);
+            objeto.SavePhoto();
             return (contexto.SaveChanges() > 0);
         }
     }
