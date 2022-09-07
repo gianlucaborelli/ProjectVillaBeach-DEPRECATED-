@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 
 #nullable disable
 
@@ -19,7 +19,33 @@ namespace ProjetoVillaBeach.Migrations
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Email", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +68,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.ToTable("Emails");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Endereco", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,7 +109,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Matricula", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Matricula", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,7 +136,7 @@ namespace ProjetoVillaBeach.Migrations
                     b.ToTable("Matriculas");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Mensalidade", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Mensalidade", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,43 +157,19 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<int>("IdValorModalidade")
                         .HasColumnType("int");
 
+                    b.Property<int>("ValoresModalidadeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdMatricula");
 
-                    b.HasIndex("IdValorModalidade");
+                    b.HasIndex("ValoresModalidadeId");
 
                     b.ToTable("Mensalidades");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Modalidade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DataFinal")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime?>("DataInicial")
-                        .IsRequired()
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
-                    b.Property<string>("Observacao")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Modalidades");
-                });
-
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Pessoa", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.People", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -198,12 +200,72 @@ namespace ProjetoVillaBeach.Migrations
                     b.Property<string>("NumeroRg")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("PathPhoto")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoas");
+                    b.ToTable("Peoples");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Telefone", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Price", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Value")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Prices");
+                });
+
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataFim")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Telefone", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -225,34 +287,9 @@ namespace ProjetoVillaBeach.Migrations
                     b.ToTable("Telefones");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.ValoresModalidade", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Email", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DataFim")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DataInicio")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("IdModalidade")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Valor")
-                        .HasColumnType("double");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdModalidade");
-
-                    b.ToTable("ValoresModalidades");
-                });
-
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Email", b =>
-                {
-                    b.HasOne("ProjetoVillaBeach.Classes.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Email")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -261,9 +298,9 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Pessoa");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Endereco", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Endereco", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Classes.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Enderecos")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -272,15 +309,15 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Pessoa");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Matricula", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Matricula", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Classes.Modalidade", "Modalidade")
+                    b.HasOne("ProjetoVillaBeach.Entities.Course", "Modalidade")
                         .WithMany("Matriculas")
                         .HasForeignKey("IdModalidade")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjetoVillaBeach.Classes.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Matriculas")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -291,17 +328,17 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Pessoa");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Mensalidade", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Mensalidade", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Classes.Matricula", "Matricula")
+                    b.HasOne("ProjetoVillaBeach.Entities.Matricula", "Matricula")
                         .WithMany("Mensalidades")
                         .HasForeignKey("IdMatricula")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjetoVillaBeach.Classes.ValoresModalidade", "ValoresModalidade")
-                        .WithMany("Mensalidades")
-                        .HasForeignKey("IdValorModalidade")
+                    b.HasOne("ProjetoVillaBeach.Entities.Price", "ValoresModalidade")
+                        .WithMany()
+                        .HasForeignKey("ValoresModalidadeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -310,9 +347,20 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("ValoresModalidade");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Telefone", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Price", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Classes.Pessoa", "Pessoa")
+                    b.HasOne("ProjetoVillaBeach.Entities.Course", null)
+                        .WithMany("Prices")
+                        .HasForeignKey("CourseId");
+
+                    b.HasOne("ProjetoVillaBeach.Entities.Product", null)
+                        .WithMany("Prices")
+                        .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Telefone", b =>
+                {
+                    b.HasOne("ProjetoVillaBeach.Entities.People", "Pessoa")
                         .WithMany("Telefones")
                         .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -321,30 +369,19 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Pessoa");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.ValoresModalidade", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Course", b =>
                 {
-                    b.HasOne("ProjetoVillaBeach.Classes.Modalidade", "Modalidade")
-                        .WithMany("ValoresModalidades")
-                        .HasForeignKey("IdModalidade")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Matriculas");
 
-                    b.Navigation("Modalidade");
+                    b.Navigation("Prices");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Matricula", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Matricula", b =>
                 {
                     b.Navigation("Mensalidades");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Modalidade", b =>
-                {
-                    b.Navigation("Matriculas");
-
-                    b.Navigation("ValoresModalidades");
-                });
-
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.Pessoa", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.People", b =>
                 {
                     b.Navigation("Email");
 
@@ -355,9 +392,9 @@ namespace ProjetoVillaBeach.Migrations
                     b.Navigation("Telefones");
                 });
 
-            modelBuilder.Entity("ProjetoVillaBeach.Classes.ValoresModalidade", b =>
+            modelBuilder.Entity("ProjetoVillaBeach.Entities.Product", b =>
                 {
-                    b.Navigation("Mensalidades");
+                    b.Navigation("Prices");
                 });
 #pragma warning restore 612, 618
         }

@@ -46,6 +46,7 @@
             this.btnAddEndereco = new System.Windows.Forms.Button();
             this.flpEndereco = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddContatos = new System.Windows.Forms.Button();
+            this.ImageCapturePeople = new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture();
             this.tbContatos = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -157,6 +158,7 @@
             this.tableLayoutPanel2.Controls.Add(this.flatTxtCpf, 7, 3);
             this.tableLayoutPanel2.Controls.Add(this.flatTxtDn, 7, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 1, 13);
+            this.tableLayoutPanel2.Controls.Add(this.ImageCapturePeople, 1, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 15;
@@ -198,7 +200,7 @@
             this.flatTxtFiliacao2.UnderlinedStyle = true;
             this.flatTxtFiliacao2.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao2.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtFiliacao2.Validated += new System.EventHandler(this.Filiacao2FlatTextBox_Valited);
+            this.flatTxtFiliacao2.Leave += new System.EventHandler(this.FlatTxtBoxFiliacao2_Leave);
             // 
             // flatTxtRg
             // 
@@ -218,7 +220,7 @@
             this.flatTxtRg.UnderlinedStyle = true;
             this.flatTxtRg.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtRg.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtRg.Validated += new System.EventHandler(this.RgFlatTextBox_Valited);
+            this.flatTxtRg.Leave += new System.EventHandler(this.FlatTxtBoxRG_Leave);
             // 
             // flatTxtFiliacao1
             // 
@@ -240,7 +242,7 @@
             this.flatTxtFiliacao1.UnderlinedStyle = true;
             this.flatTxtFiliacao1.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtFiliacao1.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.UndefinedText;
-            this.flatTxtFiliacao1.Validated += new System.EventHandler(this.Filiacao1FlatTextBox_Valited);
+            this.flatTxtFiliacao1.Leave += new System.EventHandler(this.FlatTxtBoxFiliacao1_Leave);
             // 
             // flatTxtNome
             // 
@@ -282,7 +284,7 @@
             this.flatTxtCpf.UnderlinedStyle = true;
             this.flatTxtCpf.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtCpf.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.CPF;
-            this.flatTxtCpf.Validated += new System.EventHandler(this.CpfFlatTextBox_Validated);
+            this.flatTxtCpf.Leave += new System.EventHandler(this.FlatTxtBoxCPF_Leave);
             // 
             // flatTxtDn
             // 
@@ -302,7 +304,7 @@
             this.flatTxtDn.UnderlinedStyle = true;
             this.flatTxtDn.ValidationStatus = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationStatus.NotChangedOrEmpty;
             this.flatTxtDn.ValidationType = ProjetoVillaBeach.Controles.FlatTextBoxControler.EnumValidationType.Date;
-            this.flatTxtDn.Validated += new System.EventHandler(this.DataDeNascimentoFlatTextBox_Valited);
+            this.flatTxtDn.Leave += new System.EventHandler(this.FlatTxtBoxDN_Leave);
             // 
             // tableLayoutPanel6
             // 
@@ -375,6 +377,19 @@
             this.btnAddContatos.TabIndex = 7;
             this.btnAddContatos.Text = "Adicionar Contato";
             this.btnAddContatos.UseVisualStyleBackColor = false;
+            // 
+            // ImageCapturePeople
+            // 
+            this.ImageCapturePeople.Captured = null;
+            this.ImageCapturePeople.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImageCapturePeople.Location = new System.Drawing.Point(9, 9);
+            this.ImageCapturePeople.Margin = new System.Windows.Forms.Padding(4);
+            this.ImageCapturePeople.Name = "ImageCapturePeople";
+            this.tableLayoutPanel2.SetRowSpan(this.ImageCapturePeople, 11);
+            this.ImageCapturePeople.Size = new System.Drawing.Size(227, 278);
+            this.ImageCapturePeople.TabIndex = 10;
+            this.ImageCapturePeople.ImageChanged += new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture.ImageChangedEventHandler(this.ImageCapturePeople_ImageChanged);
+            this.ImageCapturePeople.ImageDelete += new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture.ImageDeleteEventHandler(this.ImageCapturePeople_ImageDelete);
             // 
             // tbContatos
             // 
@@ -485,5 +500,6 @@
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtNome;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtCpf;
         private Controles.FlatTextBoxControler.FlatTextBox flatTxtDn;
+        private Controles.ImageCaptureControler.ImageCapture ImageCapturePeople;
     }
 }

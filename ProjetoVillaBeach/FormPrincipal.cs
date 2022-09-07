@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjetoVillaBeach.Classes;
+using ProjetoVillaBeach.Entities;
 using ProjetoVillaBeach.Formularios;
 using ProjetoVillaBeach.Formularios.Pesquisas;
 using ProjetoVillaBeach.Formularios.Cadastros;
+using System.Configuration;
 
 namespace ProjetoVillaBeach
 {
@@ -23,6 +25,13 @@ namespace ProjetoVillaBeach
             Splasher.Show();
 
             Splasher.Status = "Loading Files...";
+
+            if (!Directory.Exists(ConfigurationManager.AppSettings["PathPhoto"]))
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["PathPhoto"]);
+
+            if (!Directory.Exists(ConfigurationManager.AppSettings["TempPathPhoto"]))
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["TempPathPhoto"]);
+
             System.Threading.Thread.Sleep(2000);
 
             Splasher.Status = "Loading Plug/Ins...";

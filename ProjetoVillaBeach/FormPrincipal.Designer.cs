@@ -46,7 +46,7 @@
             // 
             // pnlTitulo
             // 
-            this.pnlTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(74)))), ((int)(((byte)(99)))));
+            this.pnlTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitulo.Location = new System.Drawing.Point(0, 0);
             this.pnlTitulo.Margin = new System.Windows.Forms.Padding(4);
@@ -56,7 +56,7 @@
             // 
             // pnlMenuLateral
             // 
-            this.pnlMenuLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(93)))), ((int)(((byte)(124)))));
+            this.pnlMenuLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.pnlMenuLateral.Controls.Add(this.bntConfiguracao);
             this.pnlMenuLateral.Controls.Add(this.SubMenuMatricula);
             this.pnlMenuLateral.Controls.Add(this.btnMatricula);
@@ -74,6 +74,7 @@
             this.bntConfiguracao.Dock = System.Windows.Forms.DockStyle.Top;
             this.bntConfiguracao.FlatAppearance.BorderSize = 0;
             this.bntConfiguracao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntConfiguracao.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bntConfiguracao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.bntConfiguracao.Location = new System.Drawing.Point(0, 366);
             this.bntConfiguracao.Margin = new System.Windows.Forms.Padding(4);
@@ -86,7 +87,7 @@
             // 
             // SubMenuMatricula
             // 
-            this.SubMenuMatricula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.SubMenuMatricula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(130)))));
             this.SubMenuMatricula.Controls.Add(this.button2);
             this.SubMenuMatricula.Dock = System.Windows.Forms.DockStyle.Top;
             this.SubMenuMatricula.Location = new System.Drawing.Point(0, 238);
@@ -96,10 +97,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(130)))));
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Name = "button2";
@@ -113,6 +115,7 @@
             this.btnMatricula.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMatricula.FlatAppearance.BorderSize = 0;
             this.btnMatricula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatricula.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnMatricula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnMatricula.Location = new System.Drawing.Point(0, 183);
             this.btnMatricula.Margin = new System.Windows.Forms.Padding(4);
@@ -125,7 +128,7 @@
             // 
             // SubMenuCadastro
             // 
-            this.SubMenuCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.SubMenuCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(130)))));
             this.SubMenuCadastro.Controls.Add(this.btnCurso);
             this.SubMenuCadastro.Controls.Add(this.btnCadastroDePessoas);
             this.SubMenuCadastro.Dock = System.Windows.Forms.DockStyle.Top;
@@ -136,10 +139,11 @@
             // 
             // btnCurso
             // 
-            this.btnCurso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnCurso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(130)))));
             this.btnCurso.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCurso.FlatAppearance.BorderSize = 0;
             this.btnCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCurso.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCurso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnCurso.Location = new System.Drawing.Point(0, 52);
             this.btnCurso.Name = "btnCurso";
@@ -151,10 +155,11 @@
             // 
             // btnCadastroDePessoas
             // 
-            this.btnCadastroDePessoas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(160)))), ((int)(((byte)(200)))));
+            this.btnCadastroDePessoas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(130)))));
             this.btnCadastroDePessoas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCadastroDePessoas.FlatAppearance.BorderSize = 0;
             this.btnCadastroDePessoas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastroDePessoas.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCadastroDePessoas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnCadastroDePessoas.Location = new System.Drawing.Point(0, 0);
             this.btnCadastroDePessoas.Name = "btnCadastroDePessoas";
@@ -169,6 +174,7 @@
             this.btnCadastro.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCadastro.FlatAppearance.BorderSize = 0;
             this.btnCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastro.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
             this.btnCadastro.Location = new System.Drawing.Point(0, 0);
             this.btnCadastro.Margin = new System.Windows.Forms.Padding(4);
@@ -181,7 +187,7 @@
             // 
             // pnlConteudo
             // 
-            this.pnlConteudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(209)))), ((int)(((byte)(231)))));
+            this.pnlConteudo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(73)))), ((int)(((byte)(93)))));
             this.pnlConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlConteudo.Location = new System.Drawing.Point(260, 84);
             this.pnlConteudo.Margin = new System.Windows.Forms.Padding(4);

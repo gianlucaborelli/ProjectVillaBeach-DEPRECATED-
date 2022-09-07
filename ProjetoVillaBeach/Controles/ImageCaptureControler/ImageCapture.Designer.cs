@@ -28,75 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnOpenImageFile = new System.Windows.Forms.Button();
+            this.btnOpenCaptureImage = new System.Windows.Forms.Button();
+            this.btnClearImageCaptured = new System.Windows.Forms.Button();
+            this.pbImageCaptured = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImageCaptured)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnOpenImageFile
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(6, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 31);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnOpenImageFile.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnOpenImageFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOpenImageFile.FlatAppearance.BorderSize = 0;
+            this.btnOpenImageFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenImageFile.Image = global::ProjetoVillaBeach.Properties.Resources.icons8_Browse_Folder_32px_1;
+            this.btnOpenImageFile.Location = new System.Drawing.Point(7, 218);
+            this.btnOpenImageFile.Name = "btnOpenImageFile";
+            this.btnOpenImageFile.Size = new System.Drawing.Size(34, 34);
+            this.btnOpenImageFile.TabIndex = 0;
+            this.btnOpenImageFile.UseVisualStyleBackColor = false;
+            this.btnOpenImageFile.Click += new System.EventHandler(this.OpenImagemFile_Click);
             // 
-            // button2
+            // btnOpenCaptureImage
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(135, 201);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 31);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnOpenCaptureImage.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnOpenCaptureImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOpenCaptureImage.FlatAppearance.BorderSize = 0;
+            this.btnOpenCaptureImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenCaptureImage.Image = global::ProjetoVillaBeach.Properties.Resources.icons8_camera_32px_1;
+            this.btnOpenCaptureImage.Location = new System.Drawing.Point(180, 218);
+            this.btnOpenCaptureImage.Name = "btnOpenCaptureImage";
+            this.btnOpenCaptureImage.Size = new System.Drawing.Size(34, 34);
+            this.btnOpenCaptureImage.TabIndex = 1;
+            this.btnOpenCaptureImage.UseVisualStyleBackColor = false;
+            this.btnOpenCaptureImage.Click += new System.EventHandler(this.OpenCaptureImage_Click);
             // 
-            // button3
+            // btnClearImageCaptured
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(58, 201);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 31);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnClearImageCaptured.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnClearImageCaptured.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClearImageCaptured.FlatAppearance.BorderSize = 0;
+            this.btnClearImageCaptured.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearImageCaptured.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearImageCaptured.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.btnClearImageCaptured.Location = new System.Drawing.Point(51, 218);
+            this.btnClearImageCaptured.Name = "btnClearImageCaptured";
+            this.btnClearImageCaptured.Size = new System.Drawing.Size(119, 34);
+            this.btnClearImageCaptured.TabIndex = 2;
+            this.btnClearImageCaptured.Text = "Limpar";
+            this.btnClearImageCaptured.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // pbImageCaptured
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 192);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.tableLayoutPanel1.SetColumnSpan(this.pbImageCaptured, 5);
+            this.pbImageCaptured.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImageCaptured.Location = new System.Drawing.Point(7, 7);
+            this.pbImageCaptured.Name = "pbImageCaptured";
+            this.pbImageCaptured.Size = new System.Drawing.Size(207, 201);
+            this.pbImageCaptured.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImageCaptured.TabIndex = 3;
+            this.pbImageCaptured.TabStop = false;
+            this.pbImageCaptured.SizeChanged += new System.EventHandler(this.PictureBox_SizeChanged);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.Controls.Add(this.pbImageCaptured, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnOpenCaptureImage, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnClearImageCaptured, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnOpenImageFile, 1, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(221, 259);
+            this.tableLayoutPanel1.TabIndex = 4;
             // 
             // ImageCapture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ImageCapture";
-            this.Size = new System.Drawing.Size(185, 238);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(221, 259);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImageCaptured)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnOpenImageFile;
+        private System.Windows.Forms.Button btnOpenCaptureImage;
+        private System.Windows.Forms.Button btnClearImageCaptured;
+        private System.Windows.Forms.PictureBox pbImageCaptured;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

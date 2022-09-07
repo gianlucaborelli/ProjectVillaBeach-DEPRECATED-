@@ -474,6 +474,16 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
             txtBox.Text = _services.CreateStringMasked(txtBox.Text);
         }
 
+        public bool IsValid()
+        {
+            return (ValidationStatus == EnumValidationStatus.Valid);
+        }
+
+        public bool IsEmpty()
+        {
+            return (txtBox.Text.Length == 0);
+        }
+
         public ulong ToUlongParse()
         {
             string stg = txtBox.Text;
@@ -489,6 +499,15 @@ namespace ProjetoVillaBeach.Controles.FlatTextBoxControler
         private bool CompleteSatisfactionRequirements()
         {
             return false;
+        }
+
+        public T? ReturnValue<T>()
+        {
+            if (_services.ReturnValue(Text, out T? value))
+                return value;
+
+            Clear();
+            return default(T?);
         }
     }
 }
