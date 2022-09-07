@@ -142,7 +142,7 @@ namespace ProjetoVillaBeach.Entities
                 _enderecos = value;
             }
         }
-        private List<Endereco> _enderecos = new List<Endereco>();
+        private List<Endereco> _enderecos = new();
 
         public virtual List<Matricula> Matriculas { get; set; }
 
@@ -158,72 +158,40 @@ namespace ProjetoVillaBeach.Entities
             }
             set
             {
-                _photo = SetPhoto(value);
+                SetImage(value);
                 OnPropertyChanged();
             }
         }
         private Image? _photo;
-        
-        [NotMapped]
-        public string? TempPathPhoto { get; set; }
 
         #endregion
 
-        private Image GetImage()
+        private Image? GetImage()
         {
             if (PathPhoto != null)
                 return Image.FromFile(PathPhoto);
 
-            if (TempPathPhoto != null)
-                return Image.FromFile(TempPathPhoto);
-
             return null;
         }
 
-        private Image? SetPhoto(Image? photo)
+        private void SetImage(Image? photo)
         {
-            TempPathPhoto = ConfigurationManager.AppSettings["TempPathPhoto"] + Id.ToString() + ".png";
+            if (_photo == null)
+                _photo.Dispose();
 
-            if (photo == null)
-                if (PathPhoto != null)
-                {
-                    File.Move(PathPhoto, TempPathPhoto);
-                    Photo.Dispose();
-                    return null;
-                }
-                    
-            if (photo != null)
-
-
-
-
-
-
-
-
-            PathPhoto = string.Empty;
-
-            PathPhoto = ConfigurationManager.AppSettings["PathPhoto"] + Id.ToString() + ".png";
-
-            if (File.Exists(PathPhoto))
-                File.Delete(PathPhoto);
-
-            if (photo != null)
-                photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
-
-            return photo;
+            _photo = photo;
         }
 
         public void SavePhoto()
         {
-            var path = ConfigurationManager.AppSettings["PathPhoto"] + Id.ToString() + ".png";
+            if (string.IsNullOrEmpty(PathPhoto) && _photo != null)
+                PathPhoto = ConfigurationManager.AppSettings["PathPhoto"] + Nome + ".png";
 
             if (File.Exists(PathPhoto))
-                File.Move(PathPhoto, path);
+                File.Delete(PathPhoto);
 
-            File.Delete(PathPhoto);
 
-            PathPhoto = path;
+            _photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
         }
 
         public static ICollection<People> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
