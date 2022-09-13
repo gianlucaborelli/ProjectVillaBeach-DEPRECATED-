@@ -27,6 +27,9 @@ namespace ProjetoVillaBeach.Entities
         public DbSet<Product> Products { get; set; }
         public DbSet<Cpf> Cpfs { get; set; }
         public DbSet<Rg> Rgs { get; set; }
+        public DbSet<CivilRegistrationNew> CivilRegistrationNews { get; set; }
+        public DbSet<CivilRegistrationOld> CivilRegistrationOlds { get; set; }
+
 
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 
