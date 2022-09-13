@@ -56,7 +56,7 @@ namespace ProjetoVillaBeach.Entities
         private string? _numeroRg;
 
         [Required]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
+        [StringLength(255, MinimumLength = 3)]
         public string Nome
         {
             get
@@ -70,7 +70,7 @@ namespace ProjetoVillaBeach.Entities
         }
         private string _nome;
 
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "As informações diversas deve ter de 3 a 255 caracteres")]
+        [StringLength(255, MinimumLength = 3)]
         public string? Filiacao1
         {
             get
@@ -176,7 +176,7 @@ namespace ProjetoVillaBeach.Entities
 
         private void SetImage(Image? photo)
         {
-            if (_photo == null)
+            if (_photo != null)
                 _photo.Dispose();
 
             _photo = photo;
@@ -190,8 +190,8 @@ namespace ProjetoVillaBeach.Entities
             if (File.Exists(PathPhoto))
                 File.Delete(PathPhoto);
 
-
-            _photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
+            if (_photo != null)
+                _photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
         }
 
         public static ICollection<People> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)

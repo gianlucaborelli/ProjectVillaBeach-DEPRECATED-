@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ProjetoVillaBeach.Entities.Base;
+using ProjetoVillaBeach.Entities.Documents;
+using ProjetoVillaBeach.Classes.Documents;
 
 namespace ProjetoVillaBeach.Entities
 {
@@ -23,6 +25,8 @@ namespace ProjetoVillaBeach.Entities
         public DbSet<Mensalidade> Mensalidades { get; set; }
         public DbSet<Price> Prices { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Cpf> Cpfs { get; set; }
+        public DbSet<Rg> Rgs { get; set; }
 
         //private string connectionString = ConfigurationManager.ConnectionStrings["Conection"].ConnectionString;
 

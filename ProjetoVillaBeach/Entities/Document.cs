@@ -8,9 +8,7 @@ using ProjetoVillaBeach.Entities.Base;
 namespace ProjetoVillaBeach.Entities
 {
     public class Document : BaseClass
-    {
-        public string RegistrationCode { get; set; }
-
+    {        
 
     }
 }

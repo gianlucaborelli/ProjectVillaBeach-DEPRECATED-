@@ -27,10 +27,7 @@ namespace ProjetoVillaBeach
             Splasher.Status = "Loading Files...";
 
             if (!Directory.Exists(ConfigurationManager.AppSettings["PathPhoto"]))
-                Directory.CreateDirectory(ConfigurationManager.AppSettings["PathPhoto"]);
-
-            if (!Directory.Exists(ConfigurationManager.AppSettings["TempPathPhoto"]))
-                Directory.CreateDirectory(ConfigurationManager.AppSettings["TempPathPhoto"]);
+                Directory.CreateDirectory(ConfigurationManager.AppSettings["PathPhoto"]);            
 
             System.Threading.Thread.Sleep(2000);
 

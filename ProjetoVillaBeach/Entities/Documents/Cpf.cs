@@ -2,14 +2,49 @@
 using ProjetoVillaBeach.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Classes.Documents
 {
-    internal class Cpf
+    public class Cpf : Document
     {
+        [StringLength(11)]
+        public string CpfNumber
+        {
+            get
+            {
+                return _cpfNumber;
+            }
+            set
+            {
+                if (Cpf.IsCpf(value) && Cpf.IsUnique(value))
+                {
+                    SetProperty(ref _cpfNumber, value);
+                }
+                else
+                {
+                    throw new ArgumentException("C.P.F. invalido ou ja cadastrado");
+                }
+            }
+        }
+        private string _cpfNumber;
+
+        public DateTime? IssueDate
+        {
+            get
+            {
+                return _issueDate;
+            }
+            set
+            {
+                SetProperty(ref _issueDate, value);
+            }
+        }
+        private DateTime? _issueDate;
+
         /// <summary>
         /// Validates if the number entered is a C.P.F.
         /// </summary>        
@@ -92,7 +127,7 @@ namespace ProjetoVillaBeach.Classes.Documents
         /// </summary>     
         public static bool IsUnique(string cpf)
         {
-            using (var ctx = new Contexto())
+            /*using (var ctx = new Contexto())
             {
                 var pessoa = ctx.Peoples
                                 .Where(p => p.NumeroCpf == ulong.Parse(cpf))
@@ -100,11 +135,11 @@ namespace ProjetoVillaBeach.Classes.Documents
 
                 if (pessoa.Count == 0)
                 {
-                    return true;   
+                    return true;
                 }
-            }
+            }*/
 
-            return false;
+            return true;
         }
     }
 }
