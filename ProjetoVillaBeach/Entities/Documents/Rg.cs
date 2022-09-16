@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoVillaBeach.Entities.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,12 +10,44 @@ namespace ProjetoVillaBeach.Entities.Documents
 {
     public class Rg : Document
     {
-        public string RgNumber { get; set; }
+        public string Number
+        {
+            get
+            {
+                return _number;
+            }
+            set
+            {
+                SetProperty(ref _number, value);
+            }
+        }
+        private string _number;
 
-        public string? IssuingAgency { get; set; }
+        public EnumIssuingAgency? IssuingAgency
+        {
+            get
+            {
+                return _issuingAgency;
+            }
+            set
+            {
+                SetProperty(ref _issuingAgency, value);
+            }
+        }
+        private EnumIssuingAgency? _issuingAgency;
 
-        [StringLength(2)]
-        public string? IssuingState { get; set; }
+        public EnumStates? IssuingState
+        {
+            get
+            {
+                return _issuingState;
+            }
+            set
+            {
+                SetProperty(ref _issuingState, value);
+            }
+        }
+        private EnumStates? _issuingState;
 
         public DateTime? IssueDate
         {
@@ -28,7 +61,5 @@ namespace ProjetoVillaBeach.Entities.Documents
             }
         }
         private DateTime? _issueDate;
-
-
     }
 }

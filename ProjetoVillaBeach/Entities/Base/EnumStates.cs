@@ -147,8 +147,4 @@ namespace ProjetoVillaBeach.Entities.Base
         [Description("Tocantins")]
         TO
     }
-
-
-    
-    
 }
