@@ -13,7 +13,7 @@ namespace ProjetoVillaBeach.Entities.Controllers
     {
         private PeopleRepositoryService peopleService = new();
 
-        public People SelectedPeople { get; private set; }
+        public Person SelectedPeople { get; private set; }
      
         public PeopleController()
         {
@@ -21,7 +21,7 @@ namespace ProjetoVillaBeach.Entities.Controllers
             SelectedPeople.ObjectState = EntityObjectState.Added;
         }
 
-        public PeopleController(People people)
+        public PeopleController(Person people)
         {
             SelectedPeople = people;
         }
@@ -42,17 +42,17 @@ namespace ProjetoVillaBeach.Entities.Controllers
             return peopleService.Excluir(this.SelectedPeople);
         }
 
-        public People? Pesquisar(int codigo)
+        public Person? Pesquisar(int codigo)
         {
             return peopleService.Pesquisar(codigo);
         }
 
-        public ICollection<People> PesquisarTodos()
+        public ICollection<Person> PesquisarTodos()
         {
             return peopleService.PesquisarTodos();
         }
 
-        public ICollection<People> PesquisarTexto(string descricao)
+        public ICollection<Person> PesquisarTexto(string descricao)
         {
             return peopleService.PesquisarTexto(descricao);
         }

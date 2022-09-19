@@ -11,7 +11,6 @@ using System.Windows;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Channels;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 {
@@ -34,46 +33,40 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
             }
             set
             {
-                OnImageChanging();
-                pbImageCaptured.Image = value;
-                OnImageChanged();
+                ImageChangingArgs args = new();
+
+                ImageChanging?.Invoke(this, args);
+
+                if (!args.Cancel)
+                {
+                    pbImageCaptured.Image.Dispose();
+
+                    pbImageCaptured.Image = value;
+
+                    ImageChanged?.Invoke(this);
+                }
             }
         }
 
         #region Event ImageChanged
-        public delegate void ImageChangedEventHandler(object sender, EventArgs args);
+        public delegate void ImageChangedEventHandler(object sender);
 
-        public event ImageChangedEventHandler ImageChanged;
-
-        protected virtual void OnImageChanged()
-        {
-            if (ImageChanged != null)
-                ImageChanged(this, EventArgs.Empty);
-        }
+        public event ImageChangedEventHandler? ImageChanged;
+        
         #endregion
 
         #region Event ImageChanging
-        public delegate void ImageChangingEventHandler(object sender, EventArgs args);
+        public delegate void ImageChangingEventHandler(object sender, ImageChangingArgs args);
+                
+        public event EventHandler<ImageChangingArgs>? ImageChanging;
 
-        public event ImageChangedEventHandler ImageChanging;
-
-        protected virtual void OnImageChanging()
-        {
-            if (ImageChanging != null)
-                ImageChanging(this, EventArgs.Empty);
-        }
         #endregion
 
         #region Event ImageDelete
-        public delegate void ImageDeleteEventHandler(object sender, EventArgs args);
+        public delegate void ImageDeletingEventHandler(object sender, EventArgs args);
 
-        public event ImageDeleteEventHandler ImageDelete;
+        public event EventHandler<ImageDeletingArgs>? ImageDeleting;
 
-        protected virtual void OnImageDelete()
-        {
-            if (ImageDelete != null)
-                ImageDelete(this, EventArgs.Empty);
-        }
         #endregion
 
         public ImageCapture()
@@ -112,9 +105,7 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                OnImageChanging();
                 pbImageCaptured.Image = frm.image;
-                OnImageChanged();
             }
         }
 
@@ -139,15 +130,18 @@ namespace ProjetoVillaBeach.Controles.ImageCaptureControler
             {
                 try
                 {
-                    OnImageChanging();
                     pbImageCaptured.Image = new Bitmap(openImagemFileDialog.FileName);
-                    OnImageChanged();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            ImageDeleting?.Invoke(this, new ImageDeletingArgs());
         }
     }
 }

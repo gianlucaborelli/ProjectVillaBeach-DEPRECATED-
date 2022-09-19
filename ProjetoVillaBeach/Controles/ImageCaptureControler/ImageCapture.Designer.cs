@@ -79,6 +79,7 @@
             this.btnClearImageCaptured.TabIndex = 2;
             this.btnClearImageCaptured.Text = "Limpar";
             this.btnClearImageCaptured.UseVisualStyleBackColor = false;
+            this.btnClearImageCaptured.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // pbImageCaptured
             // 

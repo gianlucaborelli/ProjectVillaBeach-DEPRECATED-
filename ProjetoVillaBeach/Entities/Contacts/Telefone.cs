@@ -38,6 +38,6 @@ namespace ProjetoVillaBeach.Entities
         private string? _obs;
 
         public int IdPessoa { get; set; }
-        public virtual People? Pessoa { get; set; }
+        public virtual Person? Pessoa { get; set; }
     }
 }

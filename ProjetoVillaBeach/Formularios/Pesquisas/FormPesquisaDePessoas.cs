@@ -38,7 +38,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
 
-            dataGridView1.DataSource = People.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text, out string msg);
+            dataGridView1.DataSource = Person.Pesquisar(flatTxtNome.Text, flatTxtCpf.ToUlongParse(), flatTxtRg.Text, out string msg);
 
             if (!string.IsNullOrEmpty(msg))
                 NotificacaoPopUp.MostrarNotificacao(msg, NotificacaoPopUp.AlertType.Info);
@@ -74,8 +74,8 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
         {
             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
             {
-                People? pessoa;
-                pessoa = row.DataBoundItem as People;
+                Person? pessoa;
+                pessoa = row.DataBoundItem as Person;
 
                 if (pessoa != null)
                 {
@@ -106,7 +106,7 @@ namespace ProjetoVillaBeach.Formularios.Pesquisas
             {
                 try
                 {
-                    PeopleController peopleController = new(row.DataBoundItem as People);
+                    PeopleController peopleController = new(row.DataBoundItem as Person);
 
                     if (peopleController.SelectedPeople != null)
                         if (MessageBox.Show("Deseja realmente excluir esse cadastro?\n\n" +

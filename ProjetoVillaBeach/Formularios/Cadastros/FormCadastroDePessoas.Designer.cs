@@ -389,7 +389,8 @@
             this.ImageCapturePeople.Size = new System.Drawing.Size(227, 278);
             this.ImageCapturePeople.TabIndex = 10;
             this.ImageCapturePeople.ImageChanged += new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture.ImageChangedEventHandler(this.ImageCapturePeople_ImageChanged);
-            this.ImageCapturePeople.ImageDelete += new ProjetoVillaBeach.Controles.ImageCaptureControler.ImageCapture.ImageDeleteEventHandler(this.ImageCapturePeople_ImageDelete);
+            this.ImageCapturePeople.ImageChanging += new System.EventHandler<ProjetoVillaBeach.Controles.ImageCaptureControler.ImageChangingArgs>(this.ImageCapturePeople_ImageChanging);
+            this.ImageCapturePeople.ImageDeleting += new System.EventHandler<ProjetoVillaBeach.Controles.ImageCaptureControler.ImageDeletingArgs>(this.ImageCapturePeople_ImageDeleting);
             // 
             // tbContatos
             // 

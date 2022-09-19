@@ -18,7 +18,7 @@ using System.Configuration;
 
 namespace ProjetoVillaBeach.Entities
 {
-    public class People : BaseClass
+    public class Person : BaseClass
     {
         #region Property
 
@@ -194,14 +194,14 @@ namespace ProjetoVillaBeach.Entities
                 _photo.Save(PathPhoto, System.Drawing.Imaging.ImageFormat.Png);
         }
 
-        public static ICollection<People> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
+        public static ICollection<Person> Pesquisar(string? nome, ulong? cpf, string? rg, out string msg)
         {
             msg = "";
             var contexto = new Contexto();
 
             if (!string.IsNullOrEmpty(nome) && !string.IsNullOrEmpty(rg) && cpf != null)
             {
-                IQueryable<People> query = contexto.Peoples;
+                IQueryable<Person> query = contexto.Peoples;
                 query = query.Where(x => x.Nome == nome || x.NumeroCpf == cpf || x.NumeroRg == rg);
 
                 if (query.ToList().Count >= 1)

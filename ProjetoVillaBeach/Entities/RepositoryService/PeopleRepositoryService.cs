@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace ProjetoVillaBeach.Entities.RepositoryService
 {
-    internal class PeopleRepositoryService : IRepositoryService<People>
+    internal class PeopleRepositoryService : IRepositoryService<Person>
     {
-        public bool Excluir(People objeto)
+        public bool Excluir(Person objeto)
         {
             var contexto = new Contexto();
             contexto.Remove(objeto);
             return (contexto.SaveChanges() > 0);
         }
 
-        public People? Pesquisar(int codigo)
+        public Person? Pesquisar(int codigo)
         {
             var contexto = new Contexto();
             return (from p in contexto.Peoples where p.Id == codigo select p).FirstOrDefault();
         }
 
-        public ICollection<People> PesquisarTexto(string descricao)
+        public ICollection<Person> PesquisarTexto(string descricao)
         {
             var contexto = new Contexto();
             return (from p in contexto.Peoples
@@ -29,13 +29,13 @@ namespace ProjetoVillaBeach.Entities.RepositoryService
                     select p).ToList();
         }
 
-        public ICollection<People> PesquisarTodos()
+        public ICollection<Person> PesquisarTodos()
         {
             var contexto = new Contexto();
             return contexto.Peoples.ToList();
         }
 
-        public bool Salvar(People objeto)
+        public bool Salvar(Person objeto)
         {
             var contexto = new Contexto();
             contexto.Peoples.Add(objeto);

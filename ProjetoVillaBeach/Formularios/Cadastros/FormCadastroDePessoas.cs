@@ -19,7 +19,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
     public partial class FormCadastroDePessoas : Form
     {
         private PeopleController peopleController;
-        private People pessoa = new();
+        private Person pessoa = new();
 
         public FormCadastroDePessoas()
         {
@@ -27,7 +27,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             peopleController = new();
         }
 
-        public FormCadastroDePessoas(People id)
+        public FormCadastroDePessoas(Person id)
         {
             InitializeComponent();
             peopleController = new(id);
@@ -240,7 +240,7 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
             }
         }
 
-        private void ImageCapturePeople_ImageChanged(object sender, EventArgs args)
+        private void ImageCapturePeople_ImageChanged(object sender)
         {
             try
             {
@@ -256,6 +256,16 @@ namespace ProjetoVillaBeach.Formularios.Cadastros
         private void ImageCapturePeople_ImageDelete(object sender, EventArgs args)
         {
             
+        }
+
+        private void ImageCapturePeople_ImageChanging(object sender, Controles.ImageCaptureControler.ImageChangingArgs e)
+        {
+            
+        }
+
+        private void ImageCapturePeople_ImageDeleting(object sender, Controles.ImageCaptureControler.ImageDeletingArgs e)
+        {
+
         }
     }
 }
