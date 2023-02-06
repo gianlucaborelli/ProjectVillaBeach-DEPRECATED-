@@ -1,6 +1,7 @@
-# VillaBeach Project 
+# VillaBeach Project [ DEPRECATED ]
 
-![Preview-Screens]() 
+
+This project will not be continued, please, consider looking at the new project available in this [repository](https://github.com/gianlucaborelli/VillaBeach-WebService)
 
 ## About this Project 
 
